@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  DISQUALIFIED
+  ARCHIVED
+}
+
+model Lead {
+  id            String     @id @default(cuid())
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  name          String
+  email         String
+  company       String?
+  phone         String?
+  message       String?
+  source        String     @default("contact_form")
+  pagePath      String?
+  utmSource     String?
+  utmMedium     String?
+  utmCampaign   String?
+  status        LeadStatus @default(NEW)
+  metadata      Json?
+  crmSyncedAt   DateTime?
+  crmProvider   String?
+  crmExternalId String?
+
+  @@index([email])
+  @@index([createdAt])
+  @@index([status])
+}
+
+// Future extension points - uncomment when implementing CMS/portal
+// model Post { id String @id @default(cuid()) ... }
+// model CaseStudy { id String @id @default(cuid()) ... }
+// model NewsletterSubscriber { id String @id @default(cuid()) ... }
+// model Assessment { id String @id @default(cuid()) ... }
+// model User { id String @id @default(cuid()) ... }
