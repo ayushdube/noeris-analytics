@@ -1,0 +1,55 @@
+# Firebase App Hosting — https://noeris.io
+# Project: noerisanalyticsio | Backend: noerisanalytics | Region: asia-southeast1
+#
+# Sensitive values belong in Cloud Secret Manager (not committed):
+#   firebase apphosting:secrets:set DATABASE_URL
+#   firebase apphosting:secrets:set RESEND_API_KEY
+# Or set them in Firebase Console → App Hosting → noerisanalytics → Environment
+#
+# Console values override this file. Changes apply on the next rollout.
+
+env:
+  - variable: NEXT_PUBLIC_SITE_URL
+    value: https://noeris.io
+    availability:
+      - BUILD
+      - RUNTIME
+
+# Uncomment and create secrets in Secret Manager before enabling:
+#
+#  - variable: DATABASE_URL
+#    secret: DATABASE_URL
+#    availability:
+#      - BUILD
+#      - RUNTIME
+#
+#  - variable: RESEND_API_KEY
+#    secret: RESEND_API_KEY
+#    availability:
+#      - RUNTIME
+#
+#  - variable: EMAIL_FROM
+#    secret: EMAIL_FROM
+#    availability:
+#      - RUNTIME
+#
+#  - variable: LEADS_NOTIFY_EMAIL
+#    secret: LEADS_NOTIFY_EMAIL
+#    availability:
+#      - RUNTIME
+#
+#  - variable: UPSTASH_REDIS_REST_URL
+#    secret: UPSTASH_REDIS_REST_URL
+#    availability:
+#      - RUNTIME
+#
+#  - variable: UPSTASH_REDIS_REST_TOKEN
+#    secret: UPSTASH_REDIS_REST_TOKEN
+#    availability:
+#      - RUNTIME
+#
+#  - variable: NEXT_PUBLIC_CALENDLY_URL
+#    value: https://calendly.com/your-link
+#    availability:
+#      - BUILD
+#      - RUNTIME
