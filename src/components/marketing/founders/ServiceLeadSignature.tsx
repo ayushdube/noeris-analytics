@@ -10,7 +10,7 @@ export function ServiceLeadSignature({ founderId, className }: ServiceLeadSignat
   const founder = getFounder(founderId);
 
   return (
-    <p className={cn("font-mono text-[10px] tracking-[0.08em] text-muted/70", className)}>
+    <p className={cn("text-sm tracking-[0.04em] text-muted-foreground", className)}>
       Led by {founder.name}, {founder.principalTitle}.
     </p>
   );

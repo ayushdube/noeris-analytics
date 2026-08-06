@@ -62,7 +62,7 @@ export function Section({
         {(eyebrow || title || description) && (
           <header className={cn("mb-20 md:mb-28", variant === "statement" && "mb-24 md:mb-36")}>
             {eyebrow && (
-              <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.25em] text-muted">
+              <p className="mb-5 text-label">
                 {eyebrow}
               </p>
             )}

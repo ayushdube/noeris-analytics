@@ -17,7 +17,7 @@ export function Hero() {
 
       <Container wide className="flex min-h-[92vh] flex-col justify-end pb-24 pt-36 md:pb-32 md:pt-44">
         <FadeIn y={20}>
-          <p className="mb-10 font-mono text-[11px] uppercase tracking-[0.3em] text-muted">
+          <p className="mb-10 text-label">
             Business & Executive Intelligence
           </p>
         </FadeIn>

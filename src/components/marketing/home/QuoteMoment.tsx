@@ -1,36 +1,36 @@
 "use client";
 
+import { TestimonialCard, TestimonialPlaceholder } from "@/components/marketing/TestimonialCard";
 import { testimonials } from "@/modules/content/site-content";
 import { motion } from "framer-motion";
 
 export function QuoteMoment() {
-  const quote = testimonials[0];
-  if (!quote) return null;
+  const featured = testimonials[0];
+  const supporting = testimonials.slice(1, 3);
+  const showPlaceholder = supporting.length < 2;
+
+  if (!featured) return null;
 
   return (
     <section className="relative overflow-hidden">
       <div className="chapter-glow-center pointer-events-none absolute inset-0" aria-hidden="true" />
 
       <div className="mx-auto max-w-[1400px] px-6 pt-14 pb-10 md:px-10 md:pt-20 md:pb-14">
-        <motion.blockquote
-          className="mx-auto max-w-5xl"
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1.5 }}
         >
-          <p className="font-display text-[clamp(1.5rem,3.5vw,2.75rem)] font-medium leading-[1.25] tracking-[-0.02em] text-foreground/90">
-            &ldquo;{quote.quote}&rdquo;
-          </p>
-          <footer className="mt-10 md:mt-12">
-            <cite className="not-italic">
-              <span className="block text-sm text-muted-foreground">{quote.author}</span>
-              <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.15em] text-muted">
-                {quote.company}
-              </span>
-            </cite>
-          </footer>
-        </motion.blockquote>
+          <TestimonialCard testimonial={featured} variant="featured" />
+
+          <div className="mt-12 grid gap-4 md:mt-16 md:grid-cols-2 md:gap-5 lg:gap-6">
+            {supporting.map((testimonial) => (
+              <TestimonialCard key={`${testimonial.author}-${testimonial.company}`} testimonial={testimonial} />
+            ))}
+            {showPlaceholder && <TestimonialPlaceholder />}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

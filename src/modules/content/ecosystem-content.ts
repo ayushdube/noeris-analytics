@@ -75,7 +75,7 @@ export const platforms: Platform[] = [
   { id: "quickbooks", name: "QuickBooks", category: "Finance", relatedRoles: ["finance", "cfo"] },
   { id: "xero", name: "Xero", category: "Finance", relatedRoles: ["finance", "cfo"] },
   { id: "sage-intacct", name: "Sage Intacct", category: "Finance", relatedRoles: ["finance", "cfo"] },
-  { id: "microsoft-fabric", name: "Microsoft Fabric", category: "Data Platforms", relatedRoles: ["cio-cto", "finance", "coo"] },
+  { id: "snowflake-databricks", name: "Snowflake / Databricks", category: "Data Platforms", relatedRoles: ["cio-cto", "finance", "coo"] },
   { id: "snowflake", name: "Snowflake", category: "Data Platforms", relatedRoles: ["cio-cto", "finance"] },
   { id: "databricks", name: "Databricks", category: "Data Platforms", relatedRoles: ["cio-cto", "finance"] },
   { id: "bigquery", name: "BigQuery", category: "Data Platforms", relatedRoles: ["cio-cto", "marketing", "finance"] },

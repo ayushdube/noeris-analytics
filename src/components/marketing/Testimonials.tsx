@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 
+import { TestimonialCard } from "@/components/marketing/TestimonialCard";
 import { testimonials } from "@/modules/content/site-content";
 import { Container } from "@/components/layout/Container";
 import { FadeIn } from "@/components/marketing/FadeIn";
+import { cn } from "@/lib/utils";
 
 export function Testimonials() {
   const [active, setActive] = useState(0);
@@ -21,7 +23,7 @@ export function Testimonials() {
 
       <Container>
         <FadeIn>
-          <p className="mb-20 font-mono text-[11px] uppercase tracking-[0.25em] text-muted md:mb-28">
+          <p className="mb-20 text-label md:mb-28">
             Client Perspectives
           </p>
         </FadeIn>
@@ -40,15 +42,34 @@ export function Testimonials() {
           </blockquote>
         </FadeIn>
 
-        <div className="mt-20 flex gap-4 md:mt-28">
-          {testimonials.map((t, i) => (
+        <div className="mt-12 flex gap-4 overflow-x-auto pb-2 md:mt-16 md:grid md:grid-cols-3 md:overflow-visible md:pb-0">
+          {testimonials.map((testimonial, i) => (
             <button
-              key={t.author}
+              key={`${testimonial.author}-${testimonial.company}`}
               type="button"
               onClick={() => setActive(i)}
-              className={`h-px flex-1 max-w-12 transition-all duration-700 ${
-                i === active ? "bg-accent/60" : "bg-white/5 hover:bg-white/10"
-              }`}
+              className={cn(
+                "min-w-[85%] shrink-0 text-left transition-opacity duration-300 md:min-w-0",
+                i === active ? "opacity-100" : "opacity-70 hover:opacity-90",
+              )}
+              aria-label={`View testimonial from ${testimonial.author}`}
+              aria-current={i === active ? "true" : undefined}
+            >
+              <TestimonialCard testimonial={testimonial} className="h-full" />
+            </button>
+          ))}
+        </div>
+
+        <div className="mt-8 flex gap-4 md:mt-10">
+          {testimonials.map((t, i) => (
+            <button
+              key={`indicator-${t.author}-${t.company}`}
+              type="button"
+              onClick={() => setActive(i)}
+              className={cn(
+                "h-px flex-1 max-w-12 transition-all duration-700",
+                i === active ? "bg-foreground/50" : "bg-white/5 hover:bg-white/10",
+              )}
               aria-label={`View testimonial from ${t.author}`}
               aria-current={i === active ? "true" : undefined}
             />

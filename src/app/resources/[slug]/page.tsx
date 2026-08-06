@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { Section } from "@/components/layout/Container";
+import { ResourceTypeVisual } from "@/components/visuals/ResourceTypeVisual";
+import { SplitHero } from "@/components/visuals/SplitHero";
 import { createPageMetadata } from "@/lib/seo/metadata";
 
 const resourcePages = [
@@ -42,25 +43,27 @@ export default async function ResourceSubPage({ params }: Props) {
 
   return (
     <>
-      <Section
-        className="pt-32 md:pt-40"
-        variant="editorial"
+      <SplitHero
         eyebrow="Resources"
         title={page.title}
         description={page.description}
-        wide
-      >
-        <p className="max-w-xl text-base leading-[1.8] text-muted">
-          This resource is being prepared. Contact us and we will notify you when it is available.
-        </p>
-        <Link
-          href="/contact"
-          className="mt-10 inline-flex items-center gap-2 text-sm text-muted transition-colors duration-500 hover:text-accent-foreground"
-        >
-          Get notified
-          <span aria-hidden="true">→</span>
-        </Link>
-      </Section>
+        visual={<ResourceTypeVisual slug={slug} />}
+      />
+
+      <section className="pb-28 md:pb-40">
+        <div className="mx-auto max-w-3xl px-6 lg:px-10">
+          <p className="text-base leading-[1.8] text-muted-foreground">
+            This resource is being prepared. Contact us and we will notify you when it is available.
+          </p>
+          <Link
+            href="/contact"
+            className="mt-10 inline-flex items-center gap-2 text-sm text-muted transition-colors duration-500 hover:text-accent-foreground"
+          >
+            Get notified
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      </section>
     </>
   );
 }

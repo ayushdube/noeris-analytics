@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Sans, Syne } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans, Outfit, Syne } from "next/font/google";
 
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { PageSideLabelRoute } from "@/components/layout/PageSideLabelRoute";
 import { siteConfig } from "@/lib/site-config";
-
 import "./globals.css";
 
 const syne = Syne({
@@ -27,38 +27,61 @@ const ibmPlexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["700"],
+  variable: "--font-logo",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} - ${siteConfig.tagline}`,
-    template: `%s | ${siteConfig.name}`,
+    default: "Enterprise Analytics & BI Consulting | Noeris Analytics",
+    template: "%s | Noeris Analytics",
   },
   description: siteConfig.description,
   keywords: [
     "Power BI Consulting",
-    "Microsoft Fabric Consulting",
+    "TIBCO Spotfire Consulting",
     "Business Intelligence Consulting",
+    "Data Engineering Consulting",
+    "Oil and Gas Analytics",
+    "Agentic AI Consulting",
+    "Azure Databricks Consulting",
     "Executive Dashboards",
-    "Data Engineering",
-    "Snowflake Consulting",
-    "Business Intelligence Services",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteConfig.url,
-    siteName: siteConfig.name,
-    title: siteConfig.tagline,
+    siteName: "Noeris Analytics",
+    title: "Enterprise Analytics & BI Consulting | Noeris Analytics",
     description: siteConfig.description,
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Noeris Analytics — Enterprise BI & Data Consulting",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.tagline,
+    site: "@noerisanalytics",
+    title: "Enterprise Analytics & BI Consulting | Noeris Analytics",
     description: siteConfig.description,
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
   },
 };
 
@@ -70,7 +93,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${syne.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} ambient-root min-h-screen bg-background font-sans text-foreground antialiased`}
+        className={`${syne.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} ${outfit.variable} ambient-root min-h-screen bg-background font-sans text-foreground antialiased`}
       >
         <a
           href="#main-content"
@@ -79,6 +102,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <Header />
+        <PageSideLabelRoute />
         <main id="main-content">{children}</main>
         <Footer />
       </body>

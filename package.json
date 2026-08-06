@@ -4,8 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:clean": "node -e \"require('fs').rmSync('.next',{recursive:true,force:true})\" && next dev",
     "build": "prisma generate && next build",
+    "build:clean": "node -e \"require('fs').rmSync('.next',{recursive:true,force:true})\" && npm run build",
     "start": "next start",
+    "smoke": "node scripts/smoke-pages.mjs",
+    "og:image": "node scripts/generate-og-image.mjs",
     "lint": "eslint",
     "postinstall": "prisma generate",
     "db:generate": "prisma generate",

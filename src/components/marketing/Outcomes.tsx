@@ -1,11 +1,24 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useReducedMotion } from "framer-motion";
 
 import { outcomes } from "@/modules/content/site-content";
 import { Container } from "@/components/layout/Container";
 import { FadeIn } from "@/components/marketing/FadeIn";
+
+function useReducedMotion() {
+  const [reduced, setReduced] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(media.matches);
+    const onChange = () => setReduced(media.matches);
+    media.addEventListener("change", onChange);
+    return () => media.removeEventListener("change", onChange);
+  }, []);
+
+  return reduced;
+}
 
 function AnimatedMetric({ value }: { value: string }) {
   const shouldReduceMotion = useReducedMotion();
@@ -65,7 +78,7 @@ export function Outcomes() {
       />
       <Container wide>
         <FadeIn>
-          <p className="mb-20 font-mono text-[11px] uppercase tracking-[0.25em] text-muted md:mb-28">
+          <p className="mb-20 text-label md:mb-28">
             Outcomes
           </p>
         </FadeIn>

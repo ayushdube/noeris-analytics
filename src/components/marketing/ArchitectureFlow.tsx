@@ -27,7 +27,7 @@ export function ArchitectureFlow() {
       <Container wide>
         <FadeIn>
           <div className="mb-24 max-w-2xl md:mb-32">
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.25em] text-muted">
+            <p className="mb-5 text-label">
               Architecture
             </p>
             <h2 className="font-display text-4xl font-medium leading-[1.08] tracking-[-0.03em] text-foreground md:text-5xl">
@@ -55,7 +55,7 @@ export function ArchitectureFlow() {
                 <p className="font-display text-lg font-medium tracking-[-0.01em] text-foreground">
                   {layer.label}
                 </p>
-                <p className="mt-3 font-mono text-[10px] leading-relaxed text-muted">
+                <p className="mt-3 font-mono text-sm leading-relaxed text-muted">
                   {layer.sub}
                 </p>
               </FadeIn>
@@ -65,7 +65,7 @@ export function ArchitectureFlow() {
 
         <div className="space-y-12 lg:hidden">
           <FadeIn>
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+            <p className="text-label">
               {sources.join(" · ")}
             </p>
           </FadeIn>
@@ -73,7 +73,7 @@ export function ArchitectureFlow() {
             <FadeIn key={layer.label} delay={i * 0.08}>
               <div>
                 <p className="font-display text-xl font-medium text-foreground">{layer.label}</p>
-                <p className="mt-2 font-mono text-[10px] text-muted">{layer.sub}</p>
+                <p className="mt-2 font-mono text-xs text-muted">{layer.sub}</p>
               </div>
             </FadeIn>
           ))}

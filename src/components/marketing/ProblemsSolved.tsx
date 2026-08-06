@@ -8,7 +8,7 @@ export function ProblemsSolved() {
       <Container wide>
         <div className="grid gap-20 lg:grid-cols-[1fr_1.1fr] lg:gap-32">
           <FadeIn className="lg:sticky lg:top-32 lg:self-start">
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.25em] text-muted">
+            <p className="mb-5 text-label">
               The decision problem
             </p>
             <h2 className="font-display text-4xl font-medium leading-[1.08] tracking-[-0.03em] text-foreground md:text-5xl">
@@ -24,7 +24,7 @@ export function ProblemsSolved() {
             {problems.map((problem, i) => (
               <FadeIn key={problem.title} delay={i * 0.06}>
                 <article>
-                  <span className="font-mono text-xs text-accent">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-mono text-sm text-accent">{String(i + 1).padStart(2, "0")}</span>
                   <h3 className="mt-5 font-display text-2xl font-medium tracking-[-0.02em] text-foreground md:text-[1.75rem]">
                     {problem.title}
                   </h3>

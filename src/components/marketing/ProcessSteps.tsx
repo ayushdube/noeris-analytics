@@ -8,7 +8,7 @@ export function ProcessSteps() {
       <Container wide>
         <FadeIn>
           <div className="mb-24 max-w-xl md:mb-32">
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.25em] text-muted">
+            <p className="mb-5 text-label">
               Our Process
             </p>
             <h2 className="font-display text-4xl font-medium tracking-[-0.03em] text-foreground md:text-5xl">

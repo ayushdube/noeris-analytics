@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 import {
   contactFormSchema,
   type ContactFormInput,
@@ -17,6 +18,9 @@ import {
 interface ContactFormProps {
   className?: string;
 }
+
+const fieldClassName =
+  "rounded-sm border border-white/15 bg-white/[0.03] px-4 placeholder:text-muted/70 focus-visible:border-accent/40 focus-visible:ring-1 focus-visible:ring-accent/20";
 
 export function ContactForm({ className }: ContactFormProps) {
   const pathname = usePathname();
@@ -34,7 +38,6 @@ export function ContactForm({ className }: ContactFormProps) {
       name: "",
       email: "",
       company: "",
-      phone: "",
       message: "",
       website: "",
       pagePath: pathname,
@@ -91,47 +94,66 @@ export function ContactForm({ className }: ContactFormProps) {
       <div className="space-y-12">
         <div className="grid gap-12 md:grid-cols-2">
           <div className="space-y-3">
-            <Label htmlFor="name" className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted">
+            <Label htmlFor="name" className="text-label">
               Name
             </Label>
-            <Input id="name" autoComplete="name" {...register("name")} aria-invalid={!!errors.name} />
+            <Input
+              id="name"
+              autoComplete="name"
+              placeholder="Your name"
+              className={cn(fieldClassName, "h-12 border-b-0")}
+              {...register("name")}
+              aria-invalid={!!errors.name}
+            />
             {errors.name && (
               <p className="text-sm text-red-400/70" role="alert">{errors.name.message}</p>
             )}
           </div>
 
           <div className="space-y-3">
-            <Label htmlFor="email" className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted">
+            <Label htmlFor="email" className="text-label">
               Email
             </Label>
-            <Input id="email" type="email" autoComplete="email" {...register("email")} aria-invalid={!!errors.email} />
+            <Input
+              id="email"
+              type="email"
+              autoComplete="email"
+              placeholder="you@company.com"
+              className={cn(fieldClassName, "h-12 border-b-0")}
+              {...register("email")}
+              aria-invalid={!!errors.email}
+            />
             {errors.email && (
               <p className="text-sm text-red-400/70" role="alert">{errors.email.message}</p>
             )}
           </div>
         </div>
 
-        <div className="grid gap-12 md:grid-cols-2">
-          <div className="space-y-3">
-            <Label htmlFor="company" className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted">
-              Company
-            </Label>
-            <Input id="company" autoComplete="organization" {...register("company")} />
-          </div>
-
-          <div className="space-y-3">
-            <Label htmlFor="phone" className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted">
-              Phone
-            </Label>
-            <Input id="phone" type="tel" autoComplete="tel" {...register("phone")} />
-          </div>
+        <div className="space-y-3">
+          <Label htmlFor="company" className="text-label">
+            Company
+          </Label>
+          <Input
+            id="company"
+            autoComplete="organization"
+            placeholder="Company name"
+            className={cn(fieldClassName, "h-12 border-b-0")}
+            {...register("company")}
+          />
         </div>
 
         <div className="space-y-3">
-          <Label htmlFor="message" className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted">
+          <Label htmlFor="message" className="text-label">
             How can we help?
           </Label>
-          <Textarea id="message" rows={5} {...register("message")} aria-invalid={!!errors.message} />
+          <Textarea
+            id="message"
+            rows={5}
+            placeholder="Tell us about your data landscape, goals, and timeline"
+            className={cn(fieldClassName, "min-h-[160px] bg-white/[0.03]")}
+            {...register("message")}
+            aria-invalid={!!errors.message}
+          />
           {errors.message && (
             <p className="text-sm text-red-400/70" role="alert">{errors.message.message}</p>
           )}
@@ -150,6 +172,10 @@ export function ContactForm({ className }: ContactFormProps) {
       <Button type="submit" className="mt-14" disabled={status === "loading"}>
         {status === "loading" ? "Sending..." : "Send message"}
       </Button>
+
+      <p className="mt-4 text-sm text-muted">
+        We respond to all enquiries within one business day.
+      </p>
     </form>
   );
 }

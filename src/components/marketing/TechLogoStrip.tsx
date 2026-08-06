@@ -7,7 +7,7 @@ export function TechLogoStrip() {
   return (
     <section className="overflow-hidden py-20 md:py-24">
       <Container wide>
-        <p className="mb-12 font-mono text-[11px] uppercase tracking-[0.25em] text-muted">
+        <p className="mb-12 text-label">
           Platforms & systems
         </p>
       </Container>
@@ -17,7 +17,7 @@ export function TechLogoStrip() {
           {items.map((tech, i) => (
             <span
               key={`${tech}-${i}`}
-              className="font-display text-lg tracking-[-0.01em] text-muted/80 md:text-xl"
+              className="font-display text-lg tracking-[-0.01em] text-muted-foreground md:text-xl"
             >
               {tech}
             </span>

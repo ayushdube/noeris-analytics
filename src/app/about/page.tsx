@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 
 import { Section } from "@/components/layout/Container";
+import { AboutFounders } from "@/components/marketing/about/AboutFounders";
+import { UpworkTrustStrip } from "@/components/marketing/about/UpworkTrustStrip";
 import { FinalCTA } from "@/components/marketing/FinalCTA";
-import { FadeIn } from "@/components/marketing/FadeIn";
+import { AnimateIn } from "@/components/visuals/AnimateIn";
+import { DecisionFoundationVisual } from "@/components/visuals/DecisionFoundationVisual";
+import { OutcomesMetricsVisual } from "@/components/visuals/OutcomesMetricsVisual";
+import { SplitHero } from "@/components/visuals/SplitHero";
 import { createPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = createPageMetadata({
@@ -26,7 +31,7 @@ const principles = [
   {
     title: "Modern platform architecture",
     description:
-      "Microsoft Fabric, Snowflake, Databricks, and Power BI deployed with patterns that scale as your business grows.",
+      "Modern data platforms - Snowflake, Databricks, and leading BI tools - deployed with patterns that scale as your business grows.",
   },
   {
     title: "Enablement over dependency",
@@ -38,55 +43,67 @@ const principles = [
 export default function AboutPage() {
   return (
     <>
-      <Section
-        className="pt-32 md:pt-40"
-        variant="statement"
+      <SplitHero
         eyebrow="About"
         title="Modern analytics for companies that need to decide faster"
         description="Noeris helps organizations build a trusted decision system by integrating business data, modernizing analytics platforms, and delivering actionable insights through dashboards, reporting, and AI-powered intelligence."
-        wide
+        visual={<OutcomesMetricsVisual />}
       />
 
-      <section className="py-28 md:py-40">
-        <div className="mx-auto max-w-3xl px-6 lg:px-10">
-          <FadeIn>
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.25em] text-muted">Philosophy</p>
-            <h2 className="font-display text-3xl font-medium tracking-[-0.02em] text-foreground md:text-4xl">
-              We do not sell dashboards
-            </h2>
-          </FadeIn>
-          <FadeIn delay={0.08}>
-            <div className="mt-12 space-y-8 text-lg leading-[1.8] text-muted-foreground">
-              <p>
-                Most companies already own all the data they need. It is fragmented across dozens of systems - 
-                Shopify, ERP, CRM, finance, marketing - with no single path from raw data to executive insight.
-              </p>
-              <p>
-                Noeris creates a trusted decision system by connecting that data into one modern analytics platform.
-                We work with leadership teams at growing companies who need enterprise-grade intelligence without
-                enterprise-grade bureaucracy.
-              </p>
+      <section className="py-20 md:py-28">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+          <div className="grid gap-16 lg:grid-cols-2 lg:gap-20 lg:items-center">
+            <div>
+              <AnimateIn>
+                <p className="mb-5 text-label">Philosophy</p>
+                <h2 className="font-display text-3xl font-medium tracking-[-0.02em] text-foreground md:text-4xl">
+                  We do not sell dashboards
+                </h2>
+              </AnimateIn>
+              <AnimateIn delay={0.08}>
+                <div className="mt-10 space-y-6 text-lg leading-[1.8] text-muted-foreground">
+                  <p>
+                    Most companies already own all the data they need. It is fragmented across dozens of systems -
+                    Shopify, ERP, CRM, finance, marketing - with no single path from raw data to executive insight.
+                  </p>
+                  <p>
+                    Noeris creates a trusted decision system by connecting that data into one modern analytics platform.
+                    We work with leadership teams at growing companies who need enterprise-grade intelligence without
+                    enterprise-grade bureaucracy.
+                  </p>
+                </div>
+              </AnimateIn>
             </div>
-          </FadeIn>
+            <AnimateIn delay={0.12}>
+              <DecisionFoundationVisual />
+            </AnimateIn>
+          </div>
         </div>
       </section>
 
       <Section eyebrow="Approach" title="Why companies trust Noeris" wide>
-        <div className="space-y-16 md:space-y-20">
+        <div className="grid gap-12 md:grid-cols-2 md:gap-x-16 md:gap-y-16">
           {principles.map((p, i) => (
-            <FadeIn key={p.title} delay={i * 0.06}>
+            <AnimateIn key={p.title} delay={i * 0.06}>
               <article>
                 <h3 className="font-display text-2xl font-medium tracking-[-0.02em] text-foreground md:text-[1.75rem]">
                   {p.title}
                 </h3>
-                <p className="mt-5 max-w-2xl text-base leading-[1.8] text-muted">{p.description}</p>
+                <p className="mt-5 text-base leading-[1.8] text-muted">{p.description}</p>
               </article>
-            </FadeIn>
+            </AnimateIn>
           ))}
         </div>
       </Section>
 
-      <FinalCTA />
+      <AboutFounders />
+
+      <UpworkTrustStrip />
+
+      <FinalCTA
+        supportingLine="Engagements start with a free 45-minute discovery call. No pitch deck. No sales handoff."
+        bookingLabel="Book a discovery call"
+      />
     </>
   );
 }

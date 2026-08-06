@@ -13,7 +13,7 @@ export function FAQ() {
       <Container wide>
         <div className="grid gap-20 lg:grid-cols-[1fr_1.4fr] lg:gap-32">
           <div className="lg:sticky lg:top-32 lg:self-start">
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.25em] text-muted">
+            <p className="mb-5 text-label">
               FAQ
             </p>
             <h2 className="font-display text-4xl font-medium tracking-[-0.03em] text-foreground md:text-5xl">

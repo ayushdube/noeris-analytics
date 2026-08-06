@@ -10,7 +10,7 @@ export function ArchitectureChapter() {
 
       <div className="relative mx-auto max-w-[1400px] px-6 pt-14 pb-10 md:px-10 md:pt-20 md:pb-14">
         <motion.p
-          className="text-center font-mono text-[9px] uppercase tracking-[0.35em] text-muted"
+          className="text-center text-label"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

@@ -3,7 +3,7 @@
 import { Calendar } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { bookingLabel } from "@/modules/content/founders-content";
+import { siteConfig } from "@/lib/site-config";
 import { getBookingProvider } from "@/modules/booking";
 
 interface BookingEmbedProps {
@@ -13,32 +13,36 @@ interface BookingEmbedProps {
 export function BookingEmbed({ className }: BookingEmbedProps) {
   const provider = getBookingProvider();
 
-  if (!provider?.embedUrl) {
+  if (!provider.embedUrl) {
     return (
       <div className={className}>
-        <Calendar className="mb-6 h-6 w-6 text-muted" strokeWidth={1.5} />
-        <p className="max-w-sm text-base leading-[1.8] text-muted">
-          Scheduling is being configured. Use the contact form and we will follow up within one business day.
-        </p>
+        <Button asChild size="lg">
+          <a href={provider.bookUrl} target="_blank" rel="noopener noreferrer">
+            <Calendar className="h-4 w-4" strokeWidth={1.5} />
+            Schedule a discovery call →
+          </a>
+        </Button>
       </div>
     );
   }
 
   return (
-    <div className={`depth-soft overflow-hidden rounded-sm ${className ?? ""}`}>
-      <iframe
-        src={provider.embedUrl}
-        title="Schedule a strategy session with Noeris Analytics"
-        className="h-[680px] w-full border-0 bg-neutral-100"
-        loading="lazy"
-      />
+    <div className={className}>
+      <div className="depth-soft overflow-hidden rounded-sm border border-white/[0.06]">
+        <iframe
+          src={provider.embedUrl}
+          title="Schedule a discovery call with Noeris Analytics"
+          className="h-[680px] w-full border-0 bg-neutral-100"
+          loading="lazy"
+        />
+      </div>
     </div>
   );
 }
 
 interface BookingButtonProps {
   className?: string;
-  variant?: "default" | "secondary";
+  variant?: "default" | "accent" | "secondary";
   size?: "default" | "lg";
   label?: string;
 }
@@ -47,14 +51,13 @@ export function BookingButton({
   className,
   variant = "default",
   size = "default",
-  label = bookingLabel,
+  label = siteConfig.bookingCtaLabel,
 }: BookingButtonProps) {
   const provider = getBookingProvider();
-  const href = provider?.bookUrl ?? "/contact";
 
   return (
     <Button asChild variant={variant} size={size} className={className}>
-      <a href={href} target={provider ? "_blank" : undefined} rel={provider ? "noopener noreferrer" : undefined}>
+      <a href={provider.bookUrl} target="_blank" rel="noopener noreferrer">
         {label}
       </a>
     </Button>

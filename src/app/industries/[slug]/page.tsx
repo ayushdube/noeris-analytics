@@ -3,8 +3,16 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { BookingButton } from "@/components/booking/BookingEmbed";
-import { Section } from "@/components/layout/Container";
-import { FadeIn } from "@/components/marketing/FadeIn";
+import { DataSourcesRow } from "@/components/marketing/industries/DataSourcesRow";
+import { HowItWorksFlow } from "@/components/marketing/industries/HowItWorksFlow";
+import { IndustryComplianceCallout } from "@/components/marketing/industries/IndustryComplianceCallout";
+import { IndustryDualCTA } from "@/components/marketing/industries/IndustryDualCTA";
+import { IndustryIllustration } from "@/components/marketing/industries/IndustryIllustration";
+import { IndustrySocialProof } from "@/components/marketing/industries/IndustrySocialProof";
+import { AnimateIn } from "@/components/visuals/AnimateIn";
+import { KpiChips } from "@/components/visuals/KpiChips";
+import { KpiDashboardPreview } from "@/components/visuals/KpiDashboardPreview";
+import { SplitHero } from "@/components/visuals/SplitHero";
 import { industries, getIndustry } from "@/modules/content/site-content";
 import { createPageMetadata } from "@/lib/seo/metadata";
 
@@ -33,58 +41,100 @@ export default async function IndustryDetailPage({ params }: Props) {
   const industry = getIndustry(slug);
   if (!industry) notFound();
 
+  const heroDescription = industry.heroDescription ?? industry.summary;
+  const heroKpiChips =
+    industry.extensions?.heroKpiChips ?? industry.kpis;
+  const dashboardPreview = industry.extensions?.dashboardPreview;
+
   return (
     <>
-      <Section
-        className="pt-32 md:pt-40"
-        variant="editorial"
+      <SplitHero
         eyebrow="Industry"
         title={industry.title}
-        description={industry.summary}
-        wide
+        description={heroDescription}
+        meta={<KpiChips items={heroKpiChips} />}
+        visual={
+          <KpiDashboardPreview
+            title={`${industry.title} KPIs`}
+            kpis={dashboardPreview ? undefined : industry.kpis}
+            metrics={dashboardPreview?.metrics}
+            chartType={dashboardPreview?.chartType ?? "bar"}
+          />
+        }
       />
 
-      <section className="py-28 md:py-40">
+      {industry.extensions?.socialProof && (
+        <IndustrySocialProof
+          quote={industry.extensions.socialProof.quote}
+          attribution={industry.extensions.socialProof.attribution}
+        />
+      )}
+
+      <section className="py-12 md:py-20">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-          <div className="grid gap-20 lg:grid-cols-3 lg:gap-16">
-            <FadeIn>
-              <p className="mb-8 font-mono text-[11px] uppercase tracking-[0.25em] text-muted">Challenges</p>
+          <div className="grid gap-12 lg:grid-cols-3 lg:gap-16">
+            <AnimateIn>
+              <div className="mb-8 flex items-center gap-4">
+                <IndustryIllustration slug={slug} className="h-10 w-14 shrink-0 opacity-60" />
+                <p className="text-label">Challenges</p>
+              </div>
               <ul className="space-y-5">
                 {industry.challenges.map((c) => (
                   <li key={c} className="text-sm leading-[1.8] text-muted-foreground">{c}</li>
                 ))}
               </ul>
-            </FadeIn>
-            <FadeIn delay={0.06}>
-              <p className="mb-8 font-mono text-[11px] uppercase tracking-[0.25em] text-muted">Typical KPIs</p>
+            </AnimateIn>
+            <AnimateIn delay={0.06}>
+              <p className="mb-8 text-label">Typical KPIs</p>
               <ul className="space-y-4">
                 {industry.kpis.map((kpi) => (
                   <li key={kpi} className="text-sm text-muted">{kpi}</li>
                 ))}
               </ul>
-            </FadeIn>
-            <FadeIn delay={0.12}>
-              <p className="mb-8 font-mono text-[11px] uppercase tracking-[0.25em] text-muted">Outcomes</p>
+            </AnimateIn>
+            <AnimateIn delay={0.12}>
+              <p className="mb-8 text-label">Outcomes</p>
               <ul className="space-y-5">
                 {industry.outcomes.map((o) => (
                   <li key={o} className="text-sm leading-[1.8] text-muted-foreground">{o}</li>
                 ))}
               </ul>
-            </FadeIn>
+            </AnimateIn>
           </div>
         </div>
       </section>
 
-      <section className="py-28 md:py-32">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-          <div className="flex flex-col gap-10 sm:flex-row sm:items-center sm:justify-between">
-            <BookingButton size="lg" />
-            <Link href="/industries" className="text-sm text-muted transition-colors duration-500 hover:text-accent-foreground">
-              ← All industries
-            </Link>
+      {industry.extensions?.dataSources && (
+        <DataSourcesRow sources={industry.extensions.dataSources} />
+      )}
+
+      {industry.extensions?.complianceCallout && (
+        <IndustryComplianceCallout text={industry.extensions.complianceCallout} />
+      )}
+
+      {industry.extensions?.howItWorks && (
+        <HowItWorksFlow steps={industry.extensions.howItWorks} />
+      )}
+
+      {industry.extensions?.cta ? (
+        <IndustryDualCTA
+          primary={industry.extensions.cta.primary}
+          secondary={industry.extensions.cta.secondary}
+          secondaryHref={industry.extensions.cta.secondaryHref}
+          secondaryVariant={industry.extensions.cta.secondaryVariant}
+        />
+      ) : (
+        <section className="py-12 md:py-20">
+          <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+            <div className="flex flex-col gap-10 sm:flex-row sm:items-center sm:justify-between">
+              <BookingButton size="lg" />
+              <Link href="/industries" className="text-sm text-muted transition-colors duration-500 hover:text-accent-foreground">
+                ← All industries
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </>
   );
 }

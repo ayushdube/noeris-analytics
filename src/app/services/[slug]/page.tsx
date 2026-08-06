@@ -3,11 +3,20 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { BookingButton } from "@/components/booking/BookingEmbed";
-import { Section } from "@/components/layout/Container";
-import { FadeIn } from "@/components/marketing/FadeIn";
+import { ServiceEarlyAccessCalloutBox } from "@/components/marketing/services/ServiceEarlyAccessCalloutBox";
+import { ServiceRelatedCaseStudies } from "@/components/marketing/services/ServiceRelatedCaseStudies";
 import { ServiceLeadSignature } from "@/components/marketing/founders/ServiceLeadSignature";
-import { getServiceLead, bookingLabel } from "@/modules/content/founders-content";
+import { AnimateIn } from "@/components/visuals/AnimateIn";
+import { ProcessTimelineVisual } from "@/components/visuals/ProcessTimelineVisual";
+import { ServiceDetailVisual } from "@/components/visuals/ServiceDetailVisual";
+import { SplitHero } from "@/components/visuals/SplitHero";
+import { getServiceLead } from "@/modules/content/founders-content";
+import { siteConfig } from "@/lib/site-config";
 import { services, getService } from "@/modules/content/site-content";
+import {
+  getServiceEarlyAccessCallout,
+  getServiceRelatedCaseStudies,
+} from "@/modules/content/service-related-case-studies";
 import { createPageMetadata } from "@/lib/seo/metadata";
 
 interface Props {
@@ -24,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!service) return {};
 
   return createPageMetadata({
-    title: service.title,
+    title: `${service.title} Consulting`,
     description: service.summary,
     path: `/services/${slug}`,
   });
@@ -36,60 +45,80 @@ export default async function ServiceDetailPage({ params }: Props) {
   if (!service) notFound();
 
   const leadId = getServiceLead(slug);
+  const relatedCaseStudies = getServiceRelatedCaseStudies(slug);
+  const earlyAccessCallout = getServiceEarlyAccessCallout(slug);
 
   return (
     <>
-      <Section
-        className="pt-32 md:pt-40"
-        variant="editorial"
+      <SplitHero
+        compact
+        tight
         eyebrow="Service"
         title={service.title}
         description={service.summary}
-        wide
-      >
-        <p className="-mt-8 font-mono text-xs text-muted">Typical timeline · {service.timeline}</p>
-      </Section>
+        meta={
+          <p className="mt-8 font-mono text-sm text-muted">
+            Typical timeline · {service.timeline}
+          </p>
+        }
+        visual={<ServiceDetailVisual slug={slug} deliverables={service.deliverables} />}
+      />
 
-      <section className="py-28 md:py-40">
+      <section className="py-12 md:py-20">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-          <div className="grid gap-20 lg:grid-cols-2 lg:gap-32">
-            <FadeIn>
-              <p className="mb-8 font-mono text-[11px] uppercase tracking-[0.25em] text-muted">Challenges</p>
-              <ul className="space-y-6">
-                {service.challenges.map((c) => (
-                  <li key={c} className="text-base leading-[1.8] text-muted-foreground">{c}</li>
-                ))}
-              </ul>
-            </FadeIn>
-            <FadeIn delay={0.08}>
-              <p className="mb-8 font-mono text-[11px] uppercase tracking-[0.25em] text-muted">Outcomes</p>
-              <ul className="space-y-6">
-                {service.outcomes.map((o) => (
-                  <li key={o} className="text-base leading-[1.8] text-muted-foreground">{o}</li>
-                ))}
-              </ul>
-            </FadeIn>
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 lg:items-start">
+            <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+              <AnimateIn>
+                <p className="mb-8 text-label">Challenges</p>
+                <ul className="space-y-6">
+                  {service.challenges.map((c) => (
+                    <li key={c} className="text-base leading-[1.8] text-muted-foreground">{c}</li>
+                  ))}
+                </ul>
+              </AnimateIn>
+              <AnimateIn delay={0.08}>
+                <p className="mb-8 text-label">Outcomes</p>
+                <ul className="space-y-6">
+                  {service.outcomes.map((o) => (
+                    <li key={o} className="text-base leading-[1.8] text-muted-foreground">{o}</li>
+                  ))}
+                </ul>
+              </AnimateIn>
+            </div>
+            <AnimateIn delay={0.12}>
+              <ProcessTimelineVisual />
+            </AnimateIn>
           </div>
         </div>
       </section>
 
-      <section className="py-28 md:py-32">
+      <section className="py-12 md:py-20">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-          <FadeIn>
-            <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.25em] text-muted">Deliverables</p>
-            <div className="flex flex-wrap gap-x-10 gap-y-4">
+          <ServiceRelatedCaseStudies studies={relatedCaseStudies} />
+          {earlyAccessCallout ? <ServiceEarlyAccessCalloutBox callout={earlyAccessCallout} /> : null}
+
+          <AnimateIn delay={0.12}>
+            <p className="mb-6 mt-16 text-label">Deliverables</p>
+            <div className="flex flex-wrap gap-2">
               {service.deliverables.map((d) => (
-                <span key={d} className="text-sm text-muted">{d}</span>
+                <span
+                  key={d}
+                  className="inline-flex rounded border border-white/20 bg-transparent px-3 py-1.5 text-sm text-muted-foreground"
+                >
+                  {d}
+                </span>
               ))}
             </div>
-          </FadeIn>
+          </AnimateIn>
+
           {leadId && (
-            <FadeIn delay={0.12}>
+            <AnimateIn delay={0.16}>
               <ServiceLeadSignature founderId={leadId} className="mt-16" />
-            </FadeIn>
+            </AnimateIn>
           )}
+
           <div className="mt-20 flex flex-col gap-10 sm:flex-row sm:items-center sm:justify-between">
-            <BookingButton size="lg" label={bookingLabel} />
+            <BookingButton size="lg" variant="accent" label={siteConfig.bookingCtaLabel} />
             <Link href="/services" className="text-sm text-muted transition-colors duration-500 hover:text-accent-foreground">
               ← All services
             </Link>

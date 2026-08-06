@@ -10,7 +10,7 @@ export function ServicesGrid() {
       <Container wide>
         <FadeIn>
           <div className="mb-24 max-w-3xl md:mb-32">
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.25em] text-muted">
+            <p className="mb-5 text-label">
               Services
             </p>
             <h2 className="font-display text-4xl font-medium leading-[1.08] tracking-[-0.03em] text-foreground md:text-5xl">
@@ -34,7 +34,7 @@ export function ServicesGrid() {
                 </h3>
                 <p className="text-base leading-[1.8] text-muted-foreground">{service.summary}</p>
                 <span
-                  className="font-mono text-xs text-muted transition-all duration-500 group-hover:translate-x-1 group-hover:text-accent"
+                  className="font-mono text-sm text-muted transition-all duration-500 group-hover:translate-x-1 group-hover:text-accent"
                   aria-hidden="true"
                 >
                   →

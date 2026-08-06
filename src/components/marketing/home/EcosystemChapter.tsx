@@ -61,17 +61,22 @@ export function EcosystemChapter() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 1.1, ease: fadeEase }}
             >
-              <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-muted">
+              <p className="text-label">
                 {ecosystemIntro.platformsHeading}
               </p>
               <p className="mt-4 max-w-md text-sm leading-[1.85] text-muted-foreground">
                 {ecosystemIntro.platformsCopy}
               </p>
 
-              <div className="mt-10 space-y-10 md:mt-12 md:space-y-12">
+              <div className="mt-10 md:mt-12">
                 {platformCategories.map((category, categoryIndex) => (
-                  <div key={category}>
-                    <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-muted/70">
+                  <div
+                    key={category}
+                    className={cn(
+                      categoryIndex > 0 && "border-t border-white/10 pt-10 md:pt-12",
+                    )}
+                  >
+                    <p className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground">
                       {category}
                     </p>
                     <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-3 md:gap-x-8 md:gap-y-4">
@@ -96,7 +101,7 @@ export function EcosystemChapter() {
                                 isActive
                                   ? "text-foreground"
                                   : isInteractive
-                                    ? "text-muted/30 hover:text-muted/50"
+                                    ? "text-muted/30 hover:text-muted-foreground/70"
                                     : "text-muted-foreground/70 hover:text-foreground/90",
                               )}
                               onMouseEnter={() => setHoveredPlatformId(platform.id)}
@@ -122,7 +127,7 @@ export function EcosystemChapter() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 1.1, delay: 0.1, ease: fadeEase }}
             >
-              <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-muted">
+              <p className="text-label">
                 {ecosystemIntro.teamsHeading}
               </p>
               <p className="mt-4 max-w-md text-sm leading-[1.85] text-muted-foreground">
@@ -134,11 +139,11 @@ export function EcosystemChapter() {
                   <div key={group.label}>
                     <p
                       className={cn(
-                        "font-mono text-[9px] uppercase tracking-[0.22em] transition-colors duration-700",
+                        "font-mono text-xs uppercase tracking-[0.22em] transition-colors duration-700",
                         isInteractive &&
                           group.roles.some((role) => highlightedRoles.has(role.id))
                           ? "text-accent/80"
-                          : "text-muted/70",
+                          : "text-muted-foreground",
                       )}
                     >
                       {group.label}

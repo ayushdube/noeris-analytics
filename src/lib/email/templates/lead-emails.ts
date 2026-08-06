@@ -12,7 +12,7 @@ interface LeadEmailData {
 const baseStyles = `
   body { margin: 0; padding: 0; background: #111110; font-family: 'Segoe UI', system-ui, sans-serif; color: #ececea; }
   .container { max-width: 560px; margin: 0 auto; padding: 40px 24px; }
-  .brand { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #F4C97A; margin-bottom: 8px; }
+  .brand { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #FF0234; margin-bottom: 8px; }
   .card { background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(79, 70, 229, 0.2); border-radius: 12px; padding: 32px; }
   h1 { font-size: 24px; font-weight: 600; color: #f8fafc; margin: 0 0 16px; }
   p { font-size: 15px; line-height: 1.6; color: #94a3b8; margin: 0 0 16px; }
@@ -57,7 +57,7 @@ export function leadConfirmationTemplate(lead: Pick<LeadEmailData, "name">): str
       <h1>Thank you, ${escapeHtml(lead.name)}</h1>
       <p>We received your inquiry and will respond within one business day.</p>
       <p>Noeris helps organizations build trusted decision systems by integrating business data, modernizing analytics platforms, and delivering actionable insights through dashboards, reporting, and AI-powered intelligence.</p>
-      ${calendlyUrl ? `<a href="${calendlyUrl}" class="cta">Book a strategy session with a principal consultant</a>` : ""}
+      ${calendlyUrl ? `<a href="${calendlyUrl}" class="cta">${siteConfig.bookingCtaLabel}</a>` : ""}
     </div>
     <div class="footer">${siteConfig.name} · ${siteConfig.email}</div>
   </div>

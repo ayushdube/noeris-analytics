@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
-import { Section } from "@/components/layout/Container";
+import { CaseStudyFilterList } from "@/components/marketing/case-studies/CaseStudyFilterList";
 import { FinalCTA } from "@/components/marketing/FinalCTA";
-import { FadeIn } from "@/components/marketing/FadeIn";
-import { caseStudies } from "@/modules/content/site-content";
+import { CaseStudiesOverviewVisual } from "@/components/visuals/CaseStudiesOverviewVisual";
+import { SplitHero } from "@/components/visuals/SplitHero";
 import { createPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = createPageMetadata({
@@ -17,43 +16,24 @@ export const metadata: Metadata = createPageMetadata({
 export default function CaseStudiesPage() {
   return (
     <>
-      <Section
-        className="pt-32 md:pt-40"
-        variant="editorial"
+      <SplitHero
         eyebrow="Case Studies"
         title="Outcomes across industries and platforms"
-        description="Real engagements demonstrating architecture, delivery approach, and measurable business impact."
-        wide
+        description="Principal-led engagements with measured outcomes - architecture, delivery, and impact documented end to end."
+        visual={<CaseStudiesOverviewVisual />}
       />
 
-      <section className="pb-28 md:pb-40">
+      <section className="pb-16 md:pb-20">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-          <div className="space-y-16 md:space-y-20">
-            {caseStudies.map((study, i) => (
-              <FadeIn key={study.slug} delay={i * 0.03}>
-                <Link
-                  href={`/case-studies/${study.slug}`}
-                  className="group grid gap-3 md:grid-cols-[1fr_auto] md:items-baseline md:gap-16"
-                >
-                  <div>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted">
-                      {study.industry} · {study.client}
-                    </p>
-                    <h2 className="mt-4 font-display text-2xl font-medium tracking-[-0.02em] text-foreground transition-colors duration-500 group-hover:text-accent-foreground md:text-3xl">
-                      {study.title}
-                    </h2>
-                  </div>
-                  <span className="font-mono text-xs text-muted transition-all duration-500 group-hover:translate-x-1 group-hover:text-accent" aria-hidden="true">
-                    →
-                  </span>
-                </Link>
-              </FadeIn>
-            ))}
-          </div>
+          <CaseStudyFilterList />
         </div>
       </section>
 
-      <FinalCTA />
+      <FinalCTA
+        className="pt-20 pb-36 md:pt-28 md:pb-48 lg:pt-32 lg:pb-56"
+        supportingLine="Engagements start with a free 45-minute discovery session. No pitch deck. No sales handoff."
+        secondaryLink={{ href: "/industries", label: "Browse industries →" }}
+      />
     </>
   );
 }

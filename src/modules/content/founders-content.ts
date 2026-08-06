@@ -10,8 +10,6 @@ export interface Founder {
 export const heroCredibility =
   "Built by consultants who have delivered enterprise analytics solutions across North America, Europe, and APAC.";
 
-export const bookingLabel = "Book a strategy session with a principal consultant";
-
 export const credibilityStrip = [
   "Microsoft Certified",
   "Expert-Vetted Consultant",
@@ -28,8 +26,8 @@ export const founders: Record<FounderId, Founder> = {
     contactFocus: [
       "Business Intelligence",
       "Executive Reporting",
-      "Microsoft Fabric",
       "Power BI",
+      "TIBCO Spotfire",
     ],
   },
   ayush: {
@@ -50,16 +48,18 @@ export const serviceLeads: Record<string, FounderId> = {
   "data-engineering": "ayush",
   "analytics-modernization": "ankita",
   "ai-powered-analytics": "ayush",
+  "agentic-ai-autonomous-analytics": "ayush",
 };
 
 export const whoYouWorkWith = {
   title: "Who you'll work with",
-  copy: "Every Noeris engagement is led by a principal consultant. From discovery and architecture to implementation and executive handover, you'll work directly with the experts responsible for your solution - not a separate sales team.",
+  copy: "Every Noeris engagement is led by a Principal Consultant. From discovery and architecture to implementation and executive handover, you'll work directly with the experts responsible for your solution - not a separate sales team.",
 };
 
 export const contactCopy = {
   headline: "Work directly with the consultants who architect and deliver every engagement.",
-  bookingHeading: "Book a strategy session",
+  bookingHeading: "Scheduling",
+  schedulingIntro: "Book a 45-minute discovery call directly:",
   messageHeading: "Send a message",
 };
 

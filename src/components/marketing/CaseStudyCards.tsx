@@ -16,7 +16,7 @@ export function CaseStudyCards({ limit = 3 }: { limit?: number }) {
         <FadeIn>
           <div className="mb-20 flex flex-col justify-between gap-8 md:mb-28 md:flex-row md:items-end">
             <div>
-              <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.25em] text-muted">
+              <p className="mb-5 text-label">
                 Case Studies
               </p>
               <h2 className="font-display text-4xl font-medium tracking-[-0.03em] text-foreground md:text-5xl">
@@ -62,7 +62,7 @@ export function CaseStudyCards({ limit = 3 }: { limit?: number }) {
             {rest.map((study, i) => (
               <FadeIn key={study.slug} delay={0.12 + i * 0.06}>
                 <Link href={`/case-studies/${study.slug}`} className="group block">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted">
+                  <p className="text-label">
                     {study.industry}
                   </p>
                   <h3 className="mt-4 font-display text-xl font-medium tracking-[-0.01em] text-foreground transition-colors duration-500 group-hover:text-accent-foreground md:text-2xl">

@@ -13,7 +13,7 @@ export function ServicesChapter() {
       <div className="mx-auto grid max-w-[1400px] lg:grid-cols-12">
         <div className="chapter-glow-left px-6 pt-14 pb-8 md:px-10 md:pt-20 md:pb-10 lg:col-span-4">
           <motion.p
-            className="font-mono text-[9px] uppercase tracking-[0.3em] text-muted"
+            className="text-label"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}

@@ -1,7 +1,8 @@
 "use client";
 
 import { BookingButton } from "@/components/booking/BookingEmbed";
-import { bookingLabel, whoYouWorkWith } from "@/modules/content/founders-content";
+import { whoYouWorkWith } from "@/modules/content/founders-content";
+import { siteConfig } from "@/lib/site-config";
 import { motion } from "framer-motion";
 
 export function ClosingStatement() {
@@ -37,7 +38,7 @@ export function ClosingStatement() {
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.4 }}
         >
-          <BookingButton size="lg" label={bookingLabel} />
+          <BookingButton size="lg" label={siteConfig.bookingCtaLabel} />
         </motion.div>
       </div>
     </section>
