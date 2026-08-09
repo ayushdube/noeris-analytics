@@ -42,7 +42,7 @@ Required variables:
 npx prisma migrate dev --name init
 ```
 
-For production (Vercel):
+For production:
 
 ```bash
 npx prisma migrate deploy
@@ -99,13 +99,89 @@ Adapters are stubbed with clear TODOs. Enable by implementing the adapter and se
 
 Calendly URL from `NEXT_PUBLIC_CALENDLY_URL`. The booking module uses a provider interface - swap to Cal.com or Microsoft Bookings without changing pages.
 
-## Deployment (Vercel)
+## Deployment (Firebase App Hosting)
 
-1. Push to GitHub
-2. Import project in Vercel
-3. Set environment variables from `.env.example`
-4. Set build command: `prisma generate && prisma migrate deploy && next build`
-5. Connect Neon or Supabase PostgreSQL
+Production runs on [Firebase App Hosting](https://firebase.google.com/docs/app-hosting) (GCP):
+
+| Setting | Value |
+|---------|-------|
+| Firebase project | `noerisanalyticsio` |
+| App Hosting backend | `noerisanalytics` |
+| Region | `asia-southeast1` |
+| Live URL | https://noeris.io |
+| GitHub repo | `ayushdube/noeris-analytics` |
+| Live branch | `master` |
+
+### Prerequisites
+
+```bash
+npm install -g firebase-tools
+firebase login
+firebase login:use hello@noeris.io   # or your Firebase account
+firebase use noerisanalyticsio       # uses .firebaserc in this repo
+```
+
+### Deploy via GitHub (recommended)
+
+1. Commit and push to `master`:
+   ```bash
+   git push origin master
+   ```
+2. If automatic rollouts are enabled, Firebase builds and deploys automatically.
+3. Watch progress: [Firebase Console](https://console.firebase.google.com) → **Build & run** → **App Hosting** → **noerisanalytics** → **Rollouts**
+
+### Deploy manually (CLI rollout)
+
+Redeploy the latest commit on `master` without pushing:
+
+```bash
+firebase apphosting:rollouts:create noerisanalytics --git-branch master
+```
+
+Deploy a specific commit:
+
+```bash
+firebase apphosting:rollouts:create noerisanalytics --git-commit COMMIT_SHA
+```
+
+### Deploy from local source
+
+Upload and build from your machine (no GitHub push):
+
+```bash
+firebase deploy
+```
+
+### Environment variables
+
+Set secrets and env vars in **Firebase Console → App Hosting → noerisanalytics → Environment**, or in `apphosting.yaml` (see the commented examples in that file).
+
+Required for the contact form and API:
+
+- `DATABASE_URL`
+- `RESEND_API_KEY`
+- `EMAIL_FROM`
+- `LEADS_NOTIFY_EMAIL`
+- `NEXT_PUBLIC_SITE_URL` (defaults to `https://noeris.io` in `apphosting.yaml`)
+- `NEXT_PUBLIC_CALENDLY_URL`
+- `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` (rate limiting)
+
+### Database migrations
+
+Before deploying schema changes, apply migrations against production:
+
+```bash
+DATABASE_URL="your-production-url" npm run db:deploy
+```
+
+Or ensure `DATABASE_URL` is available at **build time** in Firebase if you add `prisma migrate deploy` to the build step.
+
+### Useful commands
+
+```bash
+firebase apphosting:backends:list
+firebase apphosting:backends:get noerisanalytics
+```
 
 ## Future Extension Points
 

@@ -1,9 +1,10 @@
 import { AnimateIn } from "@/components/visuals/AnimateIn";
+import { VerticalProcessTimeline } from "@/components/visuals/VerticalProcessTimeline";
 
 const steps = [
-  { label: "Discovery call", desc: "Align on goals & data landscape" },
-  { label: "Architecture review", desc: "Scope, timeline & approach" },
-  { label: "Engagement kickoff", desc: "Principal-led delivery begins" },
+  { step: "1", title: "Discovery call", description: "Align on goals & data landscape" },
+  { step: "2", title: "Architecture review", description: "Scope, timeline & approach" },
+  { step: "3", title: "Engagement kickoff", description: "Principal-led delivery begins" },
 ];
 
 const expectations = [
@@ -15,36 +16,16 @@ const expectations = [
 
 export function EngagementFlowVisual() {
   return (
-    <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
-      <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 md:p-8">
-        <p className="mb-8 text-label">How engagements start</p>
+    <div className="grid min-w-0 gap-6 lg:grid-cols-2 lg:gap-8">
+      <div className="min-w-0 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4 sm:p-6 md:p-8">
+        <p className="mb-6 text-label sm:mb-8">How engagements start</p>
         <AnimateIn>
-          <ol className="relative space-y-10">
-            <div
-              className="absolute bottom-5 left-4 top-4 w-px bg-white/10"
-              aria-hidden="true"
-            />
-            {steps.map((step, i) => (
-              <li key={step.label} className="relative flex gap-5 pl-0">
-                <div className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/15 bg-surface-raised">
-                  <span className="font-mono text-xs text-accent">{i + 1}</span>
-                </div>
-                <div className="min-w-0 pt-0.5">
-                  <p className="font-display text-base font-medium leading-snug text-foreground">
-                    {step.label}
-                  </p>
-                  <p className="mt-2 max-w-[24rem] text-sm leading-relaxed text-muted">
-                    {step.desc}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <VerticalProcessTimeline steps={steps} stepGap="relaxed" />
         </AnimateIn>
       </div>
 
-      <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 md:p-8">
-        <p className="mb-8 text-label">What to expect</p>
+      <div className="min-w-0 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4 sm:p-6 md:p-8">
+        <p className="mb-6 text-label sm:mb-8">What to expect</p>
         <AnimateIn delay={0.08}>
           <ul className="space-y-5">
             {expectations.map((item) => (

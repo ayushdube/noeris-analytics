@@ -76,7 +76,7 @@ const dashboardTabs: DashboardTab[] = [
 
 function BarChart({ data }: { data: number[] }) {
   return (
-    <div className="flex h-24 items-end gap-1 md:h-32 md:gap-1.5">
+    <div className="flex h-20 min-w-0 w-full items-end gap-0.5 sm:h-24 sm:gap-1 md:h-32 md:gap-1.5">
       {data.map((h, i) => (
         <motion.div
           key={i}
@@ -106,7 +106,7 @@ function LineChart({ data }: { data: number[] }) {
     .join(" ");
 
   return (
-    <div className="relative h-24 md:h-32">
+    <div className="relative h-20 min-w-0 w-full sm:h-24 md:h-32">
       <svg
         viewBox={`0 0 ${width} ${height}`}
         preserveAspectRatio="none"
@@ -141,7 +141,7 @@ function AreaChart({ data }: { data: number[] }) {
   const secondary = data.map((v) => Math.round(v * 0.55));
 
   return (
-    <div className="flex h-24 items-end gap-1 md:h-32 md:gap-1.5">
+    <div className="flex h-20 min-w-0 w-full items-end gap-0.5 sm:h-24 sm:gap-1 md:h-32 md:gap-1.5">
       {data.map((h, i) => (
         <div key={i} className="relative flex flex-1 flex-col justify-end" style={{ height: "100%" }}>
           <motion.div
@@ -180,11 +180,11 @@ function DashboardPreview() {
   const currentTab = dashboardTabs.find((tab) => tab.id === activeTab) ?? dashboardTabs[0];
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full min-w-0 overflow-hidden">
       <div className="pointer-events-none absolute -inset-4 rounded-sm bg-white/[0.04] blur-2xl md:-inset-8" />
 
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#161615] shadow-[0_24px_80px_rgba(0,0,0,0.45)]">
-        <div className="flex items-center justify-between gap-3 border-b border-white/[0.06] px-5 py-3 md:px-6">
+      <div className="relative w-full min-w-0 overflow-hidden bg-[#161615] shadow-[0_24px_80px_rgba(0,0,0,0.45)] md:aspect-[16/10]">
+        <div className="flex flex-col gap-3 border-b border-white/[0.06] px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-2 sm:px-5 md:px-6">
           <div className="flex min-w-0 items-center gap-2">
             <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-white/20" />
             <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-white/10" />
@@ -192,7 +192,7 @@ function DashboardPreview() {
             <AnimatePresence mode="wait">
               <motion.span
                 key={currentTab.id}
-                className="ml-3 truncate text-label"
+                className="ml-2 min-w-0 truncate text-label sm:ml-3"
                 initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -4 }}
@@ -204,7 +204,7 @@ function DashboardPreview() {
           </div>
 
           <div
-            className="flex shrink-0 gap-0.5 rounded-full border border-white/[0.06] bg-white/[0.02] p-0.5"
+            className="flex w-full min-w-0 gap-0.5 overflow-x-auto rounded-full border border-white/[0.06] bg-white/[0.02] p-0.5 [-ms-overflow-style:none] [scrollbar-width:none] sm:w-auto sm:shrink-0 [&::-webkit-scrollbar]:hidden"
             role="tablist"
             aria-label="Dashboard views"
           >
@@ -218,7 +218,7 @@ function DashboardPreview() {
                 id={`dashboard-tab-${tab.id}`}
                 onClick={() => setActiveTab(tab.id)}
                 className={cn(
-                  "rounded-full px-2.5 py-1 text-label text-label-sm transition-all duration-300 md:px-3",
+                  "shrink-0 rounded-full px-2.5 py-1 text-[0.625rem] font-medium uppercase tracking-[0.08em] transition-all duration-300 sm:px-3 sm:text-label sm:text-label-sm",
                   activeTab === tab.id
                     ? "bg-surface-raised text-accent"
                     : "text-muted-foreground hover:text-foreground",
@@ -236,36 +236,40 @@ function DashboardPreview() {
             id={`dashboard-panel-${currentTab.id}`}
             role="tabpanel"
             aria-labelledby={`dashboard-tab-${currentTab.id}`}
-            className="flex h-[calc(100%-2.5rem)] flex-col justify-between p-5 md:p-7"
+            className="flex flex-col gap-4 p-3 sm:gap-5 sm:p-5 md:h-[calc(100%-3.25rem)] md:justify-between md:p-7"
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="grid grid-cols-3 gap-3 md:gap-4">
+            <div className="grid min-w-0 grid-cols-3 gap-1.5 sm:gap-3 md:gap-4">
               {currentTab.kpis.map((kpi, i) => (
                 <motion.div
                   key={kpi.label}
-                  className="bg-white/[0.04] px-3 py-3 md:px-4 md:py-4"
+                  className="min-w-0 bg-white/[0.04] px-2 py-2.5 sm:px-3 sm:py-3 md:px-4 md:py-4"
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: i * 0.07 }}
                 >
-                  <p className="text-label text-label-sm">
+                  <p className="truncate text-[0.5625rem] font-medium uppercase tracking-[0.06em] text-muted sm:text-label sm:text-label-sm">
                     {kpi.label}
                   </p>
-                  <p className="mt-1.5 font-display text-lg font-medium text-foreground/90 md:text-xl">
+                  <p className="mt-1 font-display text-sm font-medium text-foreground/90 sm:mt-1.5 sm:text-lg md:text-xl">
                     {kpi.value}
                   </p>
-                  <p className="mt-1 font-mono text-sm font-medium text-accent">{kpi.delta}</p>
+                  <p className="mt-0.5 truncate font-mono text-[0.6875rem] font-medium text-accent sm:mt-1 sm:text-sm">
+                    {kpi.delta}
+                  </p>
                 </motion.div>
               ))}
             </div>
 
-            <div className="mt-4 flex flex-1 flex-col justify-end md:mt-6">
-              <div className="mb-3 flex items-baseline justify-between gap-2">
-                <span className="text-label text-label-sm">{currentTab.chart.title}</span>
-                <span className="shrink-0 text-label text-label-sm opacity-80">
+            <div className="min-w-0 md:mt-2 md:flex md:flex-1 md:flex-col md:justify-end">
+              <div className="mb-2 flex flex-col gap-1 sm:mb-3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-2">
+                <span className="min-w-0 text-[0.625rem] font-medium uppercase leading-snug tracking-[0.08em] text-muted sm:text-label sm:text-label-sm">
+                  {currentTab.chart.title}
+                </span>
+                <span className="shrink-0 text-[0.625rem] font-medium uppercase tracking-[0.08em] text-muted opacity-80 sm:text-label sm:text-label-sm">
                   {currentTab.chart.subtitle}
                 </span>
               </div>
@@ -285,12 +289,13 @@ export function CaseStudySpread() {
   if (!study) return null;
 
   return (
-    <section className="relative">
+    <section className="relative overflow-hidden">
       <div className="chapter-glow-bottom pointer-events-none absolute inset-0" aria-hidden="true" />
 
       <div className="mx-auto max-w-[1400px] px-6 pt-14 pb-10 md:px-10 md:pt-20 md:pb-14">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-start">
+        <div className="grid w-full min-w-0 grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 lg:items-start">
           <motion.div
+            className="min-w-0 w-full"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -299,7 +304,7 @@ export function CaseStudySpread() {
             <DashboardPreview />
           </motion.div>
 
-          <div>
+          <div className="min-w-0 w-full max-w-full">
             <motion.p
               className="text-label"
               initial={{ opacity: 0 }}
@@ -316,21 +321,21 @@ export function CaseStudySpread() {
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.2 }}
             >
-              <p className="font-display text-3xl font-medium tracking-[-0.02em] text-muted md:text-4xl">
+              <p className="text-balance font-display text-2xl font-medium tracking-[-0.02em] text-muted sm:text-3xl md:text-4xl">
                 From monthly reporting cycles
               </p>
-              <p className="mt-4 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-medium leading-[0.95] tracking-[-0.04em] text-foreground">
+              <p className="mt-4 max-w-full text-balance font-display text-[clamp(1.75rem,7vw,4.5rem)] font-medium leading-[0.95] tracking-[-0.04em] text-foreground">
                 to daily P&amp;L visibility.
               </p>
               {study.impact[0] && (
-                <p className="mt-8 font-mono text-sm uppercase tracking-[0.15em] text-accent">
+                <p className="mt-8 max-w-full text-balance font-mono text-xs uppercase tracking-[0.1em] text-accent sm:text-sm sm:tracking-[0.15em]">
                   {study.impact[0].metric} {study.impact[0].label.toLowerCase()}
                 </p>
               )}
             </motion.div>
 
             <motion.p
-              className="mt-10 max-w-md text-sm leading-[1.85] text-muted-foreground md:text-base"
+              className="mt-10 max-w-full text-sm leading-[1.85] text-muted-foreground md:max-w-md md:text-base"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}

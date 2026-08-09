@@ -16,7 +16,7 @@ export function Container({
   return (
     <Component
       className={cn(
-        "mx-auto w-full px-6 lg:px-10",
+        "mx-auto w-full min-w-0 px-6 lg:px-10",
         wide ? "max-w-[1400px]" : "max-w-5xl",
         className,
       )}

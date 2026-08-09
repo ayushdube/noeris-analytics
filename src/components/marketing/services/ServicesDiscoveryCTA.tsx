@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export function ServicesDiscoveryCTA() {
   return (
-    <section className="pb-28 md:pb-40">
+    <section className="pb-8 md:pb-10">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <AnimateIn>
           <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] px-6 py-10 md:px-10 md:py-14">

@@ -3,6 +3,7 @@ import { IBM_Plex_Mono, IBM_Plex_Sans, Outfit, Syne } from "next/font/google";
 
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { MagneticBackground } from "@/components/layout/MagneticBackground";
 import { PageSideLabelRoute } from "@/components/layout/PageSideLabelRoute";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
@@ -101,9 +102,10 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        <MagneticBackground />
         <Header />
         <PageSideLabelRoute />
-        <main id="main-content">{children}</main>
+        <main id="main-content" className="min-w-0 overflow-x-clip">{children}</main>
         <Footer />
       </body>
     </html>

@@ -13,11 +13,11 @@ export function ServiceRelatedCaseStudies({ studies }: ServiceRelatedCaseStudies
   return (
     <AnimateIn>
       <p className="mb-6 text-label">Related case studies</p>
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid w-full min-w-0 grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {studies.map((study) => (
           <article
             key={`${study.href}-${study.title}`}
-            className="flex h-full flex-col rounded-sm border border-white/[0.08] bg-white/[0.02] p-5 md:p-6"
+            className="flex h-full min-w-0 flex-col rounded-sm border border-white/[0.08] bg-white/[0.02] p-5 md:p-6"
           >
             <p className="text-label text-label-sm">{study.industry}</p>
             <h3 className="mt-3 font-display text-lg font-medium leading-snug tracking-[-0.01em] text-foreground">

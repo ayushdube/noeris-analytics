@@ -38,13 +38,14 @@ export function Header() {
           : "border-transparent bg-background/50 backdrop-blur-xl",
       )}
     >
-      <Container wide as="div" className="flex h-16 items-center justify-between gap-6 md:h-[4.25rem]">
+      <Container wide as="div" className="flex h-16 min-w-0 items-center justify-between gap-4 md:h-[4.25rem] md:gap-6">
         <Link
           href="/"
-          className="group shrink-0 outline-none transition-opacity duration-300 hover:opacity-90 focus:outline-none focus-visible:outline-none"
+          className="group min-w-0 shrink outline-none transition-opacity duration-300 hover:opacity-90 focus:outline-none focus-visible:outline-none"
           aria-label="Noeris Analytics home"
         >
-          <Wordmark size="md" layout="inline" />
+          <Wordmark size="sm" layout="inline" className="md:hidden" />
+          <Wordmark size="md" layout="inline" className="hidden md:block" />
         </Link>
 
         <div className="hidden items-center gap-3 lg:flex">
@@ -76,23 +77,31 @@ export function Header() {
             </Button>
           </SheetTrigger>
           <SheetContent>
-            <Wordmark size="md" layout="inline" className="mb-10" />
-            <nav className="flex flex-col gap-2" aria-label="Mobile navigation">
-              {navItems.map((item) => (
-                <MobileNavSection
-                  key={item.href}
-                  item={item}
-                  pathname={pathname}
-                  onNavigate={() => setOpen(false)}
-                />
-              ))}
-            </nav>
-            <Button asChild className="mt-8 w-full gap-1.5">
-              <Link href="/contact" onClick={() => setOpen(false)}>
-                Book a call
-                <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
-              </Link>
-            </Button>
+            <div className="shrink-0 border-b border-white/[0.06] px-6 pb-5 pt-8 pr-14">
+              <Wordmark size="sm" layout="inline" />
+            </div>
+
+            <div className="min-h-0 flex-1 overflow-y-auto overscroll-y-contain px-6 py-4">
+              <nav className="flex flex-col gap-2" aria-label="Mobile navigation">
+                {navItems.map((item) => (
+                  <MobileNavSection
+                    key={item.href}
+                    item={item}
+                    pathname={pathname}
+                    onNavigate={() => setOpen(false)}
+                  />
+                ))}
+              </nav>
+            </div>
+
+            <div className="shrink-0 border-t border-white/[0.06] bg-surface px-6 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+              <Button asChild className="w-full gap-1.5">
+                <Link href="/contact" onClick={() => setOpen(false)}>
+                  Book a call
+                  <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
+                </Link>
+              </Button>
+            </div>
           </SheetContent>
         </Sheet>
       </Container>

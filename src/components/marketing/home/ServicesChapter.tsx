@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 export function ServicesChapter() {
   return (
-    <section id="services" className="relative">
+    <section id="services" className="relative overflow-hidden">
       <div className="mx-auto grid max-w-[1400px] lg:grid-cols-12">
         <div className="chapter-glow-left px-6 pt-14 pb-8 md:px-10 md:pt-20 md:pb-10 lg:col-span-4">
           <motion.p

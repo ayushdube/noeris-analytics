@@ -10,7 +10,7 @@ export function ClosingStatement() {
     <section className="relative overflow-hidden">
       <div className="chapter-glow-bottom pointer-events-none absolute inset-0" aria-hidden="true" />
 
-      <div className="relative mx-auto max-w-[1400px] px-6 py-20 md:px-10 md:py-28">
+      <div className="relative mx-auto max-w-[1400px] px-6 pt-20 pb-8 md:px-10 md:pt-28 md:pb-10">
         <motion.h2
           className="max-w-4xl font-display text-[clamp(2.25rem,6vw,4.25rem)] font-medium leading-[1.02] tracking-[-0.04em] text-foreground"
           initial={{ opacity: 0, y: 28 }}

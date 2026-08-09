@@ -19,6 +19,8 @@ interface ContactFormProps {
   className?: string;
 }
 
+const fieldGroupClassName = "flex flex-col gap-3";
+
 const fieldClassName =
   "rounded-sm border border-white/15 bg-white/[0.03] px-4 placeholder:text-muted/70 focus-visible:border-accent/40 focus-visible:ring-1 focus-visible:ring-accent/20";
 
@@ -91,9 +93,9 @@ export function ContactForm({ className }: ContactFormProps) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={className} noValidate>
-      <div className="space-y-12">
-        <div className="grid gap-12 md:grid-cols-2">
-          <div className="space-y-3">
+      <div className="space-y-6">
+        <div className="grid gap-6 md:grid-cols-2 md:gap-x-6">
+          <div className={fieldGroupClassName}>
             <Label htmlFor="name" className="text-label">
               Name
             </Label>
@@ -110,7 +112,7 @@ export function ContactForm({ className }: ContactFormProps) {
             )}
           </div>
 
-          <div className="space-y-3">
+          <div className={fieldGroupClassName}>
             <Label htmlFor="email" className="text-label">
               Email
             </Label>
@@ -129,7 +131,7 @@ export function ContactForm({ className }: ContactFormProps) {
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className={fieldGroupClassName}>
           <Label htmlFor="company" className="text-label">
             Company
           </Label>
@@ -142,7 +144,7 @@ export function ContactForm({ className }: ContactFormProps) {
           />
         </div>
 
-        <div className="space-y-3">
+        <div className={fieldGroupClassName}>
           <Label htmlFor="message" className="text-label">
             How can we help?
           </Label>
@@ -150,7 +152,7 @@ export function ContactForm({ className }: ContactFormProps) {
             id="message"
             rows={5}
             placeholder="Tell us about your data landscape, goals, and timeline"
-            className={cn(fieldClassName, "min-h-[160px] bg-white/[0.03]")}
+            className={cn(fieldClassName, "min-h-[140px] resize-y bg-white/[0.03]")}
             {...register("message")}
             aria-invalid={!!errors.message}
           />
@@ -169,11 +171,11 @@ export function ContactForm({ className }: ContactFormProps) {
         <p className="mt-8 text-sm text-red-400/70" role="alert">{errorMessage}</p>
       )}
 
-      <Button type="submit" className="mt-14" disabled={status === "loading"}>
+      <Button type="submit" className="mt-8" disabled={status === "loading"}>
         {status === "loading" ? "Sending..." : "Send message"}
       </Button>
 
-      <p className="mt-4 text-sm text-muted">
+      <p className="mt-3 text-sm text-muted">
         We respond to all enquiries within one business day.
       </p>
     </form>

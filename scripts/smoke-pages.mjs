@@ -24,12 +24,6 @@ const paths = [
   "/case-studies/saas-customer-analytics-api",
   "/case-studies/hr-survey-workforce-analytics",
   "/case-studies/spotfire-powerbi-migration",
-  "/resources",
-  "/resources/blog",
-  "/resources/whitepapers",
-  "/resources/architecture-guides",
-  "/resources/bi-maturity-assessment",
-  "/resources/dashboard-examples",
 ];
 
 const failures = [];

@@ -27,7 +27,7 @@ export function FinalCTA({
 }: FinalCTAProps = {}) {
   return (
     <section
-      className={cn("relative overflow-hidden py-36 md:py-48 lg:py-56", className)}
+      className={cn("relative overflow-hidden pt-36 pb-8 md:pt-48 md:pb-10 lg:pt-56", className)}
     >
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_20%_100%,rgba(255,255,255,0.02),transparent)]"

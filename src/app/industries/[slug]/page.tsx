@@ -8,7 +8,6 @@ import { HowItWorksFlow } from "@/components/marketing/industries/HowItWorksFlow
 import { IndustryComplianceCallout } from "@/components/marketing/industries/IndustryComplianceCallout";
 import { IndustryDualCTA } from "@/components/marketing/industries/IndustryDualCTA";
 import { IndustryIllustration } from "@/components/marketing/industries/IndustryIllustration";
-import { IndustrySocialProof } from "@/components/marketing/industries/IndustrySocialProof";
 import { AnimateIn } from "@/components/visuals/AnimateIn";
 import { KpiChips } from "@/components/visuals/KpiChips";
 import { KpiDashboardPreview } from "@/components/visuals/KpiDashboardPreview";
@@ -62,13 +61,6 @@ export default async function IndustryDetailPage({ params }: Props) {
           />
         }
       />
-
-      {industry.extensions?.socialProof && (
-        <IndustrySocialProof
-          quote={industry.extensions.socialProof.quote}
-          attribution={industry.extensions.socialProof.attribution}
-        />
-      )}
 
       <section className="py-12 md:py-20">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
@@ -124,7 +116,7 @@ export default async function IndustryDetailPage({ params }: Props) {
           secondaryVariant={industry.extensions.cta.secondaryVariant}
         />
       ) : (
-        <section className="py-12 md:py-20">
+        <section className="pt-4 pb-8 md:pt-6 md:pb-10">
           <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
             <div className="flex flex-col gap-10 sm:flex-row sm:items-center sm:justify-between">
               <BookingButton size="lg" />

@@ -40,8 +40,8 @@ export function SplitHero({
       <div
         className={`relative mx-auto max-w-[1400px] px-6 lg:px-10 ${compact ? "pb-10 md:pb-12" : "pb-16 md:pb-24"}`}
       >
-        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 xl:gap-20">
-          <AnimateIn>
+        <div className="grid w-full min-w-0 grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 xl:gap-20">
+          <AnimateIn className="min-w-0 w-full max-w-full">
             <p className="mb-5 text-label">{eyebrow}</p>
             <h1 className="max-w-xl text-balance font-display text-4xl font-medium leading-[1.05] tracking-[-0.03em] text-foreground md:text-5xl md:leading-[1.08]">
               {title}
@@ -54,7 +54,9 @@ export function SplitHero({
             {meta}
           </AnimateIn>
 
-          <AnimateIn delay={0.08}>{visual}</AnimateIn>
+          <AnimateIn delay={0.08} className="min-w-0 w-full max-w-full">
+            {visual}
+          </AnimateIn>
         </div>
       </div>
     </section>

@@ -33,21 +33,21 @@ export function KpiDashboardPreview({
     });
 
   return (
-    <VisualFrame aspect="wide">
-      <div className="mb-4 flex items-center justify-between gap-2">
-        <p className="text-label">{title}</p>
-        <span className="text-label text-label-sm opacity-60">Live preview</span>
+    <VisualFrame aspect="wide" className="min-w-0">
+      <div className="mb-4 flex min-w-0 items-center justify-between gap-2">
+        <p className="min-w-0 truncate text-label">{title}</p>
+        <span className="shrink-0 text-label text-label-sm opacity-60">Live preview</span>
       </div>
 
-      <div className="flex flex-1 flex-col justify-between">
-        <div className="grid grid-cols-3 gap-2 md:gap-3">
+      <div className="flex min-w-0 flex-1 flex-col justify-between">
+        <div className="grid min-w-0 grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-2 md:gap-3">
           {previewMetrics.map((metric, i) => (
-            <AnimateIn key={metric.label} delay={i * 0.07}>
-              <div className="bg-white/[0.04] px-2 py-2.5 md:px-3 md:py-3">
-                <p className="truncate text-label-sm uppercase tracking-wider text-muted md:text-xs">
+            <AnimateIn key={metric.label} delay={i * 0.07} className="min-w-0">
+              <div className="min-w-0 bg-white/[0.04] px-3 py-3 sm:px-2 sm:py-2.5 md:px-3 md:py-3">
+                <p className="text-balance text-xs font-medium uppercase leading-snug tracking-[0.06em] text-muted sm:truncate sm:text-[0.5625rem] sm:leading-normal sm:tracking-[0.06em] md:text-label md:text-label-sm">
                   {metric.label}
                 </p>
-                <p className="mt-1 font-display text-sm font-medium text-foreground md:text-base">
+                <p className="mt-1.5 text-balance font-display text-sm font-medium text-foreground sm:mt-1 sm:truncate md:text-base">
                   {metric.value}
                 </p>
               </div>
@@ -55,7 +55,7 @@ export function KpiDashboardPreview({
           ))}
         </div>
 
-        <div className="mt-4">
+        <div className="mt-4 min-w-0">
           <p className="mb-2 text-label text-label-sm">Performance trend</p>
           {chartType === "line" ? (
             <LineChart data={chartData} gradientId={`kpi-line-${title.replace(/\s/g, "")}`} />

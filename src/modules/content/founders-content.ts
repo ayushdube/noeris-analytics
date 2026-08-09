@@ -92,7 +92,7 @@ export const processPhases = [
 
 export const footerFounders = {
   label: "Founded by",
-  tagline: "Modern Business Intelligence & Data Platform Consultants",
+  tagline: "Principal Consultants, Noeris Analytics",
 };
 
 export function getFounder(id: FounderId): Founder {

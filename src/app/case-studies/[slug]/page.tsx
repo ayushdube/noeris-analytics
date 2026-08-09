@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { BookingButton } from "@/components/booking/BookingEmbed";
-import { EngagementLead } from "@/components/marketing/founders/EngagementLead";
+import { DetailPageCTA } from "@/components/marketing/DetailPageCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/site-config";
 import { AnimateIn } from "@/components/visuals/AnimateIn";
@@ -100,7 +99,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
         visual={<ImpactBarChart metrics={study.impact} title="Key outcomes" />}
       />
 
-      <section className="py-12 md:py-20">
+      <section className="py-10 md:py-14">
         <div className="mx-auto max-w-3xl px-6 lg:px-10">
           <AnimateIn>
             <p className="mb-6 text-label">Overview</p>
@@ -109,7 +108,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
 
           {study.challengePoints.length > 0 && (
             <AnimateIn delay={0.08}>
-              <p className="mb-6 mt-16 text-label">The challenge</p>
+              <p className="mb-6 mt-12 text-label">The challenge</p>
               <ul className="space-y-3 text-lg leading-[1.8] text-muted-foreground">
                 {study.challengePoints.map((point) => (
                   <li key={point} className="flex gap-3">
@@ -122,7 +121,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
           )}
 
           <AnimateIn delay={0.12}>
-            <p className="mb-6 mt-16 text-label">What we built</p>
+            <p className="mb-6 mt-12 text-label">What we built</p>
             <p className="text-lg leading-[1.8] text-muted-foreground">{study.solution}</p>
             {study.solutionItems && study.solutionItems.length > 0 && (
               <ol className="mt-6 space-y-4 text-lg leading-[1.8] text-muted-foreground">
@@ -138,7 +137,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
 
           {study.outcomes.length > 0 && (
             <AnimateIn delay={0.16}>
-              <p className="mb-6 mt-16 text-label">Key outcomes</p>
+              <p className="mb-6 mt-12 text-label">Key outcomes</p>
               <ul className="space-y-3 text-lg leading-[1.8] text-muted-foreground">
                 {study.outcomes.map((outcome) => (
                   <li key={outcome} className="flex gap-3">
@@ -152,7 +151,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
 
           {study.clientFeedback && (
             <AnimateIn delay={0.18}>
-              <p className="mb-6 mt-16 text-label">Client feedback</p>
+              <p className="mb-6 mt-12 text-label">Client feedback</p>
               <blockquote className="border-l-2 border-accent/40 pl-6">
                 <p className="text-lg italic leading-[1.8] text-muted-foreground">
                   &ldquo;{study.clientFeedback}&rdquo;
@@ -167,12 +166,12 @@ export default async function CaseStudyDetailPage({ params }: Props) {
           )}
 
           <AnimateIn delay={0.2}>
-            <p className="mb-4 mt-16 text-label">Tools</p>
+            <p className="mb-4 mt-12 text-label">Tools</p>
             <p className="font-mono text-sm text-muted-foreground">{study.tools.join(" · ")}</p>
           </AnimateIn>
 
           <AnimateIn delay={0.24}>
-            <p className="mt-16 border-t border-white/[0.06] pt-8 text-sm leading-relaxed text-muted">
+            <p className="mt-12 border-t border-white/[0.06] pt-6 text-sm leading-relaxed text-muted">
               {getDisclaimer(study)}
             </p>
           </AnimateIn>
@@ -180,7 +179,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
       </section>
 
       {related.length > 0 && (
-        <section className="border-t border-white/[0.06] py-12 md:py-16">
+        <section className="border-t border-white/[0.06] py-8 md:py-10">
           <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
             <AnimateIn>
               <p className="mb-8 text-label">More in {study.industryTag}</p>
@@ -207,24 +206,20 @@ export default async function CaseStudyDetailPage({ params }: Props) {
         </section>
       )}
 
-      <section className="py-12 md:py-20">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-          <EngagementLead
-            founderId={study.engagementLead}
-            className="max-w-xl border-t border-white/[0.06] pt-10 md:pt-12"
-          />
-
-          <div className="mt-14 flex flex-col gap-10 sm:flex-row sm:items-center sm:justify-between md:mt-16">
-            <BookingButton size="lg" label={siteConfig.bookingCtaLabel} />
-            <Link
-              href="/case-studies"
-              className="text-sm text-muted transition-colors duration-500 hover:text-accent-foreground"
-            >
-              ← All case studies
-            </Link>
-          </div>
-        </div>
-      </section>
+      <DetailPageCTA
+        founderId={study.engagementLead}
+        secondary={
+          industry
+            ? {
+                href: `/industries/${study.industrySlug}`,
+                label: `See ${industry.title} capabilities →`,
+                variant: "ghost",
+              }
+            : undefined
+        }
+        backHref="/case-studies"
+        backLabel="← All case studies"
+      />
     </>
   );
 }

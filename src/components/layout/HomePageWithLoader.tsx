@@ -28,6 +28,7 @@ export function HomePageWithLoader({ children }: HomePageWithLoaderProps) {
     <>
       {showLoader ? <PageLoader onComplete={handleComplete} /> : null}
       <div
+        className="min-w-0 overflow-x-clip"
         style={{
           opacity: loaded ? 1 : 0,
           transition: "opacity 0.4s ease",

@@ -40,7 +40,7 @@ export default function IndustriesPage() {
       </section>
 
       <FinalCTA
-        className="pt-20 pb-36 md:pt-28 md:pb-48 lg:pt-32 lg:pb-56"
+        className="pt-20 pb-8 md:pt-28 md:pb-10 lg:pt-32"
         supportingLine="Engagements start with a free 45-minute discovery session. No pitch deck. No sales handoff."
         secondaryLink={{ href: "/case-studies", label: "Browse case studies →" }}
       />

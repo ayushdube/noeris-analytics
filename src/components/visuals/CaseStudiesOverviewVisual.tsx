@@ -19,8 +19,8 @@ const afterItems = [
 export function CaseStudiesOverviewVisual() {
   return (
     <VisualFrame aspect="video">
-      <div className="flex h-full flex-1 flex-col">
-        <div className="grid min-h-0 flex-1 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch gap-3 md:gap-4">
+      <div className="flex h-full min-w-0 flex-1 flex-col">
+        <div className="grid min-h-0 min-w-0 flex-1 grid-cols-1 gap-6 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-stretch md:gap-4">
           <div className="min-w-0">
             <p className="mb-3 text-label text-label-sm">Before</p>
             <ul className="space-y-2.5 md:space-y-3">
@@ -32,9 +32,12 @@ export function CaseStudiesOverviewVisual() {
             </ul>
           </div>
 
-          <div className="relative flex w-6 shrink-0 items-center justify-center md:w-8">
-            <div className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-white/10" aria-hidden="true" />
-            <span className="relative z-10 bg-surface/40 px-1 font-mono text-sm text-accent md:text-base">
+          <div className="relative flex shrink-0 items-center justify-center py-1 md:w-8 md:flex-col md:py-0">
+            <div
+              className="absolute left-0 right-0 top-1/2 h-px bg-white/10 md:inset-y-0 md:left-1/2 md:h-auto md:w-px md:-translate-x-1/2"
+              aria-hidden="true"
+            />
+            <span className="relative z-10 bg-surface/40 px-2 font-mono text-sm text-accent md:px-1 md:text-base">
               →
             </span>
           </div>

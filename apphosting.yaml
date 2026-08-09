@@ -49,7 +49,7 @@ env:
 #      - RUNTIME
 #
 #  - variable: NEXT_PUBLIC_CALENDLY_URL
-#    value: https://calendly.com/your-link
+#    value: https://calendly.com/hello-noeris
 #    availability:
 #      - BUILD
 #      - RUNTIME

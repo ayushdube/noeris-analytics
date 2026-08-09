@@ -20,7 +20,7 @@ export function IndustryDualCTA({
   secondaryVariant = "secondary",
 }: IndustryDualCTAProps) {
   return (
-    <section className="py-12 md:py-20">
+    <section className="pt-4 pb-8 md:pt-6 md:pb-10">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <AnimateIn>
           <div className="flex flex-col gap-10 sm:flex-row sm:items-center sm:justify-between">

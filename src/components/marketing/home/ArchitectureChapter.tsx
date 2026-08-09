@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export function ArchitectureChapter() {
   return (
-    <section id="architecture" className="relative overflow-hidden">
+    <section id="architecture" className="relative overflow-x-clip">
       <div className="chapter-glow-center pointer-events-none absolute inset-0 min-h-full" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-[1400px] px-6 pt-14 pb-10 md:px-10 md:pt-20 md:pb-14">

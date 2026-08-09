@@ -46,26 +46,26 @@ export default function ContactPage() {
         </Container>
       </section>
 
-      <section className="pb-36 md:pb-48">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <section className="pb-8 md:pb-10">
+        <div className="mx-auto w-full min-w-0 max-w-[1400px] px-4 sm:px-6 lg:px-10">
           <WhoYouWorkWith />
 
-          <div className="mb-20 hidden lg:block">
+          <div className="mb-20 overflow-x-hidden">
             <EngagementFlowVisual />
           </div>
 
-          <div className="grid gap-24 lg:grid-cols-2 lg:gap-32">
+          <div className="grid gap-16 lg:grid-cols-2 lg:gap-20">
             <div>
-              <h2 className="mb-12 text-label">
+              <h2 className="mb-8 text-label">
                 {contactCopy.messageHeading}
               </h2>
               <ContactForm />
             </div>
             <div>
-              <h2 className="mb-6 text-label">
+              <h2 className="mb-8 text-label">
                 {contactCopy.bookingHeading}
               </h2>
-              <p className="mb-8 text-base leading-[1.8] text-muted-foreground">
+              <p className="mb-6 text-base leading-[1.8] text-muted-foreground">
                 {contactCopy.schedulingIntro}
               </p>
               <BookingEmbed />

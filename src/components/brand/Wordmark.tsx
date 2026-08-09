@@ -53,7 +53,7 @@ function LogoSvg({
       height={height}
       role="img"
       aria-label="Noeris Analytics"
-      className={cn("block h-auto max-w-none shrink-0 border-0 outline-none", className)}
+      className={cn("block h-auto max-w-full shrink-0 border-0 outline-none", className)}
       style={{ height }}
       {...(priority ? { "data-priority": "true" } : {})}
     >

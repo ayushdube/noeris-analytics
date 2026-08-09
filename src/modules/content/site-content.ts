@@ -1104,44 +1104,6 @@ export const faqs = [
   },
 ];
 
-export const resources = [
-  {
-    slug: "blog",
-    title: "Blog",
-    description: "Perspectives on analytics strategy, platform architecture, and decision systems.",
-    href: "/resources/blog",
-    status: "coming-soon" as const,
-  },
-  {
-    slug: "whitepapers",
-    title: "Whitepapers",
-    description: "In-depth guides on BI modernization, Fabric adoption, and KPI governance.",
-    href: "/resources/whitepapers",
-    status: "coming-soon" as const,
-  },
-  {
-    slug: "architecture-guides",
-    title: "Architecture Guides",
-    description: "Reference architectures for common analytics platform patterns.",
-    href: "/resources/architecture-guides",
-    status: "coming-soon" as const,
-  },
-  {
-    slug: "bi-maturity-assessment",
-    title: "BI Maturity Assessment",
-    description: "Evaluate your organization's analytics readiness across five dimensions.",
-    href: "/resources/bi-maturity-assessment",
-    status: "coming-soon" as const,
-  },
-  {
-    slug: "dashboard-examples",
-    title: "Dashboard Examples",
-    description: "Curated examples of executive and operational dashboard patterns.",
-    href: "/resources/dashboard-examples",
-    status: "coming-soon" as const,
-  },
-];
-
 export function getService(slug: string) {
   return services.find((s) => s.slug === slug);
 }
