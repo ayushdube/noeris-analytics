@@ -35,6 +35,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: clip;
+  background: var(--background);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -108,10 +109,7 @@ body {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background:
-    radial-gradient(ellipse 100% 80% at 50% -40%, rgba(255, 255, 255, 0.03), transparent 55%),
-    radial-gradient(ellipse 60% 50% at 100% 30%, rgba(255, 255, 255, 0.015), transparent 45%),
-    radial-gradient(ellipse 50% 40% at 0% 70%, rgba(255, 255, 255, 0.01), transparent 40%);
+  background: none;
 }
 
 /* Per-chapter ambient pools - applied inline on sections */
@@ -133,6 +131,15 @@ body {
 
 .text-balance {
   text-wrap: balance;
+}
+
+@keyframes mobile-menu-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.mobile-menu-mark-spin {
+  animation: mobile-menu-spin 30s linear infinite;
 }
 
 @keyframes drift {

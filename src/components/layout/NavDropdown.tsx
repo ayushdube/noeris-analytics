@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import type { NavItem } from "@/lib/navigation";
@@ -118,92 +117,6 @@ export function NavDropdown({ item, active, pathname }: NavDropdownProps) {
             <Link
               href={item.href}
               className="block rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:bg-white/[0.04] hover:text-foreground"
-            >
-              View all {item.label.toLowerCase()} →
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-interface MobileNavSectionProps {
-  item: NavItem;
-  pathname: string;
-  onNavigate: () => void;
-}
-
-export function MobileNavSection({ item, pathname, onNavigate }: MobileNavSectionProps) {
-  const [expanded, setExpanded] = useState(false);
-  const active = isActivePath(pathname, item.href);
-  const hasChildren = Boolean(item.children?.length);
-
-  if (!hasChildren) {
-    return (
-      <Link
-        href={item.href}
-        onClick={onNavigate}
-        className={cn(
-          "rounded-xl px-3 py-3 font-display text-xl transition-colors duration-300",
-          active
-            ? "bg-surface-raised text-accent shadow-sm shadow-black/20"
-            : "text-muted-foreground hover:bg-white/[0.03] hover:text-foreground",
-        )}
-        aria-current={active ? "page" : undefined}
-      >
-        {item.label}
-      </Link>
-    );
-  }
-
-  return (
-    <div className="rounded-xl border border-white/[0.04] bg-surface/20">
-      <button
-        type="button"
-        onClick={() => setExpanded((value) => !value)}
-        className="flex w-full items-center justify-between px-3 py-3 text-left font-display text-xl text-foreground"
-        aria-expanded={expanded}
-      >
-        {item.label}
-        <ChevronDown
-          className={cn("h-5 w-5 text-muted-foreground transition-transform duration-300", expanded && "rotate-180")}
-          strokeWidth={1.5}
-        />
-      </button>
-
-      <div
-        className={cn(
-          "grid transition-[grid-template-rows] duration-300 ease-out",
-          expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
-        )}
-      >
-        <div className="overflow-hidden">
-          <div className="space-y-1 border-t border-white/[0.04] px-2 py-2">
-            {item.children?.map((child) => {
-              const childActive = isActivePath(pathname, child.href);
-
-              return (
-                <Link
-                  key={child.href}
-                  href={child.href}
-                  onClick={onNavigate}
-                  className={cn(
-                    "block rounded-lg px-3 py-2.5 text-sm leading-snug transition-colors duration-200",
-                    childActive
-                      ? "bg-surface-raised text-accent shadow-sm shadow-black/20"
-                      : "text-muted-foreground hover:bg-white/[0.03] hover:text-foreground",
-                  )}
-                  aria-current={childActive ? "page" : undefined}
-                >
-                  {child.label}
-                </Link>
-              );
-            })}
-            <Link
-              href={item.href}
-              onClick={onNavigate}
-              className="block rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground"
             >
               View all {item.label.toLowerCase()} →
             </Link>

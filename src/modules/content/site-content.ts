@@ -1048,9 +1048,9 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "Noeris did not just deliver dashboards. They rebuilt how our leadership team consumes performance data - with metrics we finally trust.",
-    author: "Sarah K., Chief Operating Officer",
-    company: "Multi-brand eCommerce group",
+      "Ankita is one of the most skilled professionals I have worked with. She has advanced Power BI knowledge along with outstanding communication skills.",
+    author: "Verified Upwork client",
+    company: "Top Rated Plus · 5★",
   },
   {
     quote:
