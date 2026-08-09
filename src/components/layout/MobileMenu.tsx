@@ -234,12 +234,12 @@ export function MobileMenu({ isOpen, onClose, pathname }: MobileMenuProps) {
                             onClick={onClose}
                             style={{
                               display: "block",
-                              fontSize: "11px",
+                              fontSize: "14px",
                               fontFamily: "sans-serif",
                               color: childActive
                                 ? "rgba(255,255,255,0.75)"
-                                : "rgba(255,255,255,0.35)",
-                              padding: "6px 0",
+                                : "rgba(255,255,255,0.4)",
+                              padding: "10px 0",
                               borderBottom:
                                 childIndex < item.children!.length - 1
                                   ? "1px solid rgba(255,255,255,0.05)"
@@ -289,12 +289,9 @@ export function MobileMenu({ isOpen, onClose, pathname }: MobileMenuProps) {
         <Link
           href="/contact"
           onClick={onClose}
-          className="flex h-11 items-center justify-between rounded-[10px] bg-[#ff0234] px-4 hover:bg-[#ff0234]/90"
+          className="flex h-11 items-center justify-center rounded-[10px] bg-[#ff0234] px-4 hover:bg-[#ff0234]/90"
         >
-          <span className="font-sans text-xs font-medium text-white">Book a call</span>
-          <span className="text-sm text-white/80" aria-hidden="true">
-            ↗
-          </span>
+          <span className="font-sans text-sm font-medium text-white">Book a call</span>
         </Link>
       </div>
     </div>
