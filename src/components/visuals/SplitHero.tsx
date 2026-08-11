@@ -31,7 +31,6 @@ export function SplitHero({
 
   return (
     <section className={`relative overflow-hidden ${topPadding} ${className ?? ""}`}>
-      <div className="chapter-glow-top pointer-events-none absolute inset-0" aria-hidden="true" />
       <div
         className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 bg-[radial-gradient(ellipse_70%_60%_at_70%_40%,rgba(255,255,255,0.035),transparent_70%)] lg:block"
         aria-hidden="true"

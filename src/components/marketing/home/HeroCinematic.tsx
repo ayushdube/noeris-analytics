@@ -60,14 +60,6 @@ export function HeroCinematic() {
   return (
     <section className="relative flex min-h-[100svh] flex-col overflow-hidden">
       <ParallaxLayer
-        depth={0.8}
-        {...layerProps}
-        className="pointer-events-none absolute inset-0"
-      >
-        <div className="chapter-glow-top absolute inset-0" aria-hidden="true" />
-      </ParallaxLayer>
-
-      <ParallaxLayer
         depth={2.5}
         {...layerProps}
         className="pointer-events-none absolute inset-0"

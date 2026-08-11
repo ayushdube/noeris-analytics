@@ -71,9 +71,8 @@ export function MobileMenu({ isOpen, onClose, pathname }: MobileMenuProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex flex-col overflow-hidden"
+      className="fixed inset-0 z-50 flex flex-col overflow-hidden bg-background"
       style={{
-        backgroundColor: "#0e0e0d",
         clipPath: visible
           ? "inset(0 0 0% 0)"
           : isOpen
