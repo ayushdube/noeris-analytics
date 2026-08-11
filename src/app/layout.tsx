@@ -64,7 +64,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Noeris Analytics — Enterprise BI & Data Consulting",
+        alt: "Noeris Analytics - Enterprise BI & Data Consulting",
       },
     ],
   },

@@ -29,7 +29,7 @@ export function createPageMetadata({
           url: image,
           width: 1200,
           height: 630,
-          alt: `${title} — Noeris Analytics`,
+          alt: `${title} - Noeris Analytics`,
         },
       ],
     },

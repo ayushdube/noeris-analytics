@@ -65,7 +65,7 @@ export function TestimonialPlaceholder({ className }: { className?: string }) {
     >
       <p className="text-label">Client perspective</p>
       <p className="mt-3 max-w-[16rem] text-sm leading-relaxed text-muted-foreground/70">
-        Additional testimonial slot — add to{" "}
+        Additional testimonial slot - add to{" "}
         <code className="text-muted-foreground">testimonials</code> in site content.
       </p>
     </div>

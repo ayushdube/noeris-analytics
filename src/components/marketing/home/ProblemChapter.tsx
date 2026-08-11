@@ -20,10 +20,10 @@ export function ProblemChapter() {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <p className="font-display text-[clamp(2rem,5vw,3.75rem)] font-medium leading-[1.05] tracking-[-0.03em] text-foreground">
-              The problem isn&apos;t data.
+              You have the data.
             </p>
             <p className="mt-6 font-display text-[clamp(2rem,5vw,3.75rem)] font-medium leading-[1.05] tracking-[-0.03em] text-muted">
-              It&apos;s decisions.
+              But good data is only useful when you can act on it.
             </p>
           </motion.div>
 

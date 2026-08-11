@@ -320,9 +320,9 @@ export const industries: Industry[] = [
     title: "Shopify & eCommerce",
     summary: "Unify storefront, marketing, and fulfillment data into one performance view.",
     challenges: [
-      "Shopify, ad platforms, and 3PL data in separate silos — forcing analysts to spend 60–70% of their time on data consolidation, not insight",
-      "Margin visibility delayed until month-end — leaving 3–4 weeks where ad spend decisions are made without contribution margin data",
-      "Inventory and demand signals not connected — causing either stockouts or 30–60 days of excess inventory carrying cost",
+      "Shopify, ad platforms, and 3PL data in separate silos - forcing analysts to spend 60–70% of their time on data consolidation, not insight",
+      "Margin visibility delayed until month-end - leaving 3–4 weeks where ad spend decisions are made without contribution margin data",
+      "Inventory and demand signals not connected - causing either stockouts or 30–60 days of excess inventory carrying cost",
     ],
     kpis: ["Revenue & margin by channel", "CAC & LTV", "Inventory turns", "Fulfillment SLA"],
     outcomes: [
@@ -373,9 +373,9 @@ export const industries: Industry[] = [
     title: "Manufacturing",
     summary: "Connect ERP, production, and quality data for operational intelligence.",
     challenges: [
-      "OEE and throughput metrics calculated manually — introducing 6–12 hours of decision lag per shift",
-      "Quality issues detected after shipment — scrap and rework costs averaging 2–5% of production value",
-      "Production planning disconnected from demand signals — forecast accuracy gaps of 15–25% vs. actual demand",
+      "OEE and throughput metrics calculated manually - introducing 6–12 hours of decision lag per shift",
+      "Quality issues detected after shipment - scrap and rework costs averaging 2–5% of production value",
+      "Production planning disconnected from demand signals - forecast accuracy gaps of 15–25% vs. actual demand",
     ],
     kpis: ["OEE", "Scrap rate", "On-time delivery", "Capacity utilization"],
     outcomes: [
@@ -426,9 +426,9 @@ export const industries: Industry[] = [
     title: "SaaS",
     summary: "Build the metrics layer investors and operators both trust.",
     challenges: [
-      "Product, billing, and CRM data misaligned on ARR — causing ARR discrepancies of 5–15% that surface only during board or audit prep",
-      "Cohort analysis requires manual exports — delaying retention insight by 2–3 weeks and making it a one-time exercise rather than a live signal",
-      "Board reporting assembled under deadline pressure — with founders spending 8–12 hours per board cycle reconciling numbers across systems",
+      "Product, billing, and CRM data misaligned on ARR - causing ARR discrepancies of 5–15% that surface only during board or audit prep",
+      "Cohort analysis requires manual exports - delaying retention insight by 2–3 weeks and making it a one-time exercise rather than a live signal",
+      "Board reporting assembled under deadline pressure - with founders spending 8–12 hours per board cycle reconciling numbers across systems",
     ],
     kpis: ["ARR & NRR", "Logo churn", "CAC payback", "Expansion revenue"],
     outcomes: [
@@ -480,9 +480,9 @@ export const industries: Industry[] = [
     title: "Healthcare",
     summary: "Operational and financial analytics with governance built in.",
     challenges: [
-      "Claims, scheduling, and clinical systems disconnected — forcing revenue cycle teams to reconcile across 3–5 systems manually, with denial rates averaging 5–10% of billed charges",
-      "Compliance requirements slow analytics delivery — adding 4–8 weeks to every reporting project as teams navigate HIPAA data handling restrictions",
-      "Leadership lacks timely operational visibility — with site-level performance reports arriving weekly at best, too late to act on staffing or throughput issues",
+      "Claims, scheduling, and clinical systems disconnected - forcing revenue cycle teams to reconcile across 3–5 systems manually, with denial rates averaging 5–10% of billed charges",
+      "Compliance requirements slow analytics delivery - adding 4–8 weeks to every reporting project as teams navigate HIPAA data handling restrictions",
+      "Leadership lacks timely operational visibility - with site-level performance reports arriving weekly at best, too late to act on staffing or throughput issues",
     ],
     kpis: ["Revenue cycle days", "Utilization rate", "Denial rate", "Patient volume"],
     outcomes: [
@@ -535,9 +535,9 @@ export const industries: Industry[] = [
     title: "Financial Services",
     summary: "Risk-aware analytics for portfolio and operational performance.",
     challenges: [
-      "Regulatory reporting separate from management reporting — forcing teams to maintain two parallel sets of numbers, with reconciliation consuming 2–3 days before every reporting cycle",
-      "Data lineage requirements slow new analytics — making every new metric a compliance project, with sign-off cycles averaging 4–6 weeks",
-      "Legacy core systems resist modern integration — leaving critical data locked in mainframe or on-premise systems with no API access",
+      "Regulatory reporting separate from management reporting - forcing teams to maintain two parallel sets of numbers, with reconciliation consuming 2–3 days before every reporting cycle",
+      "Data lineage requirements slow new analytics - making every new metric a compliance project, with sign-off cycles averaging 4–6 weeks",
+      "Legacy core systems resist modern integration - leaving critical data locked in mainframe or on-premise systems with no API access",
     ],
     kpis: ["NIM", "Cost-to-income", "Portfolio yield", "Operational loss rate"],
     outcomes: [
@@ -576,7 +576,7 @@ export const industries: Industry[] = [
         },
       ],
       complianceCallout:
-        "All data models are built with documented lineage, role-based access controls, and audit trails — designed to satisfy internal audit and regulatory review from day one.",
+        "All data models are built with documented lineage, role-based access controls, and audit trails - designed to satisfy internal audit and regulatory review from day one.",
       cta: {
         primary: "Request a financial services demo",
         secondary: "Get a free data lineage assessment",
@@ -590,9 +590,9 @@ export const industries: Industry[] = [
     title: "Logistics",
     summary: "End-to-end visibility across fleet, warehouse, and customer delivery.",
     challenges: [
-      "TMS, WMS, and customer systems not integrated — leaving ops teams to reconcile shipment status across 3–4 systems, with discrepancies only caught at billing close",
-      "On-time delivery metrics calculated after the fact — meaning performance issues are visible days after they occur, too late to recover service levels",
-      "Cost per shipment opaque until billing close — making lane-level and customer-level margin invisible until it's too late to reprice or reroute",
+      "TMS, WMS, and customer systems not integrated - leaving ops teams to reconcile shipment status across 3–4 systems, with discrepancies only caught at billing close",
+      "On-time delivery metrics calculated after the fact - meaning performance issues are visible days after they occur, too late to recover service levels",
+      "Cost per shipment opaque until billing close - making lane-level and customer-level margin invisible until it's too late to reprice or reroute",
     ],
     kpis: ["On-time delivery", "Cost per mile", "Dock-to-stock time", "Order accuracy"],
     outcomes: [
@@ -644,9 +644,9 @@ export const industries: Industry[] = [
     title: "Private Equity",
     summary: "Standardized portfolio analytics across operating companies.",
     challenges: [
-      "Each portco runs different ERP and BI stacks — making cross-portfolio comparison impossible without bespoke extraction work before every QBR or LP update",
-      "LP reporting requires manual consolidation — consuming 3–5 days of finance team time each quarter and introducing reconciliation risk at the worst possible moment",
-      "Value creation metrics inconsistent across holdings — so operating partners cannot tell whether EBITDA improvement is from pricing, cost, or volume — until it's too late to intervene",
+      "Each portco runs different ERP and BI stacks - making cross-portfolio comparison impossible without bespoke extraction work before every QBR or LP update",
+      "LP reporting requires manual consolidation - consuming 3–5 days of finance team time each quarter and introducing reconciliation risk at the worst possible moment",
+      "Value creation metrics inconsistent across holdings - so operating partners cannot tell whether EBITDA improvement is from pricing, cost, or volume - until it's too late to intervene",
     ],
     kpis: ["EBITDA bridge", "Working capital days", "Revenue growth", "Synergy tracking"],
     outcomes: [

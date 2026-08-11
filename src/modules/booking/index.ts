@@ -1,4 +1,4 @@
-/** Default Calendly URL — override with NEXT_PUBLIC_CALENDLY_URL in production */
+/** Default Calendly URL - override with NEXT_PUBLIC_CALENDLY_URL in production */
 export const DEFAULT_CALENDLY_URL = "https://calendly.com/hello-noeris";
 
 export interface BookingProvider {
