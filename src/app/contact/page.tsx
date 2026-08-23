@@ -7,6 +7,7 @@ import { WhoYouWorkWith } from "@/components/marketing/founders/WhoYouWorkWith";
 import { EngagementFlowVisual } from "@/components/visuals/EngagementFlowVisual";
 import { contactCopy } from "@/modules/content/founders-content";
 import { createPageMetadata } from "@/lib/seo/metadata";
+import { siteStats } from "@/lib/site-stats";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Contact",
@@ -16,9 +17,9 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 const heroStats = [
-  "69 projects completed",
-  "4.9★ client rating",
-  "$200K+ delivered",
+  `${siteStats.projectsDelivered} projects completed`,
+  `${siteStats.clientRating}★ client rating`,
+  `${siteStats.reviewCount} verified reviews`,
   "Top rated plus",
 ];
 

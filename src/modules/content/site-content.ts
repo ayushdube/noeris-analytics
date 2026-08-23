@@ -1041,7 +1041,7 @@ export const processSteps = [
 export interface Testimonial {
   quote: string;
   author: string;
-  company: string;
+  company?: string;
   placeholder?: boolean;
 }
 
@@ -1049,20 +1049,17 @@ export const testimonials: Testimonial[] = [
   {
     quote:
       "Ankita is one of the most skilled professionals I have worked with. She has advanced Power BI knowledge along with outstanding communication skills.",
-    author: "Verified Upwork client",
-    company: "Top Rated Plus · 5★",
+    author: "Verified client (Upwork)",
   },
   {
     quote:
       "Ankita is a true professional. She understood the requirements perfectly, delivered quality work on time, and communicated clearly throughout. Highly recommend.",
-    author: "Verified Client · Upwork · 5★",
-    company: "Logistics sector",
+    author: "Verified client (Upwork) · Logistics",
   },
   {
     quote:
       "Excellent experience working with Ankita. Went above and beyond to ensure everything was accurate and functional.",
-    author: "Verified Client · Upwork · 5★",
-    company: "SaaS sector",
+    author: "Verified client (Upwork) · SaaS",
   },
 ];
 

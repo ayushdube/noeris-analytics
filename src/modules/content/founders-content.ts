@@ -1,3 +1,5 @@
+import { siteStats } from "@/lib/site-stats";
+
 export type FounderId = "ankita" | "ayush";
 
 export interface Founder {
@@ -7,15 +9,16 @@ export interface Founder {
   contactFocus: string[];
 }
 
+const regionCopy = `${siteStats.regions.slice(0, -1).join(", ")}, and ${siteStats.regions[siteStats.regions.length - 1]}`;
+
 export const heroCredibility =
-  "Built by consultants who have delivered enterprise analytics solutions across North America, Europe, and APAC.";
+  `Built by consultants who have delivered enterprise analytics solutions across ${regionCopy}.`;
 
 export const credibilityStrip = [
-  "Microsoft Certified",
-  "Expert-Vetted Consultant",
-  "Global Delivery Experience",
-  "Enterprise Analytics",
-  "Cloud Data Platforms",
+  "Microsoft-Certified",
+  "Expert-Vetted (Top Rated Plus, Upwork)",
+  `Delivered across ${siteStats.regions.length} continents`,
+  "Principal-led on every engagement",
 ];
 
 export const founders: Record<FounderId, Founder> = {

@@ -1,11 +1,12 @@
 import Link from "next/link";
 
 import { AnimateIn } from "@/components/visuals/AnimateIn";
+import { siteStats } from "@/lib/site-stats";
 
 const stats = [
-  "69 completed projects",
-  "4.9★ average rating",
-  "$200K+ delivered",
+  `${siteStats.projectsDelivered} completed projects`,
+  `${siteStats.clientRating}★ average rating`,
+  `${siteStats.reviewCount} verified reviews`,
   "Top Rated Plus · Expert-Vetted",
 ];
 
@@ -39,7 +40,7 @@ export function UpworkTrustStrip() {
                 advanced Power BI knowledge along with outstanding communication skills.&rdquo;
               </p>
               <footer className="mt-4 font-mono text-[0.6875rem] uppercase tracking-[0.08em] text-muted">
-                Verified Upwork client
+                Verified client (Upwork)
               </footer>
             </blockquote>
 

@@ -25,9 +25,9 @@ export function TestimonialCard({
         <footer className="mt-10 md:mt-12">
           <cite className="not-italic">
             <span className="block text-sm text-muted-foreground">{testimonial.author}</span>
-            <span className="mt-1 block text-label">
-              {testimonial.company}
-            </span>
+            {testimonial.company ? (
+              <span className="mt-1 block text-label">{testimonial.company}</span>
+            ) : null}
           </cite>
         </footer>
       </blockquote>
@@ -47,7 +47,9 @@ export function TestimonialCard({
       <footer className="mt-6 border-t border-white/[0.06] pt-5">
         <cite className="not-italic">
           <span className="block text-sm text-foreground">{testimonial.author}</span>
-          <span className="mt-1 block text-sm text-muted">{testimonial.company}</span>
+          {testimonial.company ? (
+            <span className="mt-1 block text-sm text-muted">{testimonial.company}</span>
+          ) : null}
         </cite>
       </footer>
     </blockquote>

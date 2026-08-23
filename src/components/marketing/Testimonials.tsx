@@ -36,7 +36,9 @@ export function Testimonials() {
             <footer className="mt-14">
               <cite className="not-italic">
                 <span className="block text-sm text-foreground">{current.author}</span>
-                <span className="mt-1 block text-sm text-muted">{current.company}</span>
+                {current.company ? (
+                  <span className="mt-1 block text-sm text-muted">{current.company}</span>
+                ) : null}
               </cite>
             </footer>
           </blockquote>

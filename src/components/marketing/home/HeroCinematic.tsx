@@ -5,6 +5,7 @@ import { SignalField } from "@/components/marketing/home/SignalField";
 import { TechPartners } from "@/components/marketing/home/TechPartners";
 import { heroCredibility } from "@/modules/content/founders-content";
 import { siteConfig } from "@/lib/site-config";
+import { heroProofStats } from "@/lib/site-stats";
 import { parallaxTranslate, useMouseParallax } from "@/hooks/useMouseParallax";
 import { motion, useReducedMotion } from "framer-motion";
 import type { CSSProperties, ReactNode } from "react";
@@ -12,7 +13,6 @@ import type { CSSProperties, ReactNode } from "react";
 const heroTagline = "BOUTIQUE DATA & AI CONSULTANCY";
 const heroHeadline =
   "Enterprise Analytics Delivered by the Consultants Who Architect It.";
-const heroStats = ["Multiple PROJECTS", "4.9★ CLIENT RATING", "$200K+ DELIVERED"];
 
 const parallaxLayerStyle: CSSProperties = {
   willChange: "transform",
@@ -117,7 +117,7 @@ export function HeroCinematic() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.2, delay: 1.15 }}
               >
-                {heroStats.map((stat, index) => (
+                {heroProofStats.map((stat, index) => (
                   <span key={stat} className="inline-flex items-center gap-3">
                     {index > 0 ? (
                       <span className="hidden text-muted/40 sm:inline" aria-hidden="true">

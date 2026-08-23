@@ -4,6 +4,7 @@ import { Wordmark } from "@/components/brand/Wordmark";
 import { Container } from "@/components/layout/Container";
 import { footerFounders, founders } from "@/modules/content/founders-content";
 import { navLinks, siteConfig } from "@/lib/site-config";
+import { footerStatLine } from "@/lib/site-stats";
 
 const footerLinks = {
   services: [
@@ -82,7 +83,7 @@ export function Footer() {
         </div>
 
         <p className="mt-10 text-center font-mono text-[10px] tracking-[0.08em] text-white/25 md:text-[11px]">
-          69 projects · 4.9★ · $200K+ delivered · Top Rated Plus on Upwork
+          {footerStatLine}
         </p>
 
         <div className="mt-10 flex min-w-0 flex-col gap-6 border-t border-white/[0.06] pt-8 text-sm text-muted lg:flex-row lg:items-center lg:justify-between">

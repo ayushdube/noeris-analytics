@@ -7,6 +7,7 @@ import { ServicesMapVisual } from "@/components/visuals/ServicesMapVisual";
 import { SplitHero } from "@/components/visuals/SplitHero";
 import { services } from "@/modules/content/site-content";
 import { createPageMetadata } from "@/lib/seo/metadata";
+import { siteStats } from "@/lib/site-stats";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Services",
@@ -16,9 +17,9 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 const heroStats = [
-  "69 projects",
-  "4.9★ rating",
-  "$200K+ delivered",
+  `${siteStats.projectsDelivered} projects`,
+  `${siteStats.clientRating}★ rating`,
+  `${siteStats.reviewCount} verified reviews`,
   "Top rated plus",
 ];
 
