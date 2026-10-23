@@ -1,25 +1,28 @@
 import type { Metadata } from "next";
 
+import { AiAnalyticsChapter } from "@/components/marketing/home/AiAnalyticsChapter";
 import { ArchitectureChapter } from "@/components/marketing/home/ArchitectureChapter";
 import { CaseStudySpread } from "@/components/marketing/home/CaseStudySpread";
 import { ClosingStatement } from "@/components/marketing/home/ClosingStatement";
 import { EcosystemChapter } from "@/components/marketing/home/EcosystemChapter";
+import { EngagementOffers } from "@/components/marketing/home/EngagementOffers";
 import { HeroCinematic } from "@/components/marketing/home/HeroCinematic";
 import { ProblemChapter } from "@/components/marketing/home/ProblemChapter";
 import { ProcessNarrative } from "@/components/marketing/home/ProcessNarrative";
 import { QuoteMoment } from "@/components/marketing/home/QuoteMoment";
 import { ServicesChapter } from "@/components/marketing/home/ServicesChapter";
+import { TeamExpertise } from "@/components/marketing/home/TeamExpertise";
 import { TrustStripChapter } from "@/components/marketing/home/TrustStripChapter";
 import { HomePageWithLoader } from "@/components/layout/HomePageWithLoader";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/site-config";
 import { organizationJsonLd } from "@/lib/seo/json-ld";
 
-const homepageTitle = "Enterprise Analytics & BI Consulting | Noeris Analytics";
+const homepageTitle = "Know Where Your Business Makes Money | Noeris Analytics";
 const homepageDescription =
-  "Noeris Analytics builds trusted decision systems for enterprise teams - Power BI, Spotfire, Snowflake, Databricks, and agentic AI. Delivered by Principal Consultants with Oil & Gas, Financial Services, and SaaS specialisation.";
+  "Noeris connects business data and builds AI-powered analytical systems. Data engineering, Power BI, Claude and ChatGPT analytics, conversational BI, and managed reporting—with validation and governed access.";
 const homepageOgDescription =
-  "Boutique data and AI consultancy. Power BI, Spotfire, Databricks, and agentic AI - delivered by Principal Consultants.";
+  "From fragmented data to reliable decisions. Data engineering, business intelligence, and AI-powered analytics for teams that need numbers they can trust.";
 
 export const metadata: Metadata = {
   title: {
@@ -37,7 +40,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Noeris Analytics - Enterprise BI & Data Consulting",
+        alt: "Noeris Analytics - know where your business really makes money",
       },
     ],
   },
@@ -57,12 +60,15 @@ export default function HomePage() {
       <JsonLd data={organizationJsonLd} />
       <HeroCinematic />
       <ProblemChapter />
-      <EcosystemChapter />
-      <ArchitectureChapter />
-      <TrustStripChapter />
       <ServicesChapter />
+      <AiAnalyticsChapter />
+      <ArchitectureChapter />
+      <EcosystemChapter />
+      <TrustStripChapter />
       <CaseStudySpread />
+      <TeamExpertise />
       <ProcessNarrative />
+      <EngagementOffers />
       <QuoteMoment />
       <ClosingStatement />
     </HomePageWithLoader>

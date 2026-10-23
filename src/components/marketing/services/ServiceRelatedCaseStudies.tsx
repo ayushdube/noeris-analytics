@@ -5,14 +5,16 @@ import type { ServiceRelatedCaseStudy } from "@/modules/content/service-related-
 
 interface ServiceRelatedCaseStudiesProps {
   studies: ServiceRelatedCaseStudy[];
+  note?: string;
 }
 
-export function ServiceRelatedCaseStudies({ studies }: ServiceRelatedCaseStudiesProps) {
+export function ServiceRelatedCaseStudies({ studies, note }: ServiceRelatedCaseStudiesProps) {
   if (studies.length === 0) return null;
 
   return (
     <AnimateIn>
       <p className="mb-6 text-label">Related case studies</p>
+      {note ? <p className="mb-6 max-w-3xl text-sm leading-[1.75] text-muted-foreground">{note}</p> : null}
       <div className="grid w-full min-w-0 grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {studies.map((study) => (
           <article

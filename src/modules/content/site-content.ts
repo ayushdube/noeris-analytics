@@ -20,24 +20,34 @@ export const technologies = [
 
 export const problems = [
   {
-    title: "Fragmented data across systems",
+    title: "Metrics that will not reconcile",
     description:
-      "Sales, finance, operations, and marketing each maintain separate sources of truth. Leadership spends more time reconciling numbers than acting on them.",
+      "Leadership cannot line up revenue, margin, or operational KPIs across ERP, CRM, finance, and spreadsheets. Meetings start with whose number is right.",
   },
   {
-    title: "Reports that arrive too late",
+    title: "Finance time lost to the pack",
     description:
-      "Monthly close cycles and manual spreadsheet workflows delay visibility. By the time insights surface, the decision window has closed.",
+      "Month-end still means exporting, pivoting, and rewriting variance commentary. The explanation arrives after the decision window.",
   },
   {
-    title: "Dashboards without decision context",
+    title: "Analysts stuck in preparation",
     description:
-      "Teams inherit BI tools filled with charts but no clear KPI hierarchy, ownership model, or path from metric to action.",
+      "The people who understand the business spend their week extracting and reshaping data, then have little time left to interpret it.",
   },
   {
-    title: "Legacy analytics holding back growth",
+    title: "Questions the warehouse can answer, slowly",
     description:
-      "On-prem warehouses, outdated BI platforms, and brittle ETL pipelines cannot scale with transaction volume or executive expectations.",
+      "Business users want to ask about sales, cost, and profitability in plain language. Today that request becomes another report in a queue.",
+  },
+  {
+    title: "AI that works in a demo and stalls in production",
+    description:
+      "A prototype answers a rehearsed question. It does not yet have permissions, tested calculations, or a person accountable for the output.",
+  },
+  {
+    title: "BI that is slow to trust",
+    description:
+      "The existing environment is expensive, poorly governed, or brittle to change. Refresh failures surface in the board pack, not in monitoring.",
   },
 ];
 
@@ -49,6 +59,72 @@ export const outcomes = [
 ];
 
 export const services = [
+  {
+    slug: "ai-analytics-agents",
+    title: "AI Analytics & Agents",
+    summary:
+      "Claude and ChatGPT workflows grounded in approved data, with calculations checked in the warehouse or semantic model and a person in the loop for consequential output.",
+    seoDescription:
+      "Claude and ChatGPT analytics on approved business data. Conversational analytics, AI-powered reporting automation, Power BI and warehouse integration, with validation, permissions, and human review.",
+    whatsIncluded: [
+      "Natural-language analytics over approved datasets",
+      "Conversational access to warehouses and semantic models",
+      "Automated management commentary and variance notes",
+      "Permissions, evaluation tests, and review workflows",
+    ],
+    audienceTag: "Finance, operations, and leadership teams",
+    deliverables: [
+      "Grounded question-and-answer workflows",
+      "Semantic model or warehouse integration",
+      "Automated reporting packs",
+      "Evaluation and access controls",
+    ],
+    challenges: [
+      "Business users cannot ask a question without commissioning another report",
+      "AI pilots answer from a pasted export, with no record of the query",
+      "A demonstration has no permissions model, test set, or owner for a wrong number",
+    ],
+    outcomes: [
+      "Answers computed from approved datasets and existing metric definitions",
+      "Access limited to the data each role is already allowed to see",
+      "A documented path from a workspace pilot to an integrated workflow, when the case holds",
+    ],
+    timeline: "Defined in discovery",
+  },
+  {
+    slug: "managed-analytics",
+    title: "Managed Analytics & Automation",
+    summary:
+      "Ongoing care for data quality, reporting reliability, workflow maintenance, and improvements you agree in advance. Often follows a diagnostic or an implementation.",
+    seoDescription:
+      "Ongoing analytics support for data quality, reporting reliability, automated workflows, monitoring, and agreed improvements after an implementation goes live.",
+    whatsIncluded: [
+      "Monitoring for refresh failures and broken data checks",
+      "Operation of recurring reports and automated workflows",
+      "Maintenance when a source system or definition changes",
+      "A prioritized queue of improvements",
+    ],
+    audienceTag: "Teams with reporting already in production",
+    deliverables: [
+      "Refresh and data-quality monitoring",
+      "Recurring report operations",
+      "Workflow maintenance",
+      "Agreed improvement backlog",
+    ],
+    challenges: [
+      "Dashboards decay after the project team leaves",
+      "A failed refresh is noticed by an executive, not by monitoring",
+      "Recurring reports still depend on someone remembering the steps",
+      "Improvement requests have no owner and no queue",
+    ],
+    outcomes: [
+      "Agreed checks on refresh, data quality, and the workflows you rely on",
+      "Recurring reports prepared on the cadence you set",
+      "A maintained backlog, prioritized with the people who use the numbers",
+      "Documentation your team can operate if the engagement ends",
+    ],
+    timeline: "Agreed per engagement",
+  },
   {
     slug: "business-intelligence",
     title: "Business Intelligence",
@@ -1014,27 +1090,33 @@ export const caseStudies: CaseStudy[] = [
 export const processSteps = [
   {
     step: "01",
-    title: "Discovery",
+    title: "Discover",
     description:
-      "Map decision workflows, data sources, and KPI gaps. Align stakeholders on outcomes before architecture.",
+      "Map the decision, the systems that hold the data, and where the numbers disagree.",
   },
   {
     step: "02",
-    title: "Architecture",
+    title: "Design",
     description:
-      "Design the data platform, integration patterns, and semantic model. Validate against security and compliance requirements.",
+      "Specify the model, the workflow, and the controls: approved data, permissions, and what a person must review.",
   },
   {
     step: "03",
     title: "Build",
     description:
-      "Deliver pipelines, certified datasets, and dashboards in phased releases. Parallel-run against existing reports where needed.",
+      "Implement pipelines, semantic models, dashboards, or analytical workflows in releases the team can review.",
   },
   {
     step: "04",
-    title: "Enable",
+    title: "Validate",
     description:
-      "Train business teams, document KPI ownership, and establish refresh monitoring. Transition to managed operations.",
+      "Check calculations, access, and outputs against agreed tests before a figure is treated as decision-ready.",
+  },
+  {
+    step: "05",
+    title: "Operate",
+    description:
+      "Hand over documentation and, where you want it, stay on for monitoring and agreed improvements.",
   },
 ];
 
@@ -1097,7 +1179,7 @@ export const faqs = [
   {
     question: "How do you approach AI-powered analytics?",
     answer:
-      "We build the certified metrics foundation first. AI summaries, forecasting, and natural language querying are layered on trusted data - never on ungoverned exports.",
+      "We start from certified metrics. Natural-language questions, summaries, and agents call those definitions and the warehouse behind them. A language model explains the result. It is not the source of the number. Consequential output is reviewed by a person.",
   },
 ];
 

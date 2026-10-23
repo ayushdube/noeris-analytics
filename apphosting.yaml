@@ -15,6 +15,16 @@ env:
       - BUILD
       - RUNTIME
 
+  - variable: EMAIL_FROM
+    value: "Noeris Analytics <hello@noeris.io>"
+    availability:
+      - RUNTIME
+
+  - variable: LEADS_NOTIFY_EMAIL
+    value: hello@noeris.io
+    availability:
+      - RUNTIME
+
 # Uncomment and create secrets in Secret Manager before enabling:
 #
 #  - variable: DATABASE_URL
@@ -48,8 +58,3 @@ env:
 #    availability:
 #      - RUNTIME
 #
-#  - variable: NEXT_PUBLIC_CALENDLY_URL
-#    value: https://calendly.com/hello-noeris
-#    availability:
-#      - BUILD
-#      - RUNTIME

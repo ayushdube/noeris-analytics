@@ -1,4 +1,5 @@
 import { siteConfig } from "@/lib/site-config";
+import { getConsultationMailto } from "@/modules/booking";
 
 interface LeadEmailData {
   name: string;
@@ -46,7 +47,7 @@ export function leadNotificationTemplate(lead: LeadEmailData): string {
 }
 
 export function leadConfirmationTemplate(lead: Pick<LeadEmailData, "name">): string {
-  const calendlyUrl = siteConfig.calendlyUrl;
+  const consultationUrl = getConsultationMailto();
   return `<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"><style>${baseStyles}</style></head>
@@ -57,7 +58,7 @@ export function leadConfirmationTemplate(lead: Pick<LeadEmailData, "name">): str
       <h1>Thank you, ${escapeHtml(lead.name)}</h1>
       <p>We received your inquiry and will respond within one business day.</p>
       <p>Noeris helps organizations build trusted decision systems by integrating business data, modernizing analytics platforms, and delivering actionable insights through dashboards, reporting, and AI-powered intelligence.</p>
-      ${calendlyUrl ? `<a href="${calendlyUrl}" class="cta">${siteConfig.bookingCtaLabel}</a>` : ""}
+      <p>To arrange a time, email <a href="${consultationUrl}">${siteConfig.email}</a>.</p>
     </div>
     <div class="footer">${siteConfig.name} · ${siteConfig.email}</div>
   </div>

@@ -1,8 +1,17 @@
 import {
   caseStudies,
   industries,
-  services,
 } from "@/modules/content/site-content";
+
+const serviceNav = [
+  { href: "/services/ai-analytics-agents", label: "AI Analytics & Agents" },
+  { href: "/services/data-engineering", label: "Data Engineering" },
+  { href: "/services/business-intelligence", label: "Business Intelligence" },
+  { href: "/services/analytics-modernization", label: "Analytics Modernization" },
+  { href: "/services/managed-analytics", label: "Managed Analytics" },
+  { href: "/services/ai-powered-analytics", label: "AI-powered Analytics" },
+  { href: "/services/agentic-ai-autonomous-analytics", label: "Agentic AI" },
+] as const;
 
 export interface NavChild {
   href: string;
@@ -20,11 +29,9 @@ export const navItems: NavItem[] = [
   {
     href: "/services",
     label: "Services",
-    children: services.map((service) => ({
-      href: `/services/${service.slug}`,
-      label: service.title,
-    })),
+    children: [...serviceNav],
   },
+  { href: "/services/ai-analytics-agents", label: "AI Analytics" },
   {
     href: "/industries",
     label: "Industries",
@@ -45,3 +52,15 @@ export const navItems: NavItem[] = [
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
+
+export function isNavItemActive(pathname: string, href: string) {
+  const matches = navItems.filter(
+    (item) => pathname === item.href || pathname.startsWith(`${item.href}/`),
+  );
+  const best = matches.reduce<NavItem | undefined>((winner, item) => {
+    if (!winner || item.href.length > winner.href.length) return item;
+    return winner;
+  }, undefined);
+
+  return best?.href === href;
+}

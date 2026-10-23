@@ -8,6 +8,8 @@ export interface ServiceRelatedCaseStudy {
 export interface ServiceEarlyAccessCallout {
   label: string;
   text: string;
+  href?: string;
+  hrefLabel?: string;
 }
 
 export const serviceRelatedCaseStudies: Record<string, ServiceRelatedCaseStudy[]> = {
@@ -107,12 +109,56 @@ export const serviceRelatedCaseStudies: Record<string, ServiceRelatedCaseStudy[]
       href: "/case-studies/oil-gas-upstream-voc",
     },
   ],
+  "ai-analytics-agents": [
+    {
+      industry: "Financial Services · Wealth management",
+      title: "Risk Intelligence & Client Portfolio Dashboard",
+      outcome: "Single-pane risk view across client portfolios for a multi-family office",
+      href: "/case-studies/financial-services-risk-intelligence",
+    },
+    {
+      industry: "SaaS",
+      title: "Customer-Facing Analytics & API Integration Platform",
+      outcome:
+        "Embedded analytics platform with live API data feeds and white-label dashboards",
+      href: "/case-studies/saas-customer-analytics-api",
+    },
+    {
+      industry: "Oil & Gas · E&P operator",
+      title: "VOC Monitoring & Automated Alerts",
+      outcome: "Automated anomaly detection for emissions data across Guyana deepwater operations",
+      href: "/case-studies/oil-gas-upstream-voc",
+    },
+  ],
+  "managed-analytics": [
+    {
+      industry: "Oil & Gas · Integrated energy major",
+      title: "Production & Environmental Compliance Analytics",
+      outcome:
+        "Unified production reporting across 12 fields - Air Monitoring System deployed for HSE compliance",
+      href: "/case-studies/oil-gas-production-compliance",
+    },
+    {
+      industry: "Logistics",
+      title: "Supply Chain Operations Dashboard",
+      outcome: "End-to-end shipment visibility replacing manual Excel reporting",
+      href: "/case-studies/supply-chain-operations-dashboard",
+    },
+    {
+      industry: "Analytics Modernisation",
+      title: "Spotfire to Power BI Platform Migration",
+      outcome: "Full BI platform migration with zero disruption to live reporting operations",
+      href: "/case-studies/spotfire-powerbi-migration",
+    },
+  ],
 };
 
 export const serviceEarlyAccessCallouts: Record<string, ServiceEarlyAccessCallout> = {
   "agentic-ai-autonomous-analytics": {
-    label: "Early access",
-    text: "Agentic analytics is an emerging capability. We are selectively taking on pilot engagements with enterprises ready to move from dashboards to autonomous reporting. Book a call to discuss.",
+    label: "Scoped as a pilot",
+    text: "Agentic monitoring is taken on where the data, permissions, and review steps are clear. Conversational analytics, reporting automation, and production integration are described on the AI Analytics & Agents page.",
+    href: "/services/ai-analytics-agents",
+    hrefLabel: "AI Analytics & Agents →",
   },
 };
 

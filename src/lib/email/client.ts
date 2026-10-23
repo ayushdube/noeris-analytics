@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 
 import { logger } from "@/lib/logging/logger";
+import { siteConfig } from "@/lib/site-config";
 
 let resendClient: Resend | null = null;
 
@@ -21,16 +22,15 @@ export function getEmailFrom(): string {
 }
 
 export function getLeadsNotifyEmail(): string {
-  if (!process.env.LEADS_NOTIFY_EMAIL) {
-    throw new Error("LEADS_NOTIFY_EMAIL is not configured");
-  }
-  return process.env.LEADS_NOTIFY_EMAIL;
+  const configured = process.env.LEADS_NOTIFY_EMAIL?.trim();
+  return configured || siteConfig.email;
 }
 
 export async function sendEmail(params: {
   to: string | string[];
   subject: string;
   html: string;
+  replyTo?: string;
 }) {
   const resend = getResendClient();
   const from = getEmailFrom();
@@ -40,6 +40,7 @@ export async function sendEmail(params: {
     to: params.to,
     subject: params.subject,
     html: params.html,
+    replyTo: params.replyTo,
   });
 
   if (error) {

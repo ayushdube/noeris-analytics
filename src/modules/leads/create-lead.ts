@@ -10,36 +10,55 @@ import { getCrmAdapter } from "@/modules/crm";
 import { leadToDto } from "@/modules/crm/types";
 
 export async function createLead(input: ContactApiInput) {
-  const lead = await prisma.lead.create({
-    data: {
-      name: input.name,
-      email: input.email,
-      company: input.company || null,
-      phone: input.phone || null,
-      message: input.message,
-      pagePath: input.pagePath ?? null,
-      utmSource: input.utmSource ?? null,
-      utmMedium: input.utmMedium ?? null,
-      utmCampaign: input.utmCampaign ?? null,
-      source: "contact_form",
-    },
-  });
+  const enquiry = {
+    name: input.name,
+    email: input.email,
+    company: input.company || null,
+    phone: input.phone || null,
+    message: input.message ?? null,
+    pagePath: input.pagePath ?? null,
+  };
 
-  logger.info("Lead created", { leadId: lead.id, email: lead.email });
+  let leadId: string | null = null;
 
-  await Promise.all([
-    sendLeadNotification(lead),
-    sendLeadConfirmation(lead),
-  ]);
-
-  syncLeadToCrm(lead.id).catch((error) => {
-    logger.error("CRM sync failed", {
-      leadId: lead.id,
+  try {
+    const lead = await prisma.lead.create({
+      data: {
+        ...enquiry,
+        utmSource: input.utmSource ?? null,
+        utmMedium: input.utmMedium ?? null,
+        utmCampaign: input.utmCampaign ?? null,
+        source: "contact_form",
+      },
+    });
+    leadId = lead.id;
+    logger.info("Lead created", { leadId: lead.id, email: lead.email });
+  } catch (error) {
+    logger.error("Lead persistence failed; sending email anyway", {
       error: error instanceof Error ? error.message : "Unknown error",
     });
-  });
+  }
 
-  return lead;
+  await sendLeadNotification(enquiry);
+
+  try {
+    await sendLeadConfirmation(enquiry);
+  } catch (error) {
+    logger.error("Confirmation email failed", {
+      error: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+
+  if (leadId) {
+    syncLeadToCrm(leadId).catch((error) => {
+      logger.error("CRM sync failed", {
+        leadId,
+        error: error instanceof Error ? error.message : "Unknown error",
+      });
+    });
+  }
+
+  return { id: leadId };
 }
 
 async function sendLeadNotification(lead: {
@@ -52,6 +71,7 @@ async function sendLeadNotification(lead: {
 }) {
   await sendEmail({
     to: getLeadsNotifyEmail(),
+    replyTo: lead.email,
     subject: `New lead: ${lead.name}${lead.company ? ` · ${lead.company}` : ""}`,
     html: leadNotificationTemplate(lead),
   });
@@ -91,11 +111,7 @@ async function syncLeadToCrm(leadId: string) {
 }
 
 export function validateEmailConfig(): boolean {
-  return Boolean(
-    process.env.RESEND_API_KEY &&
-      process.env.EMAIL_FROM &&
-      process.env.LEADS_NOTIFY_EMAIL,
-  );
+  return Boolean(process.env.RESEND_API_KEY);
 }
 
 export { getEmailFrom };

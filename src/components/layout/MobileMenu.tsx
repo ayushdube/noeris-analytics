@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { navItems } from "@/lib/navigation";
+import { isNavItemActive, navItems } from "@/lib/navigation";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
@@ -16,6 +16,10 @@ interface MobileMenuProps {
 
 function isActivePath(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+function isTopLevelActive(pathname: string, href: string) {
+  return isNavItemActive(pathname, href);
 }
 
 export function MobileMenu({ isOpen, onClose, pathname }: MobileMenuProps) {
@@ -47,7 +51,7 @@ export function MobileMenu({ isOpen, onClose, pathname }: MobileMenuProps) {
 
   useEffect(() => {
     if (isOpen) {
-      const activeIdx = navItems.findIndex((item) => isActivePath(pathname, item.href));
+      const activeIdx = navItems.findIndex((item) => isTopLevelActive(pathname, item.href));
       setExpandedIndex(activeIdx >= 0 ? activeIdx : null);
     }
   }, [isOpen, pathname]);
@@ -131,7 +135,7 @@ export function MobileMenu({ isOpen, onClose, pathname }: MobileMenuProps) {
         aria-label="Mobile navigation"
       >
         {navItems.map((item, index) => {
-          const isActive = isActivePath(pathname, item.href);
+          const isActive = isTopLevelActive(pathname, item.href);
           const isExpanded = expandedIndex === index;
           const hasChildren = Boolean(item.children?.length);
           const isCaseStudies = item.href === "/case-studies";

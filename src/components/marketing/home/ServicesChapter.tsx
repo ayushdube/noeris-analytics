@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 
-import { ServiceLeadSignature } from "@/components/marketing/founders/ServiceLeadSignature";
-import { getServiceLead } from "@/modules/content/founders-content";
-import { services } from "@/modules/content/site-content";
+import { serviceLines } from "@/modules/content/positioning-content";
 import { motion } from "framer-motion";
 
 export function ServicesChapter() {
@@ -29,37 +27,53 @@ export function ServicesChapter() {
           >
             We do not sell dashboards.
           </motion.h2>
+          <motion.p
+            className="mt-6 max-w-sm text-sm leading-[1.8] text-muted-foreground"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.15 }}
+          >
+            Three practices, one outcome: numbers leadership can reconcile and act on.
+          </motion.p>
         </div>
 
         <div className="px-6 pb-12 md:px-10 md:pb-14 lg:col-span-8 lg:pt-20 lg:pl-0 lg:pr-16">
-          {services.map((service, i) => {
-            const leadId = getServiceLead(service.slug);
-
-            return (
-              <motion.div
-                key={service.slug}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.8, delay: i * 0.05 }}
-              >
-                <Link href={`/services/${service.slug}`} className="group block py-7 md:py-8">
-                  <div className="flex flex-col gap-4 md:flex-row md:items-baseline md:justify-between md:gap-12">
-                    <h3 className="shrink-0 font-display text-2xl font-medium tracking-[-0.02em] text-foreground transition-colors duration-700 group-hover:text-accent-foreground md:w-[14rem] md:text-[1.65rem]">
-                      {service.title}
-                    </h3>
-                    <p className="max-w-lg text-sm leading-[1.85] text-muted-foreground md:text-[15px]">
-                      {service.summary}
-                    </p>
-                  </div>
-                  {leadId && <ServiceLeadSignature founderId={leadId} className="mt-5" />}
-                  {i < services.length - 1 && (
-                    <div className="mt-8 h-px w-full bg-gradient-to-r from-white/[0.06] to-transparent" />
-                  )}
+          {serviceLines.map((line, i) => (
+            <motion.div
+              key={line.id}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.8, delay: i * 0.05 }}
+            >
+              <div className="py-7 md:py-8">
+                <Link href={line.href} className="group block">
+                  <h3 className="font-display text-2xl font-medium tracking-[-0.02em] text-foreground transition-colors duration-700 group-hover:text-accent-foreground md:text-[1.75rem]">
+                    {line.title}
+                  </h3>
+                  <p className="mt-4 max-w-xl text-sm leading-[1.85] text-muted-foreground md:text-[15px]">
+                    {line.summary}
+                  </p>
                 </Link>
-              </motion.div>
-            );
-          })}
+                <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
+                  {line.practices.map((practice) => (
+                    <li key={practice.href}>
+                      <Link
+                        href={practice.href}
+                        className="font-mono text-[0.6875rem] uppercase tracking-[0.06em] text-muted transition-colors duration-500 hover:text-foreground"
+                      >
+                        {practice.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                {i < serviceLines.length - 1 && (
+                  <div className="mt-8 h-px w-full bg-gradient-to-r from-white/[0.06] to-transparent" />
+                )}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

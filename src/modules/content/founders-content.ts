@@ -52,6 +52,8 @@ export const serviceLeads: Record<string, FounderId> = {
   "analytics-modernization": "ankita",
   "ai-powered-analytics": "ayush",
   "agentic-ai-autonomous-analytics": "ayush",
+  "ai-analytics-agents": "ayush",
+  "managed-analytics": "ankita",
 };
 
 export const whoYouWorkWith = {
@@ -62,34 +64,36 @@ export const whoYouWorkWith = {
 export const contactCopy = {
   headline: "Work directly with the consultants who architect and deliver every engagement.",
   bookingHeading: "Scheduling",
-  schedulingIntro: "Book a 45-minute discovery call directly:",
+  schedulingIntro:
+    "Email hello@noeris.io. Tell us the decision you need to make and we will reply to arrange a time.",
   messageHeading: "Send a message",
 };
 
 export const processPhases = [
   {
-    phase: "Principal-led Discovery",
+    phase: "Discover",
     detail:
-      "Map decision workflows, data sources, and KPI gaps with leadership before touching architecture.",
+      "Map the decisions, the systems that hold the data, and where numbers disagree. A principal consultant leads this with the people who own the outcome.",
   },
   {
-    phase: "Principal-led Solution Architecture",
+    phase: "Design",
     detail:
-      "Design the platform, semantic model, and integration patterns against security and compliance requirements.",
+      "Specify the data model, the reporting workflow, and—where AI is in scope—the controls: approved datasets, permissions, and what a person must review.",
   },
   {
     phase: "Build",
     detail:
-      "Deliver pipelines, certified datasets, and dashboards in phased releases with parallel-run validation.",
+      "Implement pipelines, semantic models, dashboards, or analytical workflows in releases your team can review.",
   },
   {
-    phase: "Adopt",
-    detail: "Train business teams, assign KPI ownership, and establish refresh monitoring.",
-  },
-  {
-    phase: "Founder-led Executive Handover",
+    phase: "Validate",
     detail:
-      "Transition to managed operations with executive sign-off, documentation, and ongoing optimization ownership.",
+      "Check calculations, reconciliations, and access against agreed tests. An AI explanation is usable when the figure comes from the underlying data.",
+  },
+  {
+    phase: "Operate",
+    detail:
+      "Hand over documentation and, where you want it, stay for monitoring, report operations, and a queue of improvements.",
   },
 ];
 

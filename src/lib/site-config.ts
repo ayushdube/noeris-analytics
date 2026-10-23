@@ -1,14 +1,11 @@
-import { DEFAULT_CALENDLY_URL } from "@/modules/booking";
-
 export const siteConfig = {
   name: "Noeris Analytics",
   domain: "noeris.io",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://noeris.io",
-  tagline: "Modern Business Intelligence for Growing Companies",
+  tagline: "Past the Noise",
   description:
-    "Turn fragmented business data into trusted insights for business teams and executive leadership.",
+    "We connect your business data and build AI-powered analytical systems that turn fragmented information into trusted insights and better decisions.",
   email: "hello@noeris.io",
-  calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL ?? DEFAULT_CALENDLY_URL,
   bookingCtaLabel: "Talk to a Principal Consultant",
   heroProofPoint: {
     metric: "85%",

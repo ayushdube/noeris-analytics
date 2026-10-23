@@ -1,26 +1,20 @@
-/** Default Calendly URL - override with NEXT_PUBLIC_CALENDLY_URL in production */
-export const DEFAULT_CALENDLY_URL = "https://calendly.com/hello-noeris";
+import { siteConfig } from "@/lib/site-config";
 
-export interface BookingProvider {
-  type: "calendly" | "calcom" | "microsoft-bookings";
-  bookUrl: string;
-  embedUrl?: string;
-}
+const consultationBody = [
+  "Hello,",
+  "",
+  "I would like to arrange a consultation.",
+  "",
+  "Company:",
+  "What we need help with:",
+].join("\n");
 
-function toCalendlyEmbedUrl(url: string) {
-  return url.includes("?") ? `${url}&hide_gdpr_banner=1` : `${url}?hide_gdpr_banner=1`;
-}
-
-export function getBookingProvider(): BookingProvider {
-  const url = process.env.NEXT_PUBLIC_CALENDLY_URL ?? DEFAULT_CALENDLY_URL;
-
-  return {
-    type: "calendly",
-    bookUrl: url,
-    embedUrl: toCalendlyEmbedUrl(url),
-  };
+export function getConsultationMailto(
+  subject = "Consultation with Noeris",
+): string {
+  return `mailto:${siteConfig.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(consultationBody)}`;
 }
 
 export function getBookingUrl(): string {
-  return process.env.NEXT_PUBLIC_CALENDLY_URL ?? DEFAULT_CALENDLY_URL;
+  return getConsultationMailto();
 }

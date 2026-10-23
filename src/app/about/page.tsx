@@ -26,7 +26,7 @@ const principles = [
   {
     title: "Trusted data foundations",
     description:
-      "Certified metrics, documented lineage, and governed access. Analytics teams and executives work from the same numbers.",
+      "Certified metrics, documented lineage, and governed access. Where an AI workflow is in scope, the calculation stays in the data platform and a person reviews consequential output.",
   },
   {
     title: "Modern platform architecture",

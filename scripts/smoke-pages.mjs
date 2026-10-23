@@ -10,6 +10,8 @@ const paths = [
   "/services/analytics-modernization",
   "/services/ai-powered-analytics",
   "/services/agentic-ai-autonomous-analytics",
+  "/services/ai-analytics-agents",
+  "/services/managed-analytics",
   "/industries",
   "/industries/oil-gas",
   "/industries/healthcare",
@@ -32,7 +34,7 @@ for (const path of paths) {
   try {
     const res = await fetch(`${base}${path}`);
     const html = await res.text();
-    const hasCss = html.includes("layout.css");
+    const hasCss = html.includes("layout.css") || html.includes("/_next/static/css/");
     const hasRuntimeError =
       html.includes("Runtime TypeError") ||
       html.includes("Application error") ||

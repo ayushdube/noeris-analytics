@@ -13,12 +13,22 @@ export function ServiceEarlyAccessCalloutBox({ callout }: ServiceEarlyAccessCall
       <aside className="mt-6 rounded-sm border border-white/[0.08] border-l-2 border-l-accent/60 bg-white/[0.03] px-5 py-4 md:px-6 md:py-5">
         <p className="text-label text-label-sm">{callout.label}</p>
         <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">{callout.text}</p>
-        <Link
-          href="/contact"
-          className="mt-4 inline-flex text-sm text-muted transition-colors duration-500 hover:text-accent-foreground"
-        >
-          Book a call →
-        </Link>
+        <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:gap-6">
+          {callout.href ? (
+            <Link
+              href={callout.href}
+              className="inline-flex text-sm text-muted transition-colors duration-500 hover:text-accent-foreground"
+            >
+              {callout.hrefLabel ?? "Learn more →"}
+            </Link>
+          ) : null}
+          <Link
+            href="/contact"
+            className="inline-flex text-sm text-muted transition-colors duration-500 hover:text-accent-foreground"
+          >
+            Book a call →
+          </Link>
+        </div>
       </aside>
     </AnimateIn>
   );

@@ -44,14 +44,14 @@ export default function OgImage() {
           <p
             style={{
               color: "#ffffff",
-              fontSize: 52,
+              fontSize: 44,
               fontWeight: 700,
               lineHeight: 1.1,
               margin: 0,
               maxWidth: 800,
             }}
           >
-            Enterprise Analytics & BI Consulting
+            Know where your business really makes money.
           </p>
           <p
             style={{
@@ -61,7 +61,7 @@ export default function OgImage() {
               margin: "20px 0 0 0",
             }}
           >
-            Power BI · Spotfire · Databricks · Agentic AI
+            Data engineering · Business intelligence · AI analytics
           </p>
         </div>
 

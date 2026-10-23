@@ -1,8 +1,11 @@
 "use client";
 
+import Link from "next/link";
+
 import { BookingButton } from "@/components/booking/BookingEmbed";
 import { SignalField } from "@/components/marketing/home/SignalField";
 import { TechPartners } from "@/components/marketing/home/TechPartners";
+import { Button } from "@/components/ui/button";
 import { heroCredibility } from "@/modules/content/founders-content";
 import { siteConfig } from "@/lib/site-config";
 import { heroProofStats } from "@/lib/site-stats";
@@ -10,9 +13,8 @@ import { parallaxTranslate, useMouseParallax } from "@/hooks/useMouseParallax";
 import { motion, useReducedMotion } from "framer-motion";
 import type { CSSProperties, ReactNode } from "react";
 
-const heroTagline = "BOUTIQUE DATA & AI CONSULTANCY";
-const heroHeadline =
-  "Enterprise Analytics Delivered by the Consultants Who Architect It.";
+const heroTagline = "PAST THE NOISE";
+const heroHeadline = "Know where your business really makes money.";
 
 const parallaxLayerStyle: CSSProperties = {
   willChange: "transform",
@@ -133,12 +135,15 @@ export function HeroCinematic() {
             </ParallaxLayer>
 
             <motion.div
-              className="mt-10 md:mt-12"
+              className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center md:mt-12"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 1.2 }}
             >
               <BookingButton size="lg" variant="accent" label={siteConfig.bookingCtaLabel} />
+              <Button asChild variant="ghost" size="lg">
+                <Link href="/services/ai-analytics-agents">Explore AI analytics</Link>
+              </Button>
             </motion.div>
           </div>
         </div>

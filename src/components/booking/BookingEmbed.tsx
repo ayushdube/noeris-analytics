@@ -1,41 +1,24 @@
 "use client";
 
-import { Calendar } from "lucide-react";
+import { Mail } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site-config";
-import { getBookingProvider } from "@/modules/booking";
+import { getConsultationMailto } from "@/modules/booking";
 
 interface BookingEmbedProps {
   className?: string;
 }
 
 export function BookingEmbed({ className }: BookingEmbedProps) {
-  const provider = getBookingProvider();
-
-  if (!provider.embedUrl) {
-    return (
-      <div className={className}>
-        <Button asChild size="lg">
-          <a href={provider.bookUrl} target="_blank" rel="noopener noreferrer">
-            <Calendar className="h-4 w-4" strokeWidth={1.5} />
-            Schedule a discovery call →
-          </a>
-        </Button>
-      </div>
-    );
-  }
-
   return (
     <div className={className}>
-      <div className="depth-soft overflow-hidden rounded-sm border border-white/[0.06]">
-        <iframe
-          src={provider.embedUrl}
-          title="Schedule a discovery call with Noeris Analytics"
-          className="h-[680px] w-full border-0 bg-neutral-100"
-          loading="lazy"
-        />
-      </div>
+      <Button asChild size="lg">
+        <a href={getConsultationMailto()}>
+          <Mail className="h-4 w-4" strokeWidth={1.5} />
+          Email {siteConfig.email}
+        </a>
+      </Button>
     </div>
   );
 }
@@ -53,13 +36,9 @@ export function BookingButton({
   size = "default",
   label = siteConfig.bookingCtaLabel,
 }: BookingButtonProps) {
-  const provider = getBookingProvider();
-
   return (
     <Button asChild variant={variant} size={size} className={className}>
-      <a href={provider.bookUrl} target="_blank" rel="noopener noreferrer">
-        {label}
-      </a>
+      <a href={getConsultationMailto()}>{label}</a>
     </Button>
   );
 }

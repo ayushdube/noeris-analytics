@@ -8,6 +8,8 @@ import { footerStatLine } from "@/lib/site-stats";
 
 const footerLinks = {
   services: [
+    { href: "/services/ai-analytics-agents", label: "AI Analytics & Agents" },
+    { href: "/services/managed-analytics", label: "Managed Analytics" },
     { href: "/services/business-intelligence", label: "Business Intelligence" },
     { href: "/services/data-engineering", label: "Data Engineering" },
     { href: "/services/analytics-modernization", label: "Analytics Modernization" },

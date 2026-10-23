@@ -24,7 +24,7 @@ export function ProcessNarrative() {
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            Five phases from discovery to optimization.
+            Discover, design, build, validate, operate.
           </motion.h2>
         </div>
 

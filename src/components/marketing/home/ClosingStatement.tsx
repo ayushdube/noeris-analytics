@@ -2,7 +2,6 @@
 
 import { BookingButton } from "@/components/booking/BookingEmbed";
 import { whoYouWorkWith } from "@/modules/content/founders-content";
-import { siteConfig } from "@/lib/site-config";
 import { motion } from "framer-motion";
 
 export function ClosingStatement() {
@@ -18,7 +17,7 @@ export function ClosingStatement() {
           viewport={{ once: true }}
           transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
         >
-          Build the decision system your leadership deserves.
+          Bring the decision the current numbers cannot support.
         </motion.h2>
 
         <motion.p
@@ -38,7 +37,7 @@ export function ClosingStatement() {
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.4 }}
         >
-          <BookingButton size="lg" label={siteConfig.bookingCtaLabel} />
+          <BookingButton size="lg" label="Book a consultation" />
         </motion.div>
       </div>
     </section>

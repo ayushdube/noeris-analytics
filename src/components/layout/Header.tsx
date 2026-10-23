@@ -10,11 +10,11 @@ import { Container } from "@/components/layout/Container";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { NavDropdown } from "@/components/layout/NavDropdown";
 import { Button } from "@/components/ui/button";
-import { navItems } from "@/lib/navigation";
+import { isNavItemActive, navItems } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
 function isActivePath(pathname: string, href: string) {
-  return pathname === href || pathname.startsWith(`${href}/`);
+  return isNavItemActive(pathname, href);
 }
 
 export function Header() {

@@ -38,7 +38,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Enterprise Analytics & BI Consulting | Noeris Analytics",
+    default: "Data, Analytics & AI Consulting | Noeris Analytics",
     template: "%s | Noeris Analytics",
   },
   description: siteConfig.description,
@@ -49,6 +49,9 @@ export const metadata: Metadata = {
     "Data Engineering Consulting",
     "Oil and Gas Analytics",
     "Agentic AI Consulting",
+    "Claude analytics implementation",
+    "Conversational analytics",
+    "AI-powered reporting",
     "Azure Databricks Consulting",
     "Executive Dashboards",
   ],
@@ -57,21 +60,21 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteConfig.url,
     siteName: "Noeris Analytics",
-    title: "Enterprise Analytics & BI Consulting | Noeris Analytics",
+    title: "Data, Analytics & AI Consulting | Noeris Analytics",
     description: siteConfig.description,
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Noeris Analytics - Enterprise BI & Data Consulting",
+        alt: "Noeris Analytics - data, analytics, and AI consulting",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     site: "@noerisanalytics",
-    title: "Enterprise Analytics & BI Consulting | Noeris Analytics",
+    title: "Data, Analytics & AI Consulting | Noeris Analytics",
     description: siteConfig.description,
     images: ["/opengraph-image"],
   },

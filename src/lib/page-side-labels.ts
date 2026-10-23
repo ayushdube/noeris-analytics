@@ -1,5 +1,7 @@
 export const pageSideLabels: Record<string, string> = {
   "/services": "SERVICES",
+  "/services/ai-analytics-agents": "AI ANALYTICS & AGENTS",
+  "/services/managed-analytics": "MANAGED ANALYTICS",
   "/services/business-intelligence": "BUSINESS INTELLIGENCE",
   "/services/data-engineering": "DATA ENGINEERING",
   "/services/analytics-modernization": "ANALYTICS MODERNIZATION",

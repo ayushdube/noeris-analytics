@@ -14,6 +14,8 @@ const serviceArchitectures: Record<string, string[]> = {
   "analytics-modernization": ["Legacy BI", "Migration", "Validation", "Power BI", "Catalog"],
   "ai-powered-analytics": ["Certified metrics", "Semantic layer", "AI layer", "Summaries", "Leadership"],
   "agentic-ai-autonomous-analytics": ["Sources", "Agents", "Monitoring", "LLM layer", "Automation"],
+  "ai-analytics-agents": ["Approved data", "Semantic model", "Claude / ChatGPT", "Validation", "Review"],
+  "managed-analytics": ["Refresh checks", "Data quality", "Reports", "Workflows", "Improvements"],
 };
 
 const serviceChartData: Record<string, number[]> = {
@@ -22,6 +24,7 @@ const serviceChartData: Record<string, number[]> = {
   "analytics-modernization": [70, 65, 55, 48, 40, 35, 30, 28],
   "ai-powered-analytics": [25, 35, 50, 62, 58, 72, 68, 80],
   "agentic-ai-autonomous-analytics": [20, 32, 48, 58, 66, 74, 82, 88],
+  "managed-analytics": [48, 55, 52, 63, 60, 70, 68, 76],
 };
 
 export function ServiceDetailVisual({ slug, deliverables }: ServiceDetailVisualProps) {

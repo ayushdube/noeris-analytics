@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { AnalyticsConversationDemo } from "@/components/marketing/ai/AnalyticsConversationDemo";
 import { BookingButton } from "@/components/booking/BookingEmbed";
+import { AiAnalyticsOfferings } from "@/components/marketing/services/AiAnalyticsOfferings";
 import { ServiceEarlyAccessCalloutBox } from "@/components/marketing/services/ServiceEarlyAccessCalloutBox";
 import { ServiceRelatedCaseStudies } from "@/components/marketing/services/ServiceRelatedCaseStudies";
 import { ServiceLeadSignature } from "@/components/marketing/founders/ServiceLeadSignature";
@@ -18,7 +20,9 @@ import {
   getServiceEarlyAccessCallout,
   getServiceRelatedCaseStudies,
 } from "@/modules/content/service-related-case-studies";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { createPageMetadata } from "@/lib/seo/metadata";
+import { serviceJsonLd } from "@/lib/seo/json-ld";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -33,9 +37,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = getService(slug);
   if (!service) return {};
 
+  const description =
+    "seoDescription" in service && typeof service.seoDescription === "string"
+      ? service.seoDescription
+      : service.summary;
+
   return createPageMetadata({
     title: `${service.title} Consulting`,
-    description: service.summary,
+    description,
     path: `/services/${slug}`,
   });
 }
@@ -49,8 +58,25 @@ export default async function ServiceDetailPage({ params }: Props) {
   const relatedCaseStudies = getServiceRelatedCaseStudies(slug);
   const earlyAccessCallout = getServiceEarlyAccessCallout(slug);
 
+  const relatedNote =
+    slug === "ai-analytics-agents"
+      ? "Selected analytics work. These case studies show data platforms, reporting, and automated monitoring. They are not presented as completed conversational-AI deployments."
+      : slug === "managed-analytics"
+        ? "Examples of reporting platforms we have delivered. Managed analytics is the ongoing engagement around systems of this kind."
+        : undefined;
+
   return (
     <>
+      <JsonLd
+        data={serviceJsonLd({
+          title: service.title,
+          summary:
+            "seoDescription" in service && typeof service.seoDescription === "string"
+              ? service.seoDescription
+              : service.summary,
+          slug: service.slug,
+        })}
+      />
       <SplitHero
         compact
         tight
@@ -62,7 +88,13 @@ export default async function ServiceDetailPage({ params }: Props) {
             Typical timeline · {service.timeline}
           </p>
         }
-        visual={<ServiceDetailVisual slug={slug} deliverables={service.deliverables} />}
+        visual={
+          slug === "ai-analytics-agents" ? (
+            <AnalyticsConversationDemo compact />
+          ) : (
+            <ServiceDetailVisual slug={slug} deliverables={service.deliverables} />
+          )
+        }
       />
 
       <section className="overflow-x-hidden py-12 md:py-20">
@@ -95,8 +127,25 @@ export default async function ServiceDetailPage({ params }: Props) {
 
       <section className="pt-6 pb-8 md:pt-8 md:pb-10">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-          <ServiceRelatedCaseStudies studies={relatedCaseStudies} />
+          <ServiceRelatedCaseStudies studies={relatedCaseStudies} note={relatedNote} />
           {earlyAccessCallout ? <ServiceEarlyAccessCalloutBox callout={earlyAccessCallout} /> : null}
+
+          {(slug === "ai-powered-analytics" || slug === "agentic-ai-autonomous-analytics") && (
+            <AnimateIn delay={0.08}>
+              <p className="mt-8 text-sm leading-[1.8] text-muted-foreground">
+                For Claude, ChatGPT, conversational analytics, and production integration, see{" "}
+                <Link
+                  href="/services/ai-analytics-agents"
+                  className="text-foreground underline-offset-4 hover:underline"
+                >
+                  AI Analytics & Agents
+                </Link>
+                .
+              </p>
+            </AnimateIn>
+          )}
+
+          {slug === "ai-analytics-agents" ? <AiAnalyticsOfferings /> : null}
 
           <AnimateIn delay={0.12}>
             <p className="mb-6 mt-10 text-label">Deliverables</p>
