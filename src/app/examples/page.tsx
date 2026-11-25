@@ -6,7 +6,7 @@ import { AnimateIn } from "@/components/visuals/AnimateIn";
 import { SplitHero } from "@/components/visuals/SplitHero";
 import { VisualFrame } from "@/components/visuals/VisualFrame";
 import { createPageMetadata } from "@/lib/seo/metadata";
-import { showcaseExamples } from "@/modules/content/showcase";
+import { getAutomation, showcaseExamples } from "@/modules/content/showcase";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Worked Examples",
@@ -60,7 +60,14 @@ export default function ExamplesPage() {
                 href={`/examples/${ex.slug}`}
                 className="group flex h-full flex-col rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 transition-colors duration-500 hover:border-white/[0.14] md:p-8"
               >
-                <p className="font-mono text-[0.6875rem] uppercase tracking-[0.08em] text-muted">{ex.buyer}</p>
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <p className="font-mono text-[0.6875rem] uppercase tracking-[0.08em] text-muted">{ex.buyer}</p>
+                  {getAutomation(ex.slug) ? (
+                    <span className="rounded-sm border border-accent/40 px-2 py-0.5 font-mono text-[0.625rem] uppercase tracking-[0.06em] text-accent-foreground">
+                      {getAutomation(ex.slug)?.engine === "n8n" ? "Runnable n8n workflow" : "LangGraph agent"}
+                    </span>
+                  ) : null}
+                </div>
                 <h2 className="mt-4 font-display text-2xl font-medium tracking-[-0.02em] text-foreground transition-colors duration-500 group-hover:text-accent-foreground">
                   {ex.title}
                 </h2>

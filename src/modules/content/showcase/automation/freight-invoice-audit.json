@@ -1,0 +1,257 @@
+{
+  "example": "freight-invoice-audit",
+  "engine": "n8n",
+  "engineDetail": "n8n 2.49.6 (self-hosted)",
+  "title": "Weekly freight audit, as an n8n workflow",
+  "summary": "Every Friday the workflow drafts the overcharge summary and carrier dispute emails from the audit results, checks the numbers and waits for the AP lead's approval. A person sends each dispute.",
+  "disclaimer": "Recorded run on synthetic data. Model output is replayed from the reviewed version and the human approval is simulated, so the run is reproducible.",
+  "diagram": {
+    "nodes": [
+      {
+        "id": "Schedule",
+        "label": "Schedule",
+        "kind": "trigger",
+        "x": 0,
+        "y": 0.0
+      },
+      {
+        "id": "Read facts.json",
+        "label": "Read facts.json",
+        "kind": "data",
+        "x": 1,
+        "y": 0.0
+      },
+      {
+        "id": "Parse JSON",
+        "label": "Parse JSON",
+        "kind": "data",
+        "x": 2,
+        "y": 0.0
+      },
+      {
+        "id": "Build Claude request",
+        "label": "Build Claude request",
+        "kind": "code",
+        "x": 3,
+        "y": 0.0
+      },
+      {
+        "id": "Claude drafts note",
+        "label": "Claude drafts note",
+        "kind": "ai",
+        "x": 4,
+        "y": 0.0
+      },
+      {
+        "id": "Grounding check",
+        "label": "Grounding check",
+        "kind": "check",
+        "x": 5,
+        "y": 0.0
+      },
+      {
+        "id": "Grounded?",
+        "label": "Grounded?",
+        "kind": "branch",
+        "x": 6,
+        "y": 0.0
+      },
+      {
+        "id": "Ask reviewer in Slack",
+        "label": "Ask reviewer in Slack",
+        "kind": "human",
+        "x": 7,
+        "y": -1.0
+      },
+      {
+        "id": "Approved?",
+        "label": "Approved?",
+        "kind": "branch",
+        "x": 8,
+        "y": -1.0
+      },
+      {
+        "id": "Send approved note",
+        "label": "Send approved note",
+        "kind": "send",
+        "x": 9,
+        "y": -1.6666666666666667
+      },
+      {
+        "id": "Log rejection",
+        "label": "Log rejection",
+        "kind": "end",
+        "x": 9,
+        "y": -0.3333333333333333
+      },
+      {
+        "id": "Alert: note withheld",
+        "label": "Alert: note withheld",
+        "kind": "alert",
+        "x": 7,
+        "y": 1.0
+      }
+    ],
+    "edges": [
+      {
+        "from": "Schedule",
+        "to": "Read facts.json",
+        "label": ""
+      },
+      {
+        "from": "Read facts.json",
+        "to": "Parse JSON",
+        "label": ""
+      },
+      {
+        "from": "Parse JSON",
+        "to": "Build Claude request",
+        "label": ""
+      },
+      {
+        "from": "Build Claude request",
+        "to": "Claude drafts note",
+        "label": ""
+      },
+      {
+        "from": "Claude drafts note",
+        "to": "Grounding check",
+        "label": ""
+      },
+      {
+        "from": "Grounding check",
+        "to": "Grounded?",
+        "label": ""
+      },
+      {
+        "from": "Grounded?",
+        "to": "Ask reviewer in Slack",
+        "label": "yes"
+      },
+      {
+        "from": "Grounded?",
+        "to": "Alert: note withheld",
+        "label": "no"
+      },
+      {
+        "from": "Ask reviewer in Slack",
+        "to": "Approved?",
+        "label": ""
+      },
+      {
+        "from": "Approved?",
+        "to": "Send approved note",
+        "label": "yes"
+      },
+      {
+        "from": "Approved?",
+        "to": "Log rejection",
+        "label": "no"
+      }
+    ]
+  },
+  "runs": [
+    {
+      "title": "Clean draft",
+      "outcome": "sent after approval",
+      "steps": [
+        {
+          "node": "Schedule",
+          "summary": "Friday 09:00 trigger (run manually for the recording)",
+          "pause": false
+        },
+        {
+          "node": "Read facts.json",
+          "summary": "facts.json read from the warehouse export",
+          "pause": false
+        },
+        {
+          "node": "Parse JSON",
+          "summary": "facts parsed",
+          "pause": false
+        },
+        {
+          "node": "Build Claude request",
+          "summary": "system prompt and facts assembled",
+          "pause": false
+        },
+        {
+          "node": "Claude drafts note",
+          "summary": "draft returned",
+          "pause": false
+        },
+        {
+          "node": "Grounding check",
+          "summary": "27 numbers checked, all found in facts.json",
+          "pause": false
+        },
+        {
+          "node": "Grounded?",
+          "summary": "yes → send for review",
+          "pause": false
+        },
+        {
+          "node": "Ask reviewer in Slack",
+          "summary": "reviewer clicks Approve (simulated)",
+          "pause": true
+        },
+        {
+          "node": "Approved?",
+          "summary": "approved",
+          "pause": false
+        },
+        {
+          "node": "Send approved note",
+          "summary": "note emailed",
+          "pause": false
+        }
+      ]
+    },
+    {
+      "title": "Draft with one invented number",
+      "outcome": "withheld, nothing sent",
+      "steps": [
+        {
+          "node": "Schedule",
+          "summary": "Friday 09:00 trigger (run manually for the recording)",
+          "pause": false
+        },
+        {
+          "node": "Read facts.json",
+          "summary": "facts.json read from the warehouse export",
+          "pause": false
+        },
+        {
+          "node": "Parse JSON",
+          "summary": "facts parsed",
+          "pause": false
+        },
+        {
+          "node": "Build Claude request",
+          "summary": "system prompt and facts assembled",
+          "pause": false
+        },
+        {
+          "node": "Claude drafts note",
+          "summary": "draft returned",
+          "pause": false
+        },
+        {
+          "node": "Grounding check",
+          "summary": "28 numbers checked; not in facts.json: $12.3k",
+          "pause": false
+        },
+        {
+          "node": "Grounded?",
+          "summary": "no → withhold",
+          "pause": false
+        },
+        {
+          "node": "Alert: note withheld",
+          "summary": "#data-alerts told the note was withheld; nothing sent",
+          "pause": false
+        }
+      ]
+    }
+  ]
+}

@@ -10,6 +10,10 @@ import pe from "./pe-portfolio-pack.json";
 import plant from "./plant-scorecard.json";
 import saas from "./saas-revenue-retention.json";
 import shopify from "./shopify-weekly-review.json";
+import autoFreight from "./automation/freight-invoice-audit.json";
+import autoInsurance from "./automation/insurance-submission-intake.json";
+import autoSaas from "./automation/saas-revenue-retention.json";
+import autoShopify from "./automation/shopify-weekly-review.json";
 
 export interface ShowcaseKpi {
   label: string;
@@ -44,6 +48,27 @@ export interface ShowcaseExample {
   checks: string[];
   disclaimer: string;
   documents?: string[];
+}
+
+export interface ShowcaseAutomation {
+  example: string;
+  engine: "n8n" | "langgraph";
+  engineDetail: string;
+  title: string;
+  summary: string;
+  disclaimer: string;
+  diagram: {
+    nodes: { id: string; label: string; kind: string; x: number; y: number }[];
+    edges: { from: string; to: string; label: string }[];
+  };
+  runs: { title: string; outcome: string; steps: { node: string; ms: number; summary: string; pause: boolean }[] }[];
+}
+
+const automations = [autoShopify, autoFreight, autoSaas, autoInsurance] as unknown as ShowcaseAutomation[];
+
+/** Recorded n8n workflow or LangGraph agent run for an example, if one exists. */
+export function getAutomation(exampleSlug: string) {
+  return automations.find((a) => a.example === exampleSlug);
 }
 
 export const showcaseExamples = [shopify, pe, monthEnd, plant, saas, freight, insurance] as unknown as ShowcaseExample[];

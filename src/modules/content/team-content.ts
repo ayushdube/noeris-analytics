@@ -37,7 +37,7 @@ export const teamProfiles: TeamProfile[] = [
     title: "Principal Consultant, Architecture & Engineering",
     summary:
       "Leads data platform and AI engineering: cloud architecture, pipelines, and the controls required to run an analytical workflow.",
-    bio: "11+ years in data engineering, cloud platforms, and modern analytics architecture, now focused on agentic AI systems. Leads infrastructure, pipeline design, and DevOps for Noeris engagements.",
+    bio: "10+ years in data engineering, cloud platforms, and modern analytics architecture, now focused on agentic AI systems. Leads infrastructure, pipeline design, and DevOps for Noeris engagements.",
     group: "founder",
   },
   {

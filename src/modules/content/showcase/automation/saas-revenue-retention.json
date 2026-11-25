@@ -1,0 +1,171 @@
+{
+  "example": "saas-revenue-retention",
+  "engine": "langgraph",
+  "engineDetail": "LangGraph + LangChain tools (Python)",
+  "title": "Renewal-risk agent (LangGraph)",
+  "summary": "The agent pulls renewals, usage, tickets and billing from the warehouse, scores each account with a fixed rule and drafts a brief for each flagged account. It then pauses for the CS lead before creating any CRM task.",
+  "disclaimer": "Recorded run on synthetic data. Model output is replayed from the reviewed version and the human approval is simulated, so the run is reproducible.",
+  "stats": null,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "__start__",
+        "label": "Start",
+        "kind": "trigger",
+        "x": 0,
+        "y": 0.0
+      },
+      {
+        "id": "find_renewals",
+        "label": "Find renewals",
+        "kind": "data",
+        "x": 1,
+        "y": 0.0
+      },
+      {
+        "id": "score_accounts",
+        "label": "Score accounts",
+        "kind": "code",
+        "x": 2,
+        "y": 0.0
+      },
+      {
+        "id": "gather_evidence",
+        "label": "Gather evidence",
+        "kind": "data",
+        "x": 3,
+        "y": 0.0
+      },
+      {
+        "id": "draft_briefs",
+        "label": "Draft briefs",
+        "kind": "ai",
+        "x": 4,
+        "y": 0.0
+      },
+      {
+        "id": "check_briefs",
+        "label": "Grounding check",
+        "kind": "check",
+        "x": 5,
+        "y": 0.0
+      },
+      {
+        "id": "approve",
+        "label": "CS lead approves",
+        "kind": "human",
+        "x": 6,
+        "y": 0.0
+      },
+      {
+        "id": "create_tasks",
+        "label": "Create tasks",
+        "kind": "send",
+        "x": 7,
+        "y": 0.0
+      },
+      {
+        "id": "__end__",
+        "label": "End",
+        "kind": "end",
+        "x": 8,
+        "y": 0.0
+      }
+    ],
+    "edges": [
+      {
+        "from": "__start__",
+        "to": "find_renewals",
+        "label": ""
+      },
+      {
+        "from": "approve",
+        "to": "create_tasks",
+        "label": ""
+      },
+      {
+        "from": "check_briefs",
+        "to": "approve",
+        "label": ""
+      },
+      {
+        "from": "draft_briefs",
+        "to": "check_briefs",
+        "label": ""
+      },
+      {
+        "from": "find_renewals",
+        "to": "score_accounts",
+        "label": ""
+      },
+      {
+        "from": "gather_evidence",
+        "to": "draft_briefs",
+        "label": ""
+      },
+      {
+        "from": "score_accounts",
+        "to": "__end__",
+        "label": ""
+      },
+      {
+        "from": "score_accounts",
+        "to": "gather_evidence",
+        "label": ""
+      },
+      {
+        "from": "create_tasks",
+        "to": "__end__",
+        "label": ""
+      }
+    ]
+  },
+  "runs": [
+    {
+      "title": "Week ending 22 Nov 2026",
+      "outcome": "6 tasks created for 8 flagged accounts",
+      "steps": [
+        {
+          "node": "find_renewals",
+          "summary": "142 accounts renew in the next 90 days",
+          "pause": false
+        },
+        {
+          "node": "score_accounts",
+          "summary": "8 flagged (6 high, 2 medium), $728.6k ARR",
+          "pause": false
+        },
+        {
+          "node": "gather_evidence",
+          "summary": "usage, tickets and billing pulled for 8 accounts",
+          "pause": false
+        },
+        {
+          "node": "draft_briefs",
+          "summary": "8 briefs drafted",
+          "pause": false
+        },
+        {
+          "node": "check_briefs",
+          "summary": "8 of 8 briefs grounded (64 numbers checked)",
+          "pause": false
+        },
+        {
+          "node": "approve",
+          "summary": "paused: CS lead asked which of the 8 flagged accounts get a save plan",
+          "pause": true
+        },
+        {
+          "node": "approve",
+          "summary": "6 accounts approved by CS lead (simulated)",
+          "pause": false
+        },
+        {
+          "node": "create_tasks",
+          "summary": "6 CRM tasks created",
+          "pause": false
+        }
+      ]
+    }
+  ]
+}

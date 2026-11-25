@@ -15,7 +15,7 @@ export interface Founder {
 const regionCopy = `${siteStats.regions.slice(0, -1).join(", ")}, and ${siteStats.regions[siteStats.regions.length - 1]}`;
 
 export const heroCredibility =
-  `Built by founders with 11+ years each in enterprise data and analytics, delivered across ${regionCopy}.`;
+  `Built by founders with 10+ years each in enterprise data and analytics, delivered across ${regionCopy}.`;
 
 export const credibilityStrip = [
   "Microsoft-Certified",

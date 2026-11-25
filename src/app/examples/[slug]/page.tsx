@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { AutomationReplay } from "@/components/marketing/examples/AutomationReplay";
 import { ExampleChart } from "@/components/marketing/examples/ExampleChart";
 import { NoteMarkdown } from "@/components/marketing/examples/NoteMarkdown";
 import { FinalCTA } from "@/components/marketing/FinalCTA";
@@ -9,7 +10,7 @@ import { AnimateIn } from "@/components/visuals/AnimateIn";
 import { SplitHero } from "@/components/visuals/SplitHero";
 import { VisualFrame } from "@/components/visuals/VisualFrame";
 import { createPageMetadata } from "@/lib/seo/metadata";
-import { getShowcaseExample, showcaseExamples } from "@/modules/content/showcase";
+import { getAutomation, getShowcaseExample, showcaseExamples } from "@/modules/content/showcase";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -47,6 +48,7 @@ export default async function ExamplePage({ params }: Props) {
   const { slug } = await params;
   const ex = getShowcaseExample(slug);
   if (!ex) notFound();
+  const automation = getAutomation(ex.slug);
 
   return (
     <>
@@ -134,6 +136,20 @@ export default async function ExamplePage({ params }: Props) {
           ))}
         </ol>
       </Block>
+
+      {automation ? (
+        <Block label={automation.engine === "n8n" ? "The workflow, running" : "The agent, running"}>
+          <AnimateIn>
+            <div className="mb-8 max-w-4xl">
+              <h2 className="font-display text-2xl font-medium tracking-[-0.01em] text-foreground md:text-3xl">{automation.title}</h2>
+              <p className="mt-3 text-[0.9375rem] leading-[1.75] text-muted-foreground">{automation.summary}</p>
+            </div>
+          </AnimateIn>
+          <AnimateIn delay={0.04}>
+            <AutomationReplay automation={automation} />
+          </AnimateIn>
+        </Block>
+      ) : null}
 
       <Block label={ex.note.title}>
         <AnimateIn>

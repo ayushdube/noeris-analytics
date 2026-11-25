@@ -1,0 +1,242 @@
+{
+  "example": "insurance-submission-intake",
+  "engine": "langgraph",
+  "engineDetail": "LangGraph + LangChain tools (Python)",
+  "title": "Submission-intake agent (LangGraph)",
+  "summary": "Each broker PDF is read, extracted field by field with a confidence, then checked against the MGA's appetite rules. Anything uncertain or out of appetite pauses for an underwriter.",
+  "disclaimer": "Recorded run on synthetic data. Model output is replayed from the reviewed version and the human approval is simulated, so the run is reproducible.",
+  "stats": {
+    "documents": 10,
+    "straight_through": 4,
+    "reviewed": 6,
+    "awaiting_broker": 1,
+    "records_matching_truth": 10,
+    "straight_through_errors": 0
+  },
+  "diagram": {
+    "nodes": [
+      {
+        "id": "__start__",
+        "label": "Start",
+        "kind": "trigger",
+        "x": 0,
+        "y": 0.0
+      },
+      {
+        "id": "read_document",
+        "label": "Read document",
+        "kind": "data",
+        "x": 1,
+        "y": 0.0
+      },
+      {
+        "id": "extract",
+        "label": "Extract",
+        "kind": "ai",
+        "x": 2,
+        "y": 0.0
+      },
+      {
+        "id": "validate",
+        "label": "Validate + appetite rules",
+        "kind": "check",
+        "x": 3,
+        "y": 0.0
+      },
+      {
+        "id": "underwriter_review",
+        "label": "Underwriter review",
+        "kind": "human",
+        "x": 4,
+        "y": 0.0
+      },
+      {
+        "id": "create_record",
+        "label": "Create record",
+        "kind": "send",
+        "x": 5,
+        "y": 0.0
+      },
+      {
+        "id": "__end__",
+        "label": "End",
+        "kind": "end",
+        "x": 6,
+        "y": 0.0
+      }
+    ],
+    "edges": [
+      {
+        "from": "__start__",
+        "to": "read_document",
+        "label": ""
+      },
+      {
+        "from": "extract",
+        "to": "validate",
+        "label": ""
+      },
+      {
+        "from": "read_document",
+        "to": "extract",
+        "label": ""
+      },
+      {
+        "from": "underwriter_review",
+        "to": "create_record",
+        "label": ""
+      },
+      {
+        "from": "validate",
+        "to": "create_record",
+        "label": ""
+      },
+      {
+        "from": "validate",
+        "to": "underwriter_review",
+        "label": ""
+      },
+      {
+        "from": "create_record",
+        "to": "__end__",
+        "label": ""
+      }
+    ]
+  },
+  "runs": [
+    {
+      "title": "SUB-2701 · clean",
+      "outcome": "ready to quote via straight through",
+      "steps": [
+        {
+          "node": "read_document",
+          "summary": "63 words read from the PDF",
+          "pause": false
+        },
+        {
+          "node": "extract",
+          "summary": "13 of 13 fields extracted",
+          "pause": false
+        },
+        {
+          "node": "validate",
+          "summary": "clean: no issues",
+          "pause": false
+        },
+        {
+          "node": "create_record",
+          "summary": "ready to quote (straight through)",
+          "pause": false
+        }
+      ]
+    },
+    {
+      "title": "SUB-2704 · ambiguous date",
+      "outcome": "ready to quote via review; corrected requested_effective_date",
+      "steps": [
+        {
+          "node": "read_document",
+          "summary": "81 words read from the PDF",
+          "pause": false
+        },
+        {
+          "node": "extract",
+          "summary": "13 of 13 fields extracted",
+          "pause": false
+        },
+        {
+          "node": "validate",
+          "summary": "1 issue(s): requested effective date (low confidence)",
+          "pause": false
+        },
+        {
+          "node": "underwriter_review",
+          "summary": "paused: underwriter asked to check requested effective date",
+          "pause": true
+        },
+        {
+          "node": "underwriter_review",
+          "summary": "Underwriter (simulated): accepted, corrected requested effective date",
+          "pause": false
+        },
+        {
+          "node": "create_record",
+          "summary": "ready to quote (review)",
+          "pause": false
+        }
+      ]
+    },
+    {
+      "title": "SUB-2708 · no loss history",
+      "outcome": "awaiting broker via review",
+      "steps": [
+        {
+          "node": "read_document",
+          "summary": "78 words read from the PDF",
+          "pause": false
+        },
+        {
+          "node": "extract",
+          "summary": "11 of 13 fields extracted",
+          "pause": false
+        },
+        {
+          "node": "validate",
+          "summary": "3 issue(s): requested effective date (low confidence); losses 5yr count (missing); losses 5yr incurred (missing)",
+          "pause": false
+        },
+        {
+          "node": "underwriter_review",
+          "summary": "paused: underwriter asked to check losses 5yr count, losses 5yr incurred, requested effective date",
+          "pause": true
+        },
+        {
+          "node": "underwriter_review",
+          "summary": "Underwriter (simulated): sent back to the broker",
+          "pause": false
+        },
+        {
+          "node": "create_record",
+          "summary": "awaiting broker (review)",
+          "pause": false
+        }
+      ]
+    },
+    {
+      "title": "SUB-2709 · auto referral",
+      "outcome": "ready to quote via review",
+      "steps": [
+        {
+          "node": "read_document",
+          "summary": "63 words read from the PDF",
+          "pause": false
+        },
+        {
+          "node": "extract",
+          "summary": "13 of 13 fields extracted",
+          "pause": false
+        },
+        {
+          "node": "validate",
+          "summary": "2 issue(s): requested effective date (low confidence); line of business (referral)",
+          "pause": false
+        },
+        {
+          "node": "underwriter_review",
+          "summary": "paused: underwriter asked to check line of business, requested effective date",
+          "pause": true
+        },
+        {
+          "node": "underwriter_review",
+          "summary": "Underwriter (simulated): accepted",
+          "pause": false
+        },
+        {
+          "node": "create_record",
+          "summary": "ready to quote (review)",
+          "pause": false
+        }
+      ]
+    }
+  ]
+}
