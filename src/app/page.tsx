@@ -18,11 +18,11 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/site-config";
 import { organizationJsonLd } from "@/lib/seo/json-ld";
 
-const homepageTitle = "Know Where Your Business Makes Money | Noeris Analytics";
+const homepageTitle = "AI-Native Enterprise Intelligence & Automation | Noeris Analytics";
 const homepageDescription =
-  "Noeris connects business data and builds AI-powered analytical systems. Data engineering, Power BI, Claude and ChatGPT analytics, conversational BI, and managed reporting—with validation and governed access.";
+  "AI-native enterprise intelligence and automation partner: data engineering, Power BI, AI analytics and agents, and managed analytics—with validation and governed access.";
 const homepageOgDescription =
-  "From fragmented data to reliable decisions. Data engineering, business intelligence, and AI-powered analytics for teams that need numbers they can trust.";
+  "From fragmented data to reliable intelligence and automated workflows. Data engineering, business intelligence, and AI automation for teams that need numbers they can trust.";
 
 export const metadata: Metadata = {
   title: {

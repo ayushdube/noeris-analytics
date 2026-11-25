@@ -13,7 +13,7 @@ import { createPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = createPageMetadata({
   title: "About",
   description:
-    "Noeris Analytics helps organizations build trusted decision systems through modern business intelligence, data engineering, and AI-powered analytics.",
+    "Noeris Analytics is an AI-native enterprise intelligence and automation partner, combining data engineering, business intelligence, and AI-powered automation.",
   path: "/about",
 });
 
@@ -29,9 +29,9 @@ const principles = [
       "Certified metrics, documented lineage, and governed access. Where an AI workflow is in scope, the calculation stays in the data platform and a person reviews consequential output.",
   },
   {
-    title: "Modern platform architecture",
+    title: "AI-native, human-accountable delivery",
     description:
-      "Modern data platforms - Snowflake, Databricks, and leading BI tools - deployed with patterns that scale as your business grows.",
+      "We use modern AI tools, LLMs, and agentic workflows to speed up engineering, testing, and documentation on Snowflake, Databricks, Azure, and Power BI. Architecture, validation, and sign-off stay with experienced people.",
   },
   {
     title: "Enablement over dependency",
@@ -45,8 +45,8 @@ export default function AboutPage() {
     <>
       <SplitHero
         eyebrow="About"
-        title="Modern analytics for companies that need to decide faster"
-        description="Noeris helps organizations build a trusted decision system by integrating business data, modernizing analytics platforms, and delivering actionable insights through dashboards, reporting, and AI-powered intelligence."
+        title="Enterprise intelligence for companies that need to decide faster"
+        description="We combine enterprise data engineering, business intelligence, and AI-powered automation to help organizations improve visibility, optimize operations, and make better decisions. Noeris builds, integrates, and operates the intelligence infrastructure behind them."
         visual={<OutcomesMetricsVisual />}
       />
 

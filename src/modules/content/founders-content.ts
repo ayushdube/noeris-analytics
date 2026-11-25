@@ -93,7 +93,7 @@ export const processPhases = [
   {
     phase: "Operate",
     detail:
-      "Hand over documentation and, where you want it, stay for monitoring, report operations, and a queue of improvements.",
+      "Hand over documentation and, where you want it, stay responsible for what we built: monitoring, report and AI workflow operations, and a queue of improvements.",
   },
 ];
 

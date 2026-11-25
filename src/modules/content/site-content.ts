@@ -61,15 +61,17 @@ export const outcomes = [
 export const services = [
   {
     slug: "ai-analytics-agents",
-    title: "AI Analytics & Agents",
+    title: "AI Analytics, Agents & Automation",
     summary:
-      "Claude and ChatGPT workflows grounded in approved data, with calculations checked in the warehouse or semantic model and a person in the loop for consequential output.",
+      "Bring AI into existing enterprise data and workflows to automate analysis, uncover insights, and reduce repetitive business operations. Claude and ChatGPT workflows stay grounded in approved data, calculations are checked in the warehouse or semantic model, and a person stays in the loop for consequential output.",
     seoDescription:
-      "Claude and ChatGPT analytics on approved business data. Conversational analytics, AI-powered reporting automation, Power BI and warehouse integration, with validation, permissions, and human review.",
+      "Agentic AI for enterprises, built on approved business data. Natural language analytics, AI-powered reporting, anomaly detection, workflow automation, and AI agents integrated with Power BI, warehouses, and existing enterprise systems, with validation, permissions, and human review.",
     whatsIncluded: [
       "Natural-language analytics over approved datasets",
-      "Conversational access to warehouses and semantic models",
-      "Automated management commentary and variance notes",
+      "Intelligent data assistants over warehouses and semantic models",
+      "AI-powered reporting: management commentary and variance notes",
+      "Anomaly detection and automated business insights",
+      "AI agents and workflow automation connected to existing enterprise systems",
       "Permissions, evaluation tests, and review workflows",
     ],
     audienceTag: "Finance, operations, and leadership teams",
@@ -77,17 +79,19 @@ export const services = [
       "Grounded question-and-answer workflows",
       "Semantic model or warehouse integration",
       "Automated reporting packs",
+      "Workflow automation and agent integrations",
       "Evaluation and access controls",
     ],
     challenges: [
       "Business users cannot ask a question without commissioning another report",
       "AI pilots answer from a pasted export, with no record of the query",
       "A demonstration has no permissions model, test set, or owner for a wrong number",
+      "AI experiments sit beside the business instead of inside its workflows",
     ],
     outcomes: [
       "Answers computed from approved datasets and existing metric definitions",
       "Access limited to the data each role is already allowed to see",
-      "A documented path from a workspace pilot to an integrated workflow, when the case holds",
+      "A documented path from isolated AI experiments to integrated, AI-assisted business operations, when the case holds",
     ],
     timeline: "Defined in discovery",
   },
@@ -95,21 +99,25 @@ export const services = [
     slug: "managed-analytics",
     title: "Managed Analytics & Automation",
     summary:
-      "Ongoing care for data quality, reporting reliability, workflow maintenance, and improvements you agree in advance. Often follows a diagnostic or an implementation.",
+      "Continuously maintain, monitor, and improve the data and intelligence systems your business depends on: pipelines, Power BI, AI workflows, and the cloud platforms underneath. Noeris can stay responsible for the systems it implements, with improvements you agree in advance.",
     seoDescription:
-      "Ongoing analytics support for data quality, reporting reliability, automated workflows, monitoring, and agreed improvements after an implementation goes live.",
+      "Managed data engineering, managed Power BI services, and managed AI automation: data pipeline and data quality monitoring, dashboard maintenance, analytics platform management, AI workflow maintenance, cloud infrastructure support, and ongoing optimization.",
     whatsIncluded: [
-      "Monitoring for refresh failures and broken data checks",
-      "Operation of recurring reports and automated workflows",
+      "Data pipeline and refresh monitoring",
+      "Data quality checks and alerting",
+      "Dashboard and semantic model maintenance",
+      "Analytics platform and cloud infrastructure support",
+      "Operation and maintenance of AI workflows and automated reports",
       "Maintenance when a source system or definition changes",
-      "A prioritized queue of improvements",
+      "A prioritized queue of optimization work",
     ],
-    audienceTag: "Teams with reporting already in production",
+    audienceTag: "Teams with reporting, data platforms, or AI workflows in production",
     deliverables: [
-      "Refresh and data-quality monitoring",
-      "Recurring report operations",
-      "Workflow maintenance",
-      "Agreed improvement backlog",
+      "Pipeline and data-quality monitoring",
+      "Managed Power BI and recurring report operations",
+      "AI workflow and agent maintenance",
+      "Cloud infrastructure support",
+      "Agreed optimization backlog",
     ],
     challenges: [
       "Dashboards decay after the project team leaves",
@@ -129,14 +137,20 @@ export const services = [
     slug: "business-intelligence",
     title: "Business Intelligence",
     summary:
-      "Executive and operational dashboards aligned to how your business actually makes decisions.",
+      "Transform enterprise data into consistent business intelligence, giving leadership teams visibility into financial and operational performance. We build the semantic models and metric definitions underneath, not just the visuals on top.",
+    seoDescription:
+      "Enterprise business intelligence and Power BI consulting: semantic modeling, DAX and Power Query, financial reporting, operational analytics, and executive dashboards built on reliable, reconcilable data models.",
     whatsIncluded: [
-      "Custom dashboard design & development",
-      "KPI framework alignment",
-      "Executive & operational reporting layers",
+      "Power BI semantic modeling, DAX, and Power Query",
+      "KPI framework and metric definition alignment",
+      "Financial reporting and operational analytics",
+      "Executive & operational dashboard design and development",
+      "Data visualization standards and self-service layers",
     ],
     audienceTag: "Ops, Finance & Executive teams",
     deliverables: [
+      "Semantic models",
+      "Financial reporting",
       "Executive dashboards",
       "Operational dashboards",
       "KPI strategy",
@@ -158,19 +172,23 @@ export const services = [
     slug: "data-engineering",
     title: "Data Engineering",
     summary:
-      "Reliable pipelines and modern warehouses that make analytics trustworthy at scale.",
+      "Build reliable, scalable enterprise data foundations that connect fragmented business systems and make trusted information accessible across the organization.",
+    seoDescription:
+      "Enterprise data engineering and data warehouse consulting: data architecture, data integration, ETL/ELT pipelines, cloud data platforms on Snowflake, Databricks, Azure, and AWS, data transformation, data quality, and governance.",
     whatsIncluded: [
-      "Source system integration & pipeline build",
-      "Data warehouse / lakehouse architecture",
-      "Data quality monitoring & alerting",
+      "Data architecture for warehouses and lakehouses",
+      "Source system integration and ETL/ELT pipelines",
+      "Cloud data platforms on Snowflake, Databricks, Azure, and AWS",
+      "Data transformation and modeling",
+      "Data quality monitoring, alerting, and governance",
     ],
     audienceTag: "Data & Engineering teams",
     deliverables: [
-      "ETL pipelines",
+      "ETL/ELT pipelines",
       "Data warehouses",
       "Snowflake / Databricks",
-      "Snowflake",
-      "Databricks",
+      "Data quality & governance",
+      "AI-ready certified datasets",
     ],
     challenges: [
       "Siloed source systems with no reliable integration layer",
@@ -188,7 +206,7 @@ export const services = [
     slug: "analytics-modernization",
     title: "Analytics Modernization",
     summary:
-      "Migrate legacy BI and reporting stacks without disrupting business operations.",
+      "Migrate legacy BI and reporting stacks without disrupting business operations, and finish with a governed model ready for AI-assisted analysis.",
     whatsIncluded: [
       "Legacy BI stack audit & migration roadmap",
       "Parallel run & cutover strategy",
@@ -217,7 +235,7 @@ export const services = [
     slug: "ai-powered-analytics",
     title: "AI-powered Analytics",
     summary:
-      "Natural language access and intelligent summaries built on trusted data foundations.",
+      "Natural language analytics, AI-powered reporting, and intelligent summaries built on trusted data foundations.",
     whatsIncluded: [
       "Natural language query layer over your data",
       "Intelligent anomaly detection & alerts",
@@ -246,10 +264,10 @@ export const services = [
     slug: "agentic-ai-autonomous-analytics",
     title: "Agentic AI & Autonomous Analytics",
     summary:
-      "AI agents that query your data, surface anomalies, and deliver narrative summaries - without manual reporting workflows.",
+      "AI agents that query approved data, surface anomalies, and draft narrative summaries - reducing manual reporting work while a person reviews consequential output.",
     whatsIncluded: [
       "End-to-end agentic pipeline architecture",
-      "Autonomous data monitoring agents",
+      "Data monitoring agents connected to your warehouse and enterprise systems",
       "LLM integration with production-grade guardrails",
     ],
     audienceTag: "Enterprises automating reporting & monitoring workflows",
@@ -265,8 +283,8 @@ export const services = [
       "Anomaly detection disconnected from business context",
     ],
     outcomes: [
-      "Autonomous agents monitoring critical metrics around the clock",
-      "Narrative summaries delivered without manual report assembly",
+      "Agents monitoring the metrics you agree, on the schedule you set",
+      "Narrative summaries drafted without manual report assembly, reviewed before they circulate",
       "Production-grade LLM integration with audit trails",
     ],
     timeline: "8–16 weeks",
@@ -608,17 +626,31 @@ export const industries: Industry[] = [
   },
   {
     slug: "financial-services",
-    title: "Financial Services",
-    summary: "Risk-aware analytics for portfolio and operational performance.",
+    title: "Financial Services & Insurance",
+    summary:
+      "Connected data and intelligent analytics for lenders and insurers: underwriting, claims, profitability, and operational performance.",
+    heroDescription:
+      "Helping insurance and financial services organizations improve visibility into underwriting, claims, profitability, and operational performance through connected data and intelligent analytics.",
     challenges: [
       "Regulatory reporting separate from management reporting - forcing teams to maintain two parallel sets of numbers, with reconciliation consuming 2–3 days before every reporting cycle",
       "Data lineage requirements slow new analytics - making every new metric a compliance project, with sign-off cycles averaging 4–6 weeks",
       "Legacy core systems resist modern integration - leaving critical data locked in mainframe or on-premise systems with no API access",
+      "Policy, claims, and underwriting data spread across administration systems - so loss ratios, broker performance, and policy profitability arrive late and rarely reconcile with finance",
     ],
-    kpis: ["NIM", "Cost-to-income", "Portfolio yield", "Operational loss rate"],
+    kpis: [
+      "Loss ratio",
+      "NIM",
+      "Claims cycle time",
+      "Cost-to-income",
+      "Policy profitability",
+      "Portfolio yield",
+      "Operational loss rate",
+    ],
     outcomes: [
       "Certified metrics with documented lineage",
       "Management reporting aligned to regulatory definitions",
+      "Claims, underwriting, broker, and retention analytics tied back to finance",
+      "Claims workflows and executive reporting automated where controls allow",
       "Faster analytics delivery within compliance guardrails",
     ],
     extensions: {
@@ -631,14 +663,16 @@ export const industries: Industry[] = [
         "Finastra",
         "FIS / Fiserv",
         "Bloomberg",
+        "Policy & claims admin systems",
         "Snowflake / Databricks",
         "Your data warehouse",
       ],
+      heroKpiChips: ["Loss ratio", "Claims cycle time", "NIM", "Cost-to-income"],
       howItWorks: [
         {
           step: "01",
           title: "Connect",
-          description: "Integrate core banking, risk, and market data with full lineage tracking",
+          description: "Integrate core banking, policy, claims, risk, and market data with full lineage tracking",
         },
         {
           step: "02",
@@ -654,7 +688,7 @@ export const industries: Industry[] = [
       complianceCallout:
         "All data models are built with documented lineage, role-based access controls, and audit trails - designed to satisfy internal audit and regulatory review from day one.",
       cta: {
-        primary: "Request a financial services demo",
+        primary: "Request a financial services or insurance demo",
         secondary: "Get a free data lineage assessment",
         secondaryHref: "/contact?topic=data-lineage-assessment",
         secondaryVariant: "ghost",
@@ -717,17 +751,30 @@ export const industries: Industry[] = [
   },
   {
     slug: "private-equity",
-    title: "Private Equity",
-    summary: "Standardized portfolio analytics across operating companies.",
+    title: "Private Equity & Multi-Entity",
+    summary:
+      "Portfolio intelligence: consistent financial and operational reporting across portfolio companies and multi-entity groups.",
+    heroDescription:
+      "Helping multi-entity businesses and investment-backed organizations establish consistent financial and operational intelligence across their portfolios.",
     challenges: [
       "Each portco runs different ERP and BI stacks - making cross-portfolio comparison impossible without bespoke extraction work before every QBR or LP update",
       "LP reporting requires manual consolidation - consuming 3–5 days of finance team time each quarter and introducing reconciliation risk at the worst possible moment",
       "Value creation metrics inconsistent across holdings - so operating partners cannot tell whether EBITDA improvement is from pricing, cost, or volume - until it's too late to intervene",
+      "Management reporting across entities rebuilt by hand each month - so working capital, revenue performance, and operational efficiency are reviewed weeks after the period closes",
     ],
-    kpis: ["EBITDA bridge", "Working capital days", "Revenue growth", "Synergy tracking"],
+    kpis: [
+      "EBITDA bridge",
+      "Working capital days",
+      "Revenue growth",
+      "Synergy tracking",
+      "Profitability by entity",
+      "Operational efficiency",
+    ],
     outcomes: [
       "Standardized KPI framework across portfolio",
+      "Consolidated financial reporting and EBITDA monitoring across entities",
       "Automated consolidation for LP and IC reporting",
+      "Management reporting automated from the consolidated model",
       "Operating partner dashboards for value creation tracking",
     ],
     extensions: {
@@ -743,11 +790,12 @@ export const industries: Industry[] = [
         "Workday",
         "Your data warehouse",
       ],
+      heroKpiChips: ["EBITDA bridge", "Working capital days", "Revenue growth", "Synergy tracking"],
       howItWorks: [
         {
           step: "01",
           title: "Connect",
-          description: "Standardize financial and operational data across all portcos into a single consolidated model",
+          description: "Standardize financial and operational data across portfolio companies or entities into a single consolidated model",
         },
         {
           step: "02",
@@ -761,7 +809,7 @@ export const industries: Industry[] = [
         },
       ],
       complianceCallout:
-        "Clean, auditable analytics infrastructure accelerates due diligence and supports higher exit multiples. We build for the exit from day one.",
+        "Clean, auditable analytics infrastructure makes due diligence and exit preparation easier. We build with that in mind from day one.",
       cta: {
         primary: "Request a portfolio analytics demo",
         secondary: "Get a free portco data assessment",
@@ -1116,7 +1164,7 @@ export const processSteps = [
     step: "05",
     title: "Operate",
     description:
-      "Hand over documentation and, where you want it, stay on for monitoring and agreed improvements.",
+      "Hand over documentation and, where you want it, stay responsible for monitoring, maintenance, and agreed improvements to what we built.",
   },
 ];
 
@@ -1169,7 +1217,7 @@ export const faqs = [
   {
     question: "Do you work with companies our size?",
     answer:
-      "We work with growing companies from 20 to 1,000 employees across eCommerce, manufacturing, SaaS, healthcare, financial services, logistics, and private equity portfolio companies.",
+      "We work with growing companies from 20 to 1,000 employees across eCommerce, manufacturing, SaaS, healthcare, financial services and insurance, logistics, and private equity portfolio and multi-entity businesses.",
   },
   {
     question: "Who will we work with during the engagement?",

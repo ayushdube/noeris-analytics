@@ -16,14 +16,14 @@ export function TeamExpertise() {
               id="team-expertise-heading"
               className="mt-6 font-display text-[clamp(2rem,4.5vw,3.25rem)] font-medium leading-[1.05] tracking-[-0.03em] text-foreground"
             >
-              Data engineering, analytics, and AI in one practice.
+              AI-native delivery. Accountable people.
             </h2>
           </AnimateIn>
           <AnimateIn delay={0.06}>
             <p className="mt-6 text-base leading-[1.8] text-muted-foreground">
-              Principal consultants lead the engagement. Platform engineering, enterprise reporting,
-              and AI-assisted analysis are delivered together, so a warehouse change and a management
-              pack do not come from disconnected vendors.
+              Principal consultants lead every engagement. We use LLMs, AI-assisted engineering, and
+              agentic workflows in our own delivery to build, test, and document faster, while
+              architecture, validation, and sign-off stay with experienced engineers who own the result.
             </p>
           </AnimateIn>
         </div>

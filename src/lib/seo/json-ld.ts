@@ -37,5 +37,9 @@ export const organizationJsonLd = {
     "AI Analytics Consulting",
     "Conversational Analytics",
     "Managed Analytics",
+    "Managed Power BI Services",
+    "Enterprise Automation",
+    "Insurance Analytics",
+    "Portfolio Intelligence",
   ],
 };

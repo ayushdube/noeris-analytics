@@ -11,7 +11,7 @@ export const serviceLines: ServiceLine[] = [
     id: "data-foundations",
     title: "Data Engineering & Business Intelligence",
     summary:
-      "Connect disconnected systems, model the business once, and give finance and operations reports they can reconcile.",
+      "Build reliable data foundations that connect fragmented systems, model the business once, and give finance and operations intelligence they can reconcile.",
     href: "/services/data-engineering",
     practices: [
       { href: "/services/data-engineering", label: "Data engineering" },
@@ -21,9 +21,9 @@ export const serviceLines: ServiceLine[] = [
   },
   {
     id: "ai-analytics",
-    title: "AI Analytics & Agents",
+    title: "AI Analytics, Agents & Automation",
     summary:
-      "Ask questions of approved data, automate management commentary, and take a Claude or ChatGPT workflow into a controlled environment.",
+      "Bring AI into the data and workflows you already run: ask questions of approved data, automate reporting and analysis, and connect AI agents to existing enterprise systems.",
     href: "/services/ai-analytics-agents",
     practices: [
       { href: "/services/ai-analytics-agents", label: "AI analytics & agents" },
@@ -35,7 +35,7 @@ export const serviceLines: ServiceLine[] = [
     id: "managed",
     title: "Managed Analytics & Automation",
     summary:
-      "Keep reporting reliable after go-live: data quality, refresh monitoring, workflow maintenance, and improvements you agree in advance.",
+      "We stay responsible for the systems we implement: pipeline and data-quality monitoring, Power BI and AI workflow maintenance, and improvements you agree in advance.",
     href: "/services/managed-analytics",
     practices: [{ href: "/services/managed-analytics", label: "Managed analytics" }],
   },
@@ -78,10 +78,10 @@ export const engagementOffers: EngagementOffer[] = [
     id: "managed",
     title: "Managed Analytics & AI",
     summary:
-      "An ongoing engagement for data quality, reporting reliability, workflow maintenance, monitoring, and agreed improvements.",
+      "An ongoing engagement where Noeris stays responsible for the data, reporting, and AI systems it implements: monitoring, maintenance, and agreed improvements.",
     deliverables: [
-      "Refresh and data-quality monitoring",
-      "Recurring report and workflow maintenance",
+      "Pipeline, refresh, and data-quality monitoring",
+      "Report, dashboard, and AI workflow maintenance",
       "Review of exceptions you choose to watch",
       "A backlog of improvements, agreed with you",
     ],
@@ -139,6 +139,8 @@ export const aiAnalyticsOfferings: AiOffering[] = [
       "Inventory coverage and exception lists.",
       "KPI summaries for management reviews.",
       "Anomaly checks and scheduled alerts.",
+      "Finance workflow automation, such as reconciliation and accrual support.",
+      "Document processing for invoices, contracts, or claims, with a person confirming extracted values.",
       "Report generation and distribution through a channel you already approve.",
     ],
     note: "These are example use cases. They describe the kind of workflow we can implement. They are not a list of completed client engagements.",

@@ -14,7 +14,7 @@ import { siteStats } from "@/lib/site-stats";
 export const metadata: Metadata = createPageMetadata({
   title: "Services",
   description:
-    "Data engineering, business intelligence, AI analytics and agents, and managed analytics for companies that need numbers they can reconcile.",
+    "Enterprise data engineering, business intelligence, AI analytics and automation, and managed analytics for companies that need numbers they can reconcile and workflows they can automate.",
   path: "/services",
 });
 
@@ -32,7 +32,7 @@ export default function ServicesPage() {
         compact
         eyebrow="Services"
         title="Analytics capabilities for every stage of maturity"
-        description="Data engineering and business intelligence, AI analytics and agents, and managed analytics—delivered as one decision system."
+        description="Data engineering and business intelligence, AI analytics and automation, and managed analytics—one intelligence system we build, integrate, and operate."
         meta={
           <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[0.6875rem] uppercase tracking-[0.08em] text-muted md:text-xs">
             {heroStats.map((stat, index) => (

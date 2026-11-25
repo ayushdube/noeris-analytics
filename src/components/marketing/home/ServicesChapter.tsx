@@ -34,7 +34,7 @@ export function ServicesChapter() {
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.15 }}
           >
-            Three practices, one outcome: numbers leadership can reconcile and act on.
+            Three practices, one intelligence infrastructure: numbers leadership can reconcile, insights it can act on, and workflows that stop depending on manual effort.
           </motion.p>
         </div>
 
