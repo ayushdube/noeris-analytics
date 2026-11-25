@@ -10,7 +10,7 @@ import { createPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = createPageMetadata({
   title: "Industries",
   description:
-    "Enterprise analytics and AI automation for oil & gas, eCommerce, manufacturing, SaaS, healthcare, financial services and insurance, logistics, and private equity and multi-entity businesses.",
+    "Analytics and AI automation for growing companies in oil & gas, eCommerce, manufacturing, SaaS, healthcare, financial services and insurance, logistics, and private equity and multi-entity businesses.",
   path: "/industries",
 });
 

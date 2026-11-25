@@ -4,21 +4,21 @@ import { Wordmark } from "@/components/brand/Wordmark";
 import { Container } from "@/components/layout/Container";
 import { footerFounders, founders } from "@/modules/content/founders-content";
 import { navLinks, siteConfig } from "@/lib/site-config";
-import { footerStatLine } from "@/lib/site-stats";
 
 const footerLinks = {
   services: [
-    { href: "/services/ai-analytics-agents", label: "AI Analytics & Agents" },
-    { href: "/services/managed-analytics", label: "Managed Analytics" },
-    { href: "/services/business-intelligence", label: "Business Intelligence" },
     { href: "/services/data-engineering", label: "Data Engineering" },
+    { href: "/services/business-intelligence", label: "Business Intelligence" },
+    { href: "/services/ai-analytics-agents", label: "AI Analytics & Automation" },
+    { href: "/services/managed-analytics", label: "Managed Analytics" },
     { href: "/services/analytics-modernization", label: "Analytics Modernization" },
-    { href: "/services/ai-powered-analytics", label: "AI-powered Analytics" },
-    { href: "/services/agentic-ai-autonomous-analytics", label: "Agentic AI" },
   ],
   company: [
     { href: "/about", label: "About" },
     { href: "/case-studies", label: "Case Studies" },
+    { href: "/examples", label: "Worked examples" },
+    { href: "/diagnostic", label: "Diagnostic" },
+    { href: "/data-handling", label: "How we handle data" },
     { href: "/contact", label: "Contact" },
   ],
 };
@@ -83,10 +83,6 @@ export function Footer() {
             </ul>
           </div>
         </div>
-
-        <p className="mt-10 text-center font-mono text-[10px] tracking-[0.08em] text-white/25 md:text-[11px]">
-          {footerStatLine}
-        </p>
 
         <div className="mt-10 flex min-w-0 flex-col gap-6 border-t border-white/[0.06] pt-8 text-sm text-muted lg:flex-row lg:items-center lg:justify-between">
           <p className="shrink-0">

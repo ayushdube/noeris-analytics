@@ -17,6 +17,9 @@ export const pageSideLabels: Record<string, string> = {
   "/industries/logistics": "LOGISTICS",
   "/industries/private-equity": "PRIVATE EQUITY",
   "/case-studies": "CASE STUDIES",
+  "/diagnostic": "DIAGNOSTIC",
+  "/examples": "EXAMPLES",
+  "/data-handling": "DATA HANDLING",
 };
 
 export function getPageSideLabel(pathname: string): string | undefined {

@@ -1,0 +1,174 @@
+{
+  "slug": "saas-revenue-retention",
+  "industrySlug": "saas",
+  "title": "ARR bridge, retention and renewal risk",
+  "company": "Lumenly, a fictional B2B SaaS company (~$15.5M ARR)",
+  "buyer": "CFO, VP Revenue, head of customer success",
+  "question": "Where is retention slipping, what revenue is missing from billing, and which renewals are at risk?",
+  "summary": "Billing as the source of truth for ARR, reconciled against CRM deals, with retention by segment and a transparent renewal-risk score built from product usage and support tickets.",
+  "kpis": [
+    {
+      "label": "Closing ARR",
+      "value": "$15.49M",
+      "sub": "October"
+    },
+    {
+      "label": "SMB net revenue retention",
+      "value": "87.4%",
+      "sub": "96.4% in June"
+    },
+    {
+      "label": "Signed but not billed",
+      "value": "$103.1k",
+      "sub": "three closed-won deals"
+    },
+    {
+      "label": "ARR at renewal risk",
+      "value": "$728.6k",
+      "sub": "8 accounts (6 high)"
+    }
+  ],
+  "chart": {
+    "title": "SMB net revenue retention",
+    "subtitle": "Trailing 12 months",
+    "type": "line",
+    "format": "percent",
+    "labels": [
+      "Nov 25",
+      "Dec 25",
+      "Jan 26",
+      "Feb 26",
+      "Mar 26",
+      "Apr 26",
+      "May 26",
+      "Jun 26",
+      "Jul 26",
+      "Aug 26",
+      "Sep 26",
+      "Oct 26"
+    ],
+    "values": [
+      0.992,
+      0.9977,
+      0.9861,
+      0.9894,
+      0.9862,
+      0.9705,
+      0.9653,
+      0.9635,
+      0.9416,
+      0.9179,
+      0.8913,
+      0.874
+    ]
+  },
+  "table": {
+    "title": "Renewals at risk",
+    "columns": [
+      "Account",
+      "Segment",
+      "ARR",
+      "Usage change",
+      "Tickets (30 days)",
+      "Risk"
+    ],
+    "rows": [
+      [
+        "Halcyon Health",
+        "Enterprise",
+        "$197.3k",
+        "-35.6%",
+        "16",
+        "High"
+      ],
+      [
+        "North Labs Systems",
+        "Enterprise",
+        "$183.2k",
+        "-40.2%",
+        "12",
+        "High"
+      ],
+      [
+        "Maple Clinics Holdings",
+        "Mid-market",
+        "$69.7k",
+        "-34.2%",
+        "4",
+        "High"
+      ],
+      [
+        "North Schools Group",
+        "Mid-market",
+        "$68.8k",
+        "-37.8%",
+        "5",
+        "High"
+      ],
+      [
+        "Blue Staffing Systems",
+        "Mid-market",
+        "$52.0k",
+        "-33.9%",
+        "5",
+        "High"
+      ],
+      [
+        "Copper Dental Systems",
+        "Mid-market",
+        "$50.3k",
+        "-40.1%",
+        "6",
+        "High"
+      ],
+      [
+        "Pine Group",
+        "Mid-market",
+        "$54.1k",
+        "-34.3%",
+        "3",
+        "Medium"
+      ],
+      [
+        "Harbor Foods Collective",
+        "Mid-market",
+        "$53.2k",
+        "-34.4%",
+        "3",
+        "Medium"
+      ]
+    ]
+  },
+  "workflow": [
+    "Stripe billing, HubSpot deals, product usage and support tickets land in the warehouse",
+    "dbt builds the ARR bridge (tested to reconcile every month) and retention by segment",
+    "Every closed-won deal is checked against billing; gaps become an exception list",
+    "Renewal risk uses rules a CSM can read, not a black box",
+    "Claude drafts the monthly brief from the computed facts"
+  ],
+  "note": {
+    "title": "Revenue and retention brief",
+    "markdown": "# Revenue and retention brief: October\n\n## ARR\nARR closed October at $15.49M, up from $15.25M. New ARR of $319.7k and expansion of $113.4k outweighed churn of $133.8k and contraction of $54.5k.\n\n## Retention\nNet revenue retention is 98.0% overall, down from 101.7% in June, and gross retention is 90.3%. The decline is concentrated in SMB, where NRR fell to 87.4% from 96.4% and gross retention is 80.4%. SMB contraction from July to October totals $173.0k of ARR, against $34.3k from March to June. That timing is consistent with the July packaging change. Billing shows the seat reductions but not the reason, so it is worth confirming with the SMB team. Mid-market (102.7%) and Enterprise (104.3%) remain above 100%.\n\n## Billing exceptions\nThree closed-won deals in HubSpot have no subscription in billing: Granite Clinics West ($52.0k), Summit Couriers ($38.5k) and Willow Dental Group ($12.6k), together $103.1k of ARR that is not yet counted. Blue Couriers Co is billed at $66.9k against an $83.6k deal, $16.7k short.\n\n## Renewals at risk\nThere are 8 accounts with $728.6k of ARR at risk: 6 high and 2 medium.\n- **Halcyon Health** ($197.3k): active users per seat are down 35.6%, with 16 support tickets in the last month against 3.3 a month before, mostly integration errors.\n- **North Labs Systems** ($183.2k, renewing first): usage is down 40.2%, with 12 tickets against 3.7 a month before.\n- **Four mid-market accounts at high risk:** Maple Clinics Holdings ($69.7k), North Schools Group ($68.8k), Blue Staffing Systems ($52.0k) and Copper Dental Systems ($50.3k). Usage is down between 33.9% and 40.1%, and support tickets have jumped.\n- **Pine Group and Harbor Foods Collective (medium):** usage is down 34.3% and 34.4%, with normal ticket volume.\n\n## For discussion\n- Whether to review the July packaging change for SMB, given the contraction since then.\n- Who creates the three missing subscriptions and corrects the Blue Couriers Co amount.\n- Executive calls with Halcyon Health and North Labs Systems before their renewals. Integration errors lead the tickets at most at-risk accounts: is there a common cause?\n\nGenerated from billing, CRM, product and support data; reviewed by <reviewer> before circulation."
+  },
+  "sources": [
+    "Stripe subscriptions",
+    "HubSpot deals",
+    "Product usage",
+    "Support tickets"
+  ],
+  "models": [
+    "fct_mrr_movements",
+    "fct_arr_bridge_monthly",
+    "fct_net_revenue_retention",
+    "fct_crm_billing_reconciliation",
+    "fct_churn_risk"
+  ],
+  "disclaimer": "Illustrative example built on synthetic data for a fictional company. Not a client result.",
+  "checks": [
+    "Source data shaped like the real systems, generated with a fixed seed",
+    "dbt models with tests (reconciliations, uniqueness, accepted values)",
+    "Automated check that each planted business story is visible in the data",
+    "AI note checked: every number must exist in the computed facts",
+    "Human review before anything is circulated"
+  ]
+}

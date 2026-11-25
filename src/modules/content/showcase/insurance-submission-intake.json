@@ -1,0 +1,172 @@
+{
+  "slug": "insurance-submission-intake",
+  "industrySlug": "financial-services",
+  "title": "Book-of-business dashboard and AI submission intake",
+  "company": "Ashgrove Specialty, a fictional MGA writing commercial lines",
+  "buyer": "Head of underwriting, COO, CFO",
+  "question": "Where is the book deteriorating, and can submission intake be automated without silent errors?",
+  "summary": "Loss ratio, retention and claims aging from policy and claims data, plus an extraction workflow that reads broker submissions, scores its own confidence and routes anything uncertain to a person.",
+  "kpis": [
+    {
+      "label": "Commercial Auto loss ratio",
+      "value": "87.5%",
+      "sub": "55.4% in 2025"
+    },
+    {
+      "label": "Delmar retention since July",
+      "value": "64.2%",
+      "sub": "83.9% before"
+    },
+    {
+      "label": "Extraction accuracy",
+      "value": "99.2%",
+      "sub": "129 of 130 fields"
+    },
+    {
+      "label": "Silent errors",
+      "value": "0",
+      "sub": "wrong values that were not flagged"
+    }
+  ],
+  "chart": {
+    "title": "Commercial Auto loss ratio",
+    "subtitle": "By accident quarter, complete quarters only (recent quarters still developing)",
+    "type": "line",
+    "format": "percent",
+    "labels": [
+      "Q1 2025",
+      "Q2 2025",
+      "Q3 2025",
+      "Q4 2025",
+      "Q1 2026",
+      "Q2 2026",
+      "Q3 2026"
+    ],
+    "values": [
+      0.648,
+      0.4786,
+      0.6417,
+      0.4546,
+      0.6248,
+      0.7537,
+      0.9954
+    ]
+  },
+  "table": {
+    "title": "Review queue",
+    "columns": [
+      "Document",
+      "Field",
+      "Extracted",
+      "Confidence",
+      "Why it was flagged"
+    ],
+    "rows": [
+      [
+        "SUB-2703",
+        "annual revenue",
+        "$4,200,000",
+        "medium",
+        "stated in words as 'approx. 4.2 million dollars'; approximate"
+      ],
+      [
+        "SUB-2703",
+        "requested effective date",
+        "2027-02-01",
+        "low",
+        "02/01/2027: 1 Feb (US) or 2 Jan; confirm with broker"
+      ],
+      [
+        "SUB-2704",
+        "requested effective date",
+        "2027-04-03",
+        "low",
+        "04/03/2027: 3 Apr (US) or 4 Mar; confirm with broker"
+      ],
+      [
+        "SUB-2706",
+        "employee count",
+        "85",
+        "medium",
+        "broker note (14 Nov) updates headcount to 85, replacing 70 in the letter"
+      ],
+      [
+        "SUB-2708",
+        "requested effective date",
+        "2027-02-01",
+        "low",
+        "02/01/2027: 1 Feb (US) or 2 Jan; confirm with broker"
+      ],
+      [
+        "SUB-2708",
+        "losses 5yr count",
+        "missing",
+        "low",
+        "not provided: 'loss runs have been requested and will follow'"
+      ],
+      [
+        "SUB-2708",
+        "losses 5yr incurred",
+        "missing",
+        "low",
+        "not provided: loss runs to follow"
+      ],
+      [
+        "SUB-2709",
+        "requested effective date",
+        "2027-01-10",
+        "low",
+        "01/10/2027: 10 Jan (US) or 1 Oct; confirm with broker"
+      ],
+      [
+        "SUB-2710",
+        "requested effective date",
+        "2027-03-01",
+        "low",
+        "03/01/2027: 1 Mar (US) or 3 Jan; confirm with broker"
+      ]
+    ]
+  },
+  "documents": [
+    "/examples/insurance/SUB-2701.pdf",
+    "/examples/insurance/SUB-2702.pdf",
+    "/examples/insurance/SUB-2703.pdf",
+    "/examples/insurance/SUB-2704.pdf",
+    "/examples/insurance/SUB-2705.pdf",
+    "/examples/insurance/SUB-2706.pdf",
+    "/examples/insurance/SUB-2707.pdf",
+    "/examples/insurance/SUB-2708.pdf",
+    "/examples/insurance/SUB-2709.pdf",
+    "/examples/insurance/SUB-2710.pdf"
+  ],
+  "workflow": [
+    "Broker submissions arrive as PDFs in different layouts",
+    "Claude extracts each field with a confidence level and a note",
+    "Anything low-confidence or missing goes to a review queue; nothing is guessed",
+    "Accuracy is scored against ground truth; silent errors are the headline metric",
+    "Accepted values flow to underwriting alongside the book-of-business view"
+  ],
+  "note": {
+    "title": "Book and intake brief",
+    "markdown": "# Book and intake brief: as of 22 Nov\n\n## Loss ratio\n**Commercial Auto is deteriorating.** Its loss ratio was 87.5% on losses from April to September, against 55.4% in 2025. The line has 86 open claims carrying $2.95M of case reserves, and 20 of them have been open for more than six months. Recent accident months are immature, so this ratio is more likely to rise than fall as claims develop.\n\nWorkers Compensation rose to 60.5% from 46.4%. Commercial Property was flat at 66.2% (66.3% in 2025), and General Liability improved to 51.3% from 63.4%.\n\n## Producer retention\nDelmar Insurance Brokers renewed 64.2% of its 134 policies expiring since July, against 83.9% before July and 81.4% for the other producers over the same period.\n\n## Submission intake\nThe extraction workflow read 10 broker submissions. 129 of 130 fields (99.2%) matched the source document, with **no silent errors**: the one wrong value was flagged for review. Five submissions went straight through, and five are in the review queue with 9 flagged fields:\n- **Saltmarsh Seafood Processing (SUB-2704):** the effective date can be read two ways. The extracted reading is wrong and is correctly held for review.\n- **Orchard Hill Senior Living (SUB-2708):** no loss history; the broker says loss runs will follow.\n- **Halloway Freight Lines (SUB-2703):** revenue was given only in words (extracted as $4.2M), and the date can be read two ways.\n- **Kestrel Landscaping Group (SUB-2709)** and **Mercer Street Hotels LLC (SUB-2710):** dates that could be read two ways.\n\nCobbler Lane Bakery Co (SUB-2706) went through with a note: a broker note updated its headcount to 85.\n\n## For discussion\n- A Commercial Auto review: rate adequacy, the open-claim reserves, and whether to tighten appetite for the line.\n- A retention conversation with Delmar Insurance Brokers.\n- Recording each broker's date convention so that unambiguous dates stop being flagged; most date flags this week were correct under the US reading.\n\nGenerated from policy, claims and submission data; reviewed by <reviewer> before circulation."
+  },
+  "sources": [
+    "Policy administration export",
+    "Claims with case reserves",
+    "Broker submission PDFs"
+  ],
+  "models": [
+    "fct_earned_premium_monthly",
+    "fct_loss_ratio_quarterly",
+    "fct_retention_quarterly",
+    "fct_claims_aging"
+  ],
+  "disclaimer": "Illustrative example built on synthetic data for a fictional company. Not a client result.",
+  "checks": [
+    "Source data shaped like the real systems, generated with a fixed seed",
+    "dbt models with tests (reconciliations, uniqueness, accepted values)",
+    "Automated check that each planted business story is visible in the data",
+    "AI note checked: every number must exist in the computed facts",
+    "Human review before anything is circulated"
+  ]
+}

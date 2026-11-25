@@ -1,4 +1,5 @@
 import { siteConfig } from "@/lib/site-config";
+import { founders } from "@/modules/content/founders-content";
 
 export function serviceJsonLd(service: { title: string; summary: string; slug: string }) {
   return {
@@ -26,7 +27,15 @@ export const organizationJsonLd = {
   email: siteConfig.email,
   foundingDate: "2024",
   areaServed: "Worldwide",
-  sameAs: ["https://www.upwork.com/freelancers/ankitajaiswal"],
+  founder: Object.values(founders).map((founder) => {
+    const profiles = [founder.linkedinUrl, founder.upworkUrl].filter(Boolean);
+    return {
+      "@type": "Person",
+      name: founder.name,
+      jobTitle: founder.principalTitle,
+      ...(profiles.length > 0 ? { sameAs: profiles } : {}),
+    };
+  }),
   serviceType: [
     "Business Intelligence Consulting",
     "Data Engineering",

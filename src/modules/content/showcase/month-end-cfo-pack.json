@@ -1,0 +1,152 @@
+{
+  "slug": "month-end-cfo-pack",
+  "industrySlug": "private-equity",
+  "title": "Month-end management pack with variance commentary",
+  "company": "Harbour Foods, a fictional food manufacturer in the same portfolio",
+  "buyer": "CFO, operating partner",
+  "question": "Why is EBITDA behind budget, and is anything missing from the numbers?",
+  "summary": "Actual against budget for the month and year to date, built from the mapped trial balance. Costs on unmapped accounts are shown on their own line instead of disappearing from EBITDA.",
+  "kpis": [
+    {
+      "label": "October EBITDA",
+      "value": "$147.2k",
+      "sub": "budget $351.3k"
+    },
+    {
+      "label": "Gross margin",
+      "value": "24.8%",
+      "sub": "budget 31.5%"
+    },
+    {
+      "label": "YTD EBITDA",
+      "value": "$2.66M",
+      "sub": "budget $3.56M"
+    },
+    {
+      "label": "Unbudgeted cost found",
+      "value": "$46.7k",
+      "sub": "agency labour on an unmapped account"
+    }
+  ],
+  "chart": {
+    "title": "Harbour Foods gross margin",
+    "subtitle": "Monthly, 2026",
+    "type": "line",
+    "format": "percent",
+    "labels": [
+      "Jan 26",
+      "Feb 26",
+      "Mar 26",
+      "Apr 26",
+      "May 26",
+      "Jun 26",
+      "Jul 26",
+      "Aug 26",
+      "Sep 26",
+      "Oct 26"
+    ],
+    "values": [
+      0.3111,
+      0.2996,
+      0.3103,
+      0.3043,
+      0.2963,
+      0.2854,
+      0.2574,
+      0.2526,
+      0.2443,
+      0.2481
+    ]
+  },
+  "table": {
+    "title": "October: actual vs budget",
+    "columns": [
+      "Line",
+      "Actual",
+      "Budget",
+      "Variance"
+    ],
+    "rows": [
+      [
+        "Revenue",
+        "$2.11M",
+        "$2.14M",
+        "-$28.2k"
+      ],
+      [
+        "Cost of goods sold",
+        "$1.59M",
+        "$1.47M",
+        "-$122.0k"
+      ],
+      [
+        "Gross profit",
+        "$524.4k",
+        "$674.7k",
+        "-$150.3k"
+      ],
+      [
+        "Payroll",
+        "$199.7k",
+        "$192.8k",
+        "-$7.0k"
+      ],
+      [
+        "Occupancy",
+        "$32.0k",
+        "$32.1k",
+        "+$81.9"
+      ],
+      [
+        "Sales & marketing",
+        "$32.3k",
+        "$32.1k",
+        "-$146.5"
+      ],
+      [
+        "General & admin",
+        "$66.4k",
+        "$66.4k",
+        "-$30.0"
+      ],
+      [
+        "Temporary labour (account 6295-00, pending mapping)",
+        "$46.7k",
+        "$0.0",
+        "-$46.7k"
+      ],
+      [
+        "EBITDA",
+        "$147.2k",
+        "$351.3k",
+        "-$204.0k"
+      ]
+    ]
+  },
+  "workflow": [
+    "Trial balance mapped to the standard chart, budget loaded by line",
+    "Month and year-to-date variances computed, favourable or adverse",
+    "Claude drafts the commentary in order of variance size",
+    "Reviewed by the CFO before the pack goes to the board"
+  ],
+  "note": {
+    "title": "Variance commentary",
+    "markdown": "# Harbour Foods: October variance commentary\n\n**EBITDA was $147.2k against a budget of $351.3k: $204.0k (58.1%) adverse.** Year to date, EBITDA is $2.66M against $3.56M, $904.4k (25.4%) adverse.\n\n## The month, by size of variance\n- **Cost of goods sold: $122.0k adverse.** $1.59M against $1.47M budgeted. Gross margin was 24.8% against a budgeted 31.5%.\n- **Temporary labour: $46.7k adverse, unbudgeted.** Posted to account 6295-00, which is not yet mapped to the standard chart. It is included here so the pack's EBITDA carries every cost in the trial balance.\n- **Revenue: $28.2k (1.3%) adverse.** $2.11M against budget.\n- **Payroll: $7.0k adverse.** Occupancy, sales and marketing, and general and admin were in line with budget.\n\n## Year to date\nCost of goods sold is $472.4k adverse and revenue $379.0k below budget; gross margin is 28.1% against 31.5%. Overheads are favourable (payroll $8.2k, occupancy $6.9k, sales and marketing $8.3k, general and admin $15.1k), which offsets part of the $91.4k of unbudgeted temporary labour.\n\n## For discussion\n- Is the budgeted 31.5% gross margin still achievable for November and December, or should the forecast be reset?\n- Where should account 6295-00 map: direct labour within cost of goods sold, or overheads?\n- Is the agency labour expected to continue, and for how long?\n\nPrepared from the trial balance; reviewed by <reviewer> before circulation."
+  },
+  "sources": [
+    "Sage Intacct trial balance",
+    "FY2026 budget"
+  ],
+  "models": [
+    "int_pe__tb_mapped",
+    "fct_month_end_budget_vs_actual"
+  ],
+  "disclaimer": "Illustrative example built on synthetic data for a fictional company. Not a client result.",
+  "checks": [
+    "Source data shaped like the real systems, generated with a fixed seed",
+    "dbt models with tests (reconciliations, uniqueness, accepted values)",
+    "Automated check that each planted business story is visible in the data",
+    "AI note checked: every number must exist in the computed facts",
+    "Human review before anything is circulated"
+  ]
+}

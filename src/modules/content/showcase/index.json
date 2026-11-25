@@ -1,0 +1,100 @@
+[
+  {
+    "slug": "shopify-weekly-review",
+    "industrySlug": "shopify-ecommerce",
+    "title": "Weekly commerce review and Monday trading note",
+    "company": "Northgate Goods, a fictional DTC kitchen and home brand on Shopify",
+    "buyer": "Founder, CFO, head of growth",
+    "question": "Why did contribution margin fall while orders grew?",
+    "summary": "Shopify, ad platforms, email and 3PL billing joined into contribution after advertising, by channel and week. The Monday note explains what moved the margin, in order of impact.",
+    "headline": {
+      "label": "Net revenue",
+      "value": "$144.8k",
+      "sub": "-10.0% vs prior week"
+    }
+  },
+  {
+    "slug": "pe-portfolio-pack",
+    "industrySlug": "private-equity",
+    "title": "Portfolio KPI pack for operating partners",
+    "company": "Ridgeline Partners Fund II, a fictional fund with five portfolio companies on five accounting systems",
+    "buyer": "Operating partner, portfolio operations, CFO",
+    "question": "Which companies need attention this month, and can we trust the numbers?",
+    "summary": "Five trial balances from NetSuite, QuickBooks, Xero, Sage Intacct and SAP mapped to one chart of accounts, with covenant headroom, an EBITDA bridge and data-quality checks that block sign-off.",
+    "headline": {
+      "label": "Portfolio LTM revenue",
+      "value": "$83.49M",
+      "sub": "five companies"
+    }
+  },
+  {
+    "slug": "month-end-cfo-pack",
+    "industrySlug": "private-equity",
+    "title": "Month-end management pack with variance commentary",
+    "company": "Harbour Foods, a fictional food manufacturer in the same portfolio",
+    "buyer": "CFO, operating partner",
+    "question": "Why is EBITDA behind budget, and is anything missing from the numbers?",
+    "summary": "Actual against budget for the month and year to date, built from the mapped trial balance. Costs on unmapped accounts are shown on their own line instead of disappearing from EBITDA.",
+    "headline": {
+      "label": "October EBITDA",
+      "value": "$147.2k",
+      "sub": "budget $351.3k"
+    }
+  },
+  {
+    "slug": "plant-scorecard",
+    "industrySlug": "manufacturing",
+    "title": "Plant scorecard and weekly exception digest",
+    "company": "Keystone Precision Components, a fictional contract machine shop (6 CNC machines, 3 shifts)",
+    "buyer": "COO, plant director, maintenance lead",
+    "question": "Where is the plant losing capacity, and what are operators telling us that the codes miss?",
+    "summary": "OEE built from first principles out of MES shift data, a downtime Pareto, on-time-in-full by customer, and operator notes classified by AI so that symptoms logged as 'OTHER' are not lost.",
+    "headline": {
+      "label": "CNC-04 OEE",
+      "value": "58.9%",
+      "sub": "78.6% baseline"
+    }
+  },
+  {
+    "slug": "saas-revenue-retention",
+    "industrySlug": "saas",
+    "title": "ARR bridge, retention and renewal risk",
+    "company": "Lumenly, a fictional B2B SaaS company (~$15.5M ARR)",
+    "buyer": "CFO, VP Revenue, head of customer success",
+    "question": "Where is retention slipping, what revenue is missing from billing, and which renewals are at risk?",
+    "summary": "Billing as the source of truth for ARR, reconciled against CRM deals, with retention by segment and a transparent renewal-risk score built from product usage and support tickets.",
+    "headline": {
+      "label": "Closing ARR",
+      "value": "$15.49M",
+      "sub": "October"
+    }
+  },
+  {
+    "slug": "freight-invoice-audit",
+    "industrySlug": "logistics",
+    "title": "Freight invoice audit and dispute drafts",
+    "company": "Brookline Distribution, a fictional distributor shipping with four carriers",
+    "buyer": "COO, VP supply chain, CFO",
+    "question": "Are carriers billing what the contract says?",
+    "summary": "Every invoiced shipment re-priced against the contracted rate card, fuel terms and requested accessorials. Discrepancies are classified, totalled by carrier and turned into dispute drafts.",
+    "headline": {
+      "label": "Freight billed",
+      "value": "$3.23M",
+      "sub": "14,884 invoiced shipments"
+    }
+  },
+  {
+    "slug": "insurance-submission-intake",
+    "industrySlug": "financial-services",
+    "title": "Book-of-business dashboard and AI submission intake",
+    "company": "Ashgrove Specialty, a fictional MGA writing commercial lines",
+    "buyer": "Head of underwriting, COO, CFO",
+    "question": "Where is the book deteriorating, and can submission intake be automated without silent errors?",
+    "summary": "Loss ratio, retention and claims aging from policy and claims data, plus an extraction workflow that reads broker submissions, scores its own confidence and routes anything uncertain to a person.",
+    "headline": {
+      "label": "Commercial Auto loss ratio",
+      "value": "87.5%",
+      "sub": "55.4% in 2025"
+    }
+  }
+]

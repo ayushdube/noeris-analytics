@@ -1,3 +1,5 @@
+import { founders } from "@/modules/content/founders-content";
+
 export type TeamGroup = "founder" | "specialist";
 
 export interface TeamProfile {
@@ -9,6 +11,12 @@ export interface TeamProfile {
   /** Public biography. Keep free of private contact details. */
   bio: string;
   group: TeamGroup;
+  /** Public LinkedIn profile. Shown as a link when set. */
+  linkedinUrl?: string;
+  /** Upwork profile. Shown as a link when set. */
+  upworkUrl?: string;
+  /** Path to a headshot in /public (e.g. "/team/ankita.jpg"). Shown when set. */
+  photo?: string;
 }
 
 export const teamProfiles: TeamProfile[] = [
@@ -18,8 +26,10 @@ export const teamProfiles: TeamProfile[] = [
     title: "Principal Consultant, Analytics Delivery",
     summary:
       "Leads analytics delivery across executive reporting, Power BI, and Spotfire, with the business definition of each metric kept in front of the build.",
-    bio: "8 years delivering Power BI and Spotfire solutions across oil & gas, life sciences, financial services, and eCommerce. Microsoft Certified Data Analyst. Previously at Syneos Health, Accenture, and TCS - delivering for clients including Chevron and Hess.",
+    bio: "11+ years delivering Power BI and Spotfire solutions across oil & gas, life sciences, financial services, and eCommerce. Microsoft Certified Data Analyst. Previously at Syneos Health, Accenture, and TCS - delivering for clients including Chevron and Hess.",
     group: "founder",
+    linkedinUrl: founders.ankita.linkedinUrl,
+    upworkUrl: founders.ankita.upworkUrl,
   },
   {
     id: "ayush",
@@ -27,7 +37,7 @@ export const teamProfiles: TeamProfile[] = [
     title: "Principal Consultant, Architecture & Engineering",
     summary:
       "Leads data platform and AI engineering: cloud architecture, pipelines, and the controls required to run an analytical workflow.",
-    bio: "Specialises in data engineering, agentic AI systems, and modern analytics architecture. Leads infrastructure, pipeline design, and DevOps for Noeris engagements.",
+    bio: "11+ years in data engineering, cloud platforms, and modern analytics architecture, now focused on agentic AI systems. Leads infrastructure, pipeline design, and DevOps for Noeris engagements.",
     group: "founder",
   },
   {

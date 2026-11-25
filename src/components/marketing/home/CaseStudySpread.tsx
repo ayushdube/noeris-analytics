@@ -23,53 +23,58 @@ interface DashboardTab {
   };
 }
 
+/**
+ * Illustrative views of the featured engagement (production and environmental
+ * compliance analytics for an energy operator). Values are sample data, not
+ * client figures; panel titles say so.
+ */
 const dashboardTabs: DashboardTab[] = [
   {
-    id: "pnl",
-    label: "P&L",
-    title: "Executive P&L · Live",
+    id: "production",
+    label: "Production",
+    title: "Production by well · Illustrative",
     kpis: [
-      { label: "Revenue", value: "$4.2M", delta: "+12%" },
-      { label: "Margin", value: "34.8%", delta: "+2.1pt" },
-      { label: "Channels", value: "6", delta: "Unified" },
+      { label: "Wells reporting", value: "24", delta: "All sites" },
+      { label: "Daily volume", value: "18.6k BOE", delta: "+3.1%" },
+      { label: "Data refresh", value: "Hourly", delta: "Automated" },
     ],
     chart: {
-      title: "Contribution margin by channel",
-      subtitle: "Last 12 weeks",
+      title: "Production volume by well",
+      subtitle: "Last 12 days",
       type: "bar",
-      data: [42, 58, 35, 72, 48, 65, 52, 78, 44, 68, 55, 82],
+      data: [62, 58, 66, 71, 64, 69, 73, 68, 75, 72, 70, 77],
     },
   },
   {
-    id: "ops",
-    label: "Ops",
-    title: "Operations · Live",
+    id: "air",
+    label: "Air quality",
+    title: "Perimeter air monitoring · Illustrative",
     kpis: [
-      { label: "Inventory turns", value: "8.4×", delta: "+1.2×" },
-      { label: "Fulfillment SLA", value: "97.2%", delta: "+3.4pt" },
-      { label: "CAC", value: "$38", delta: "−11%" },
+      { label: "Sensors online", value: "48", delta: "Perimeter" },
+      { label: "Threshold breaches", value: "0", delta: "Last 7 days" },
+      { label: "Early alerts", value: "3", delta: "Before breach" },
     ],
     chart: {
-      title: "Order fulfillment rate",
-      subtitle: "Daily · 30 days",
+      title: "VOC readings vs. threshold",
+      subtitle: "Hourly · 30 readings",
       type: "line",
-      data: [88, 90, 89, 92, 91, 94, 93, 95, 94, 96, 95, 97, 96, 97, 98, 97, 96, 97, 98, 97, 98, 99, 97, 98, 97, 98, 99, 98, 97, 98],
+      data: [32, 35, 31, 38, 42, 40, 37, 45, 52, 48, 44, 41, 39, 43, 47, 55, 61, 58, 50, 46, 42, 40, 38, 41, 44, 39, 36, 38, 35, 33],
     },
   },
   {
-    id: "growth",
-    label: "Growth",
-    title: "Growth metrics · Live",
+    id: "compliance",
+    label: "Compliance",
+    title: "Compliance reporting · Illustrative",
     kpis: [
-      { label: "LTV", value: "$284", delta: "+18%" },
-      { label: "LTV : CAC", value: "7.5×", delta: "+0.9×" },
-      { label: "Repeat rate", value: "41%", delta: "+6pt" },
+      { label: "Source systems", value: "5", delta: "Consolidated" },
+      { label: "Report pack", value: "On demand", delta: "Self-serve" },
+      { label: "Audit trail", value: "Full", delta: "Per reading" },
     ],
     chart: {
-      title: "New vs. returning revenue",
-      subtitle: "Weekly split",
+      title: "Readings captured for reporting",
+      subtitle: "Weekly",
       type: "area",
-      data: [28, 32, 30, 38, 35, 42, 40, 48, 44, 52, 50, 58],
+      data: [30, 34, 41, 46, 52, 57, 61, 66, 70, 74, 79, 84],
     },
   },
 ];
@@ -322,10 +327,10 @@ export function CaseStudySpread() {
               transition={{ duration: 1, delay: 0.2 }}
             >
               <p className="text-balance font-display text-2xl font-medium tracking-[-0.02em] text-muted sm:text-3xl md:text-4xl">
-                From monthly reporting cycles
+                From reactive compliance reporting
               </p>
               <p className="mt-4 max-w-full text-balance font-display text-[clamp(1.75rem,7vw,4.5rem)] font-medium leading-[0.95] tracking-[-0.04em] text-foreground">
-                to daily P&amp;L visibility.
+                to real-time well visibility.
               </p>
               {study.impact[0] && (
                 <p className="mt-8 max-w-full text-balance font-mono text-xs uppercase tracking-[0.1em] text-accent sm:text-sm sm:tracking-[0.15em]">
@@ -351,7 +356,7 @@ export function CaseStudySpread() {
               transition={{ delay: 0.6 }}
             >
               <Link
-                href="/case-studies"
+                href={`/case-studies/${study.slug}`}
                 className="mt-6 inline-flex text-sm text-accent transition-colors duration-500 hover:text-accent-foreground"
               >
                 Read case study →

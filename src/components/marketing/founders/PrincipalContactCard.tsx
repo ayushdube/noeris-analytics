@@ -1,3 +1,4 @@
+import { ProfileLinks } from "@/components/marketing/founders/ProfileExtras";
 import { getFounder, type FounderId } from "@/modules/content/founders-content";
 import { cn } from "@/lib/utils";
 
@@ -32,6 +33,12 @@ export function PrincipalContactCard({ founderId, className }: PrincipalContactC
           </span>
         ))}
       </div>
+      <ProfileLinks
+        name={founder.name}
+        linkedinUrl={founder.linkedinUrl}
+        upworkUrl={founder.upworkUrl}
+        className="mt-6"
+      />
     </div>
   );
 }

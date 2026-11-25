@@ -15,7 +15,19 @@ export function EngagementLead({ founderId, className }: EngagementLeadProps) {
       <span className="mx-2 text-muted/40" aria-hidden="true">
         ·
       </span>
-      <span className="text-muted-foreground">{founder.name}</span>
+      {founder.linkedinUrl ? (
+        <a
+          href={founder.linkedinUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-muted-foreground underline-offset-4 transition-colors duration-500 hover:text-accent-foreground hover:underline"
+          aria-label={`${founder.name} on LinkedIn`}
+        >
+          {founder.name}
+        </a>
+      ) : (
+        <span className="text-muted-foreground">{founder.name}</span>
+      )}
     </p>
   );
 }

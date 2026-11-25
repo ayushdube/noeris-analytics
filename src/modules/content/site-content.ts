@@ -63,15 +63,15 @@ export const services = [
     slug: "ai-analytics-agents",
     title: "AI Analytics, Agents & Automation",
     summary:
-      "Bring AI into existing enterprise data and workflows to automate analysis, uncover insights, and reduce repetitive business operations. Claude and ChatGPT workflows stay grounded in approved data, calculations are checked in the warehouse or semantic model, and a person stays in the loop for consequential output.",
+      "Bring AI into your existing data and workflows to automate analysis, uncover insights, and reduce repetitive business operations. Claude and ChatGPT workflows stay grounded in approved data, calculations are checked in the warehouse or semantic model, and a person stays in the loop for consequential output.",
     seoDescription:
-      "Agentic AI for enterprises, built on approved business data. Natural language analytics, AI-powered reporting, anomaly detection, workflow automation, and AI agents integrated with Power BI, warehouses, and existing enterprise systems, with validation, permissions, and human review.",
+      "Agentic AI for growing and mid-market companies, built on approved business data. Natural language analytics, AI-powered reporting, anomaly detection, workflow automation, and AI agents integrated with Power BI, warehouses, and existing enterprise systems, with validation, permissions, and human review.",
     whatsIncluded: [
       "Natural-language analytics over approved datasets",
       "Intelligent data assistants over warehouses and semantic models",
       "AI-powered reporting: management commentary and variance notes",
       "Anomaly detection and automated business insights",
-      "AI agents and workflow automation connected to existing enterprise systems",
+      "AI agents and workflow automation connected to your existing business systems",
       "Permissions, evaluation tests, and review workflows",
     ],
     audienceTag: "Finance, operations, and leadership teams",
@@ -137,9 +137,9 @@ export const services = [
     slug: "business-intelligence",
     title: "Business Intelligence",
     summary:
-      "Transform enterprise data into consistent business intelligence, giving leadership teams visibility into financial and operational performance. We build the semantic models and metric definitions underneath, not just the visuals on top.",
+      "Turn your business data into consistent business intelligence, giving leadership teams visibility into financial and operational performance. We build the semantic models and metric definitions underneath, not just the visuals on top.",
     seoDescription:
-      "Enterprise business intelligence and Power BI consulting: semantic modeling, DAX and Power Query, financial reporting, operational analytics, and executive dashboards built on reliable, reconcilable data models.",
+      "Business intelligence and Power BI consulting for growing and mid-market companies: semantic modeling, DAX and Power Query, financial reporting, operational analytics, and executive dashboards built on reliable, reconcilable data models.",
     whatsIncluded: [
       "Power BI semantic modeling, DAX, and Power Query",
       "KPI framework and metric definition alignment",
@@ -172,9 +172,9 @@ export const services = [
     slug: "data-engineering",
     title: "Data Engineering",
     summary:
-      "Build reliable, scalable enterprise data foundations that connect fragmented business systems and make trusted information accessible across the organization.",
+      "Build reliable, scalable data foundations that connect fragmented business systems and make trusted information accessible across the organization.",
     seoDescription:
-      "Enterprise data engineering and data warehouse consulting: data architecture, data integration, ETL/ELT pipelines, cloud data platforms on Snowflake, Databricks, Azure, and AWS, data transformation, data quality, and governance.",
+      "Data engineering and data warehouse consulting for growing and mid-market companies: data architecture, data integration, ETL/ELT pipelines, cloud data platforms on Snowflake, Databricks, Azure, and AWS, data transformation, data quality, and governance.",
     whatsIncluded: [
       "Data architecture for warehouses and lakehouses",
       "Source system integration and ETL/ELT pipelines",
@@ -267,10 +267,10 @@ export const services = [
       "AI agents that query approved data, surface anomalies, and draft narrative summaries - reducing manual reporting work while a person reviews consequential output.",
     whatsIncluded: [
       "End-to-end agentic pipeline architecture",
-      "Data monitoring agents connected to your warehouse and enterprise systems",
+      "Data monitoring agents connected to your warehouse and business systems",
       "LLM integration with production-grade guardrails",
     ],
-    audienceTag: "Enterprises automating reporting & monitoring workflows",
+    audienceTag: "Companies automating reporting & monitoring workflows",
     deliverables: [
       "Agentic monitoring pipelines",
       "Autonomous anomaly agents",
@@ -429,6 +429,14 @@ export const industries: Industry[] = [
         quote: "[CLIENT QUOTE]",
         attribution: "Head of eCommerce, DTC Brand",
       },
+      dashboardPreview: {
+        chartType: "bar",
+        metrics: [
+          { label: "Contribution margin", value: "31.5%" },
+          { label: "LTV : CAC", value: "3.2×" },
+          { label: "Fulfillment SLA", value: "96.8%" },
+        ],
+      },
       dataSources: [
         "Shopify",
         "Meta Ads",
@@ -483,6 +491,14 @@ export const industries: Industry[] = [
           "She consistently goes above and beyond to deliver outstanding results on any project, regardless of its complexity.",
         attribution: "Analytics Lead, Enterprise Client",
       },
+      dashboardPreview: {
+        chartType: "bar",
+        metrics: [
+          { label: "OEE", value: "71.4%" },
+          { label: "Scrap rate", value: "2.3%" },
+          { label: "On-time delivery", value: "94.1%" },
+        ],
+      },
       dataSources: [
         "SAP",
         "OSIsoft PI",
@@ -536,6 +552,14 @@ export const industries: Industry[] = [
           "She has exceptional PowerBI skills and delivered a high-quality solution tailored to our needs - her proactive approach made a real impact to our customers.",
         attribution: "Head of Product, B2B SaaS Platform",
       },
+      dashboardPreview: {
+        chartType: "bar",
+        metrics: [
+          { label: "Net revenue retention", value: "108%" },
+          { label: "Logo churn", value: "1.4% / mo" },
+          { label: "CAC payback", value: "16 mo" },
+        ],
+      },
       dataSources: [
         "Stripe",
         "HubSpot",
@@ -588,6 +612,14 @@ export const industries: Industry[] = [
       socialProof: {
         quote: "[CLIENT QUOTE]",
         attribution: "CFO, Regional Health System",
+      },
+      dashboardPreview: {
+        chartType: "bar",
+        metrics: [
+          { label: "Revenue cycle days", value: "41" },
+          { label: "Denial rate", value: "6.2%" },
+          { label: "Utilization rate", value: "78%" },
+        ],
       },
       dataSources: [
         "Epic",
@@ -658,6 +690,14 @@ export const industries: Industry[] = [
         quote: "[CLIENT QUOTE]",
         attribution: "Head of FP&A, Mid-Market Bank",
       },
+      dashboardPreview: {
+        chartType: "bar",
+        metrics: [
+          { label: "Loss ratio", value: "64.2%" },
+          { label: "Claims cycle time", value: "11.5 days" },
+          { label: "NIM", value: "3.1%" },
+        ],
+      },
       dataSources: [
         "Temenos",
         "Finastra",
@@ -714,6 +754,14 @@ export const industries: Industry[] = [
       socialProof: {
         quote: "[CLIENT QUOTE]",
         attribution: "VP Supply Chain, National 3PL Provider",
+      },
+      dashboardPreview: {
+        chartType: "bar",
+        metrics: [
+          { label: "On-time delivery", value: "95.6%" },
+          { label: "Cost per mile", value: "$2.41" },
+          { label: "Dock-to-stock", value: "6.5 hrs" },
+        ],
       },
       dataSources: [
         "SAP TM",
@@ -781,6 +829,14 @@ export const industries: Industry[] = [
       socialProof: {
         quote: "[CLIENT QUOTE]",
         attribution: "Operating Partner, Mid-Market PE Firm",
+      },
+      dashboardPreview: {
+        chartType: "bar",
+        metrics: [
+          { label: "EBITDA margin", value: "18.4%" },
+          { label: "Working capital days", value: "42" },
+          { label: "Revenue growth", value: "+9.6%" },
+        ],
       },
       dataSources: [
         "SAP",
@@ -1074,7 +1130,7 @@ export const caseStudies: CaseStudy[] = [
     clientFeedback:
       "It was a pleasure working with Ankita on our PowerBI integration project. She has exceptional PowerBI skills and delivered a high-quality solution tailored to our needs. Beyond that, she also helped us significantly improve our APIs, which was a huge bonus. Her technical expertise is impressive, and her proactive approach to improve existing dashboards and help build a visualisation storyboard made a real impact to our customers. Communication was smooth, and she kept us updated throughout. Ankita is professional, reliable, and a great collaborator.",
     clientFeedbackAttribution:
-      "Client, PowerBI Integration Specialist engagement (Upwork, 5.0 ★)",
+      "Client, PowerBI Integration Specialist engagement (Upwork)",
     engagementSource: "upwork",
   },
   {
@@ -1102,7 +1158,7 @@ export const caseStudies: CaseStudy[] = [
     engagementLead: "ankita",
     clientFeedback:
       "Ankita is a seasoned Power BI developer, she is able to deliver quality output in the agreed timeframe.",
-    clientFeedbackAttribution: "Client, Power BI dashboard for S360 survey (Upwork, 5.0 ★)",
+    clientFeedbackAttribution: "Client, Power BI dashboard for S360 survey (Upwork)",
     engagementSource: "upwork",
   },
   {
@@ -1130,7 +1186,7 @@ export const caseStudies: CaseStudy[] = [
     engagementLead: "ankita",
     clientFeedback:
       "Ankita was a pleasure to work with, and got us to a much better solution than we originally asked for!",
-    clientFeedbackAttribution: "Client, Spotfire Development Phase 2 (Upwork, 5.0 ★)",
+    clientFeedbackAttribution: "Client, Spotfire Development Phase 2 (Upwork)",
     engagementSource: "upwork",
   },
 ];

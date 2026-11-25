@@ -25,18 +25,16 @@ export function KpiDashboardPreview({
   chartData = defaultChartData,
   chartType = "bar",
 }: KpiDashboardPreviewProps) {
+  // Without explicit sample metrics, show the KPI names as tracked measures
+  // rather than attaching invented numbers to them.
   const previewMetrics =
-    metrics ??
-    kpis.slice(0, 3).map((label, i) => {
-      const samples = ["↑ 12%", "94.2%", "8.4×", "↓ 18%", "$2.1M", "97%"];
-      return { label, value: samples[i % samples.length] };
-    });
+    metrics ?? kpis.slice(0, 3).map((label) => ({ label, value: "Tracked" }));
 
   return (
     <VisualFrame aspect="wide" className="min-w-0">
       <div className="mb-4 flex min-w-0 items-center justify-between gap-2">
         <p className="min-w-0 truncate text-label">{title}</p>
-        <span className="shrink-0 text-label text-label-sm opacity-60">Live preview</span>
+        <span className="shrink-0 text-label text-label-sm opacity-60">Illustrative</span>
       </div>
 
       <div className="flex min-w-0 flex-1 flex-col justify-between">

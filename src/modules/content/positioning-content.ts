@@ -23,7 +23,7 @@ export const serviceLines: ServiceLine[] = [
     id: "ai-analytics",
     title: "AI Analytics, Agents & Automation",
     summary:
-      "Bring AI into the data and workflows you already run: ask questions of approved data, automate reporting and analysis, and connect AI agents to existing enterprise systems.",
+      "Bring AI into the data and workflows you already run: ask questions of approved data, automate reporting and analysis, and connect AI agents to the business systems you already use.",
     href: "/services/ai-analytics-agents",
     practices: [
       { href: "/services/ai-analytics-agents", label: "AI analytics & agents" },
@@ -47,6 +47,7 @@ export interface EngagementOffer {
   summary: string;
   deliverables: string[];
   href?: string;
+  hrefLabel?: string;
 }
 
 export const engagementOffers: EngagementOffer[] = [
@@ -61,6 +62,8 @@ export const engagementOffers: EngagementOffer[] = [
       "Technical feasibility and risk review",
       "Prioritized implementation roadmap",
     ],
+    href: "/diagnostic",
+    hrefLabel: "What the diagnostic covers →",
   },
   {
     id: "implementation",

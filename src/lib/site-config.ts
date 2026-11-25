@@ -4,7 +4,7 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://noeris.io",
   tagline: "Past the Noise",
   description:
-    "Noeris helps enterprises transform fragmented business data into reliable intelligence, actionable insights, and automated business workflows.",
+    "Noeris helps growing companies transform fragmented business data into reliable intelligence, actionable insights, and automated business workflows.",
   email: "hello@noeris.io",
   bookingCtaLabel: "Talk to a Principal Consultant",
   heroProofPoint: {

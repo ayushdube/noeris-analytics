@@ -18,9 +18,9 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/site-config";
 import { organizationJsonLd } from "@/lib/seo/json-ld";
 
-const homepageTitle = "AI-Native Enterprise Intelligence & Automation | Noeris Analytics";
+const homepageTitle = "AI-Native Intelligence & Automation for Growing Companies | Noeris Analytics";
 const homepageDescription =
-  "AI-native enterprise intelligence and automation partner: data engineering, Power BI, AI analytics and agents, and managed analytics—with validation and governed access.";
+  "AI-native intelligence and automation partner for growing companies: data engineering, Power BI, AI analytics and agents, and managed analytics—with validation and governed access.";
 const homepageOgDescription =
   "From fragmented data to reliable intelligence and automated workflows. Data engineering, business intelligence, and AI automation for teams that need numbers they can trust.";
 

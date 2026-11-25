@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { ProfileLinkedIn, ProfilePhoto } from "@/components/marketing/founders/ProfileExtras";
 import { AnimateIn } from "@/components/visuals/AnimateIn";
 import { getTeamProfiles } from "@/modules/content/team-content";
 
@@ -32,6 +33,7 @@ export function TeamExpertise() {
           {profiles.map((profile, index) => (
             <AnimateIn key={profile.id} delay={index * 0.06}>
               <article className="h-full rounded-2xl border border-white/[0.06] bg-white/[0.03] p-6">
+                <ProfilePhoto profile={profile} />
                 <h3 className="font-display text-xl font-medium tracking-[-0.01em] text-foreground">
                   {profile.name}
                 </h3>
@@ -39,6 +41,7 @@ export function TeamExpertise() {
                   {profile.title}
                 </p>
                 <p className="mt-5 text-sm leading-[1.75] text-muted-foreground">{profile.summary}</p>
+                <ProfileLinkedIn profile={profile} />
               </article>
             </AnimateIn>
           ))}

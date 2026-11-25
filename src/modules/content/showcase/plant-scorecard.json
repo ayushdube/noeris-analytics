@@ -1,0 +1,158 @@
+{
+  "slug": "plant-scorecard",
+  "industrySlug": "manufacturing",
+  "title": "Plant scorecard and weekly exception digest",
+  "company": "Keystone Precision Components, a fictional contract machine shop (6 CNC machines, 3 shifts)",
+  "buyer": "COO, plant director, maintenance lead",
+  "question": "Where is the plant losing capacity, and what are operators telling us that the codes miss?",
+  "summary": "OEE built from first principles out of MES shift data, a downtime Pareto, on-time-in-full by customer, and operator notes classified by AI so that symptoms logged as 'OTHER' are not lost.",
+  "kpis": [
+    {
+      "label": "CNC-04 OEE",
+      "value": "58.9%",
+      "sub": "78.6% baseline"
+    },
+    {
+      "label": "CNC-04 availability",
+      "value": "76.1%",
+      "sub": "91.9% baseline"
+    },
+    {
+      "label": "CNC-04 scrap rate",
+      "value": "6.3%",
+      "sub": "1.7% baseline"
+    },
+    {
+      "label": "Aerodyne on-time in full",
+      "value": "40.0%",
+      "sub": "92.2% before November"
+    }
+  ],
+  "chart": {
+    "title": "CNC-04 OEE",
+    "subtitle": "Weekly, 13 weeks",
+    "type": "line",
+    "format": "percent",
+    "labels": [
+      "24 Aug",
+      "31 Aug",
+      "07 Sep",
+      "14 Sep",
+      "21 Sep",
+      "28 Sep",
+      "05 Oct",
+      "12 Oct",
+      "19 Oct",
+      "26 Oct",
+      "02 Nov",
+      "09 Nov",
+      "16 Nov"
+    ],
+    "values": [
+      0.797,
+      0.8008,
+      0.7834,
+      0.7841,
+      0.7788,
+      0.7863,
+      0.7745,
+      0.7854,
+      0.783,
+      0.63,
+      0.6224,
+      0.5628,
+      0.5885
+    ]
+  },
+  "table": {
+    "title": "Unplanned downtime, week of 16 Nov",
+    "columns": [
+      "Machine",
+      "Reason code",
+      "Stops",
+      "Minutes"
+    ],
+    "rows": [
+      [
+        "CNC-04",
+        "MECH-SPINDLE",
+        "21",
+        "870"
+      ],
+      [
+        "CNC-04",
+        "OTHER",
+        "17",
+        "621"
+      ],
+      [
+        "CNC-06",
+        "MAT-WAIT",
+        "10",
+        "617"
+      ],
+      [
+        "CNC-04",
+        "MINOR-STOPS",
+        "21",
+        "540"
+      ],
+      [
+        "CNC-05",
+        "MAT-WAIT",
+        "8",
+        "529"
+      ],
+      [
+        "CNC-01",
+        "MINOR-STOPS",
+        "21",
+        "513"
+      ],
+      [
+        "CNC-06",
+        "MINOR-STOPS",
+        "21",
+        "511"
+      ],
+      [
+        "CNC-05",
+        "MINOR-STOPS",
+        "21",
+        "497"
+      ]
+    ]
+  },
+  "workflow": [
+    "MES shift counts, stop events and operator notes land in the warehouse",
+    "dbt computes availability, performance, quality and OEE per machine and shift",
+    "Claude classifies operator notes by theme; a person reviews the table before it is used",
+    "Stops coded 'OTHER' in shifts where operators describe a cause are flagged for recoding",
+    "Claude drafts the weekly exception digest from the computed facts"
+  ],
+  "note": {
+    "title": "Weekly exception digest",
+    "markdown": "# Plant exception digest: week of 16-22 Nov\n\n## CNC-04 is the largest loss on the floor\nPlant OEE was 74.5% against a 78.7% baseline. Almost all of the gap is CNC-04, where OEE fell to 58.9% from 78.6%:\n- **Availability 76.1%** (baseline 91.9%). There were 21 stops coded MECH-SPINDLE (870.5 minutes) and 17 coded OTHER (620.9 minutes).\n- **Scrap 6.3%** (baseline 1.7%), costing $2.9k of material this week against about $1.0k in a normal week.\n- **Operators are describing the spindle.** There were 7 spindle-related notes this week (noise at high rpm, vibration on finishing passes, chatter marks, bores drifting out of tolerance). In 6 of those shifts, 8 stops were coded OTHER.\n\nThe codes understate the spindle problem. The notes and the scrap pattern point the same way, but the data cannot confirm bearing wear on its own; that needs a maintenance inspection.\n\n## Aluminium supply is hurting Aerodyne deliveries\nThe manifold line (CNC-05/06) lost 1,146.3 minutes to 18 material-wait stops, and 49.8% of those minutes fell on B shift. Operators wrote 10 notes about bar stock not being available. On-time-in-full to Aerodyne Systems is 40.0% for orders promised since 2 Nov (15 of 25 lines missed), against 92.2% before.\n\n## Everything else\nThe other notes were routine (25), QC sign-off waits (4) and changeovers (3). No other machine shows a material change.\n\n## Actions to confirm\n- Schedule a spindle inspection on CNC-04, and decide whether to move tight-tolerance housings to CNC-03 until it is done.\n- Recode the 8 OTHER stops on CNC-04 after review, so next week's Pareto chart is accurate.\n- Confirm the aluminium delivery date with purchasing and resequence B shift around it.\n- Give Aerodyne Systems a revised delivery schedule.\n\nGenerated from MES and ERP data; reviewed by <reviewer> before the meeting."
+  },
+  "sources": [
+    "MES shift production",
+    "Downtime events",
+    "Operator notes",
+    "ERP order lines"
+  ],
+  "models": [
+    "fct_oee_shift",
+    "fct_oee_weekly_machine",
+    "fct_downtime_pareto",
+    "fct_otif_weekly",
+    "fct_operator_note_signals"
+  ],
+  "disclaimer": "Illustrative example built on synthetic data for a fictional company. Not a client result.",
+  "checks": [
+    "Source data shaped like the real systems, generated with a fixed seed",
+    "dbt models with tests (reconciliations, uniqueness, accepted values)",
+    "Automated check that each planted business story is visible in the data",
+    "AI note checked: every number must exist in the computed facts",
+    "Human review before anything is circulated"
+  ]
+}

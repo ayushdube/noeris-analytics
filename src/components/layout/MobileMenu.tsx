@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { isNavItemActive, navItems } from "@/lib/navigation";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { contactCtaShortLabel } from "@/modules/booking";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -294,7 +295,7 @@ export function MobileMenu({ isOpen, onClose, pathname }: MobileMenuProps) {
           onClick={onClose}
           className="flex h-11 items-center justify-center rounded-[10px] bg-[#ff0234] px-4 hover:bg-[#ff0234]/90"
         >
-          <span className="font-sans text-sm font-medium text-white">Book a call</span>
+          <span className="font-sans text-sm font-medium text-white">{contactCtaShortLabel}</span>
         </Link>
       </div>
     </div>

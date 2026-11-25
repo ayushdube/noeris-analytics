@@ -3,14 +3,15 @@ import {
   industries,
 } from "@/modules/content/site-content";
 
+// AI-powered Analytics and Agentic AI stay live (and linked from the AI practice
+// on /services); the menu lists one AI entry so buyers are not asked to choose
+// between three overlapping AI pages.
 const serviceNav = [
-  { href: "/services/ai-analytics-agents", label: "AI Analytics & Agents" },
   { href: "/services/data-engineering", label: "Data Engineering" },
   { href: "/services/business-intelligence", label: "Business Intelligence" },
-  { href: "/services/analytics-modernization", label: "Analytics Modernization" },
+  { href: "/services/ai-analytics-agents", label: "AI Analytics & Automation" },
   { href: "/services/managed-analytics", label: "Managed Analytics" },
-  { href: "/services/ai-powered-analytics", label: "AI-powered Analytics" },
-  { href: "/services/agentic-ai-autonomous-analytics", label: "Agentic AI" },
+  { href: "/services/analytics-modernization", label: "Analytics Modernization" },
 ] as const;
 
 export interface NavChild {
@@ -49,6 +50,7 @@ export const navItems: NavItem[] = [
       label: study.title,
     })),
   },
+  { href: "/examples", label: "Examples" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 function getDisclaimer(study: CaseStudy) {
   if (study.engagementSource === "upwork") {
-    return "This engagement was delivered by a Noeris principal consultant via a verified Upwork contract (4.9 ★, Top Rated Plus).";
+    return "This engagement was delivered by a Noeris principal consultant via a verified Upwork contract.";
   }
 
   return "This engagement was delivered by a Noeris principal consultant in a prior role. Client details have been anonymised.";

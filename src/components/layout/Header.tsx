@@ -11,6 +11,7 @@ import { MobileMenu } from "@/components/layout/MobileMenu";
 import { NavDropdown } from "@/components/layout/NavDropdown";
 import { Button } from "@/components/ui/button";
 import { isNavItemActive, navItems } from "@/lib/navigation";
+import { contactCtaShortLabel } from "@/modules/booking";
 import { cn } from "@/lib/utils";
 
 function isActivePath(pathname: string, href: string) {
@@ -69,7 +70,7 @@ export function Header() {
 
             <Button asChild size="sm" className="gap-1.5 pl-4 pr-3.5">
               <Link href="/contact">
-                Book a call
+                {contactCtaShortLabel}
                 <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2} />
               </Link>
             </Button>

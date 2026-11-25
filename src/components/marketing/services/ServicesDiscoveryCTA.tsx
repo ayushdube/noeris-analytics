@@ -19,7 +19,7 @@ export function ServicesDiscoveryCTA() {
               we&apos;ll recommend the right starting point.
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
-              <BookingButton size="lg" label="Book a discovery call →" />
+              <BookingButton size="lg" label="Arrange a discovery call →" />
               <Button asChild variant="ghost" size="lg">
                 <Link href="/case-studies">View case studies</Link>
               </Button>

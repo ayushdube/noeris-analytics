@@ -15,6 +15,17 @@ export function getConsultationMailto(
   return `mailto:${siteConfig.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(consultationBody)}`;
 }
 
+/**
+ * Optional scheduler (Cal.com, Calendly, Google Calendar booking page).
+ * Set NEXT_PUBLIC_BOOKING_URL to send every booking CTA there; without it,
+ * CTAs fall back to email and their labels avoid promising a booking.
+ */
+export const schedulerUrl = process.env.NEXT_PUBLIC_BOOKING_URL?.trim() || undefined;
+export const hasScheduler = Boolean(schedulerUrl);
+
+/** Short label for header, mobile menu, and inline links. */
+export const contactCtaShortLabel = hasScheduler ? "Book a call" : "Get in touch";
+
 export function getBookingUrl(): string {
-  return getConsultationMailto();
+  return schedulerUrl ?? getConsultationMailto();
 }

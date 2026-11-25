@@ -6,6 +6,7 @@ import {
   services,
 } from "@/modules/content/site-content";
 import { siteConfig } from "@/lib/site-config";
+import { showcaseExamples } from "@/modules/content/showcase";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
@@ -16,6 +17,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services",
     "/industries",
     "/case-studies",
+    "/examples",
+    "/diagnostic",
+    "/data-handling",
     "/contact",
   ].map((path) => ({
     url: `${base}${path}`,
@@ -45,5 +49,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...servicePages, ...industryPages, ...caseStudyPages];
+  const examplePages = showcaseExamples.map((ex) => ({
+    url: `${base}/examples/${ex.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticPages, ...servicePages, ...industryPages, ...caseStudyPages, ...examplePages];
 }

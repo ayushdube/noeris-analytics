@@ -1,6 +1,7 @@
 "use client";
 
 import { BookingButton } from "@/components/booking/BookingEmbed";
+import { siteConfig } from "@/lib/site-config";
 import { whoYouWorkWith } from "@/modules/content/founders-content";
 import { motion } from "framer-motion";
 
@@ -37,7 +38,7 @@ export function ClosingStatement() {
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.4 }}
         >
-          <BookingButton size="lg" label="Book a consultation" />
+          <BookingButton size="lg" label={siteConfig.bookingCtaLabel} />
         </motion.div>
       </div>
     </section>

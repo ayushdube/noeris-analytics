@@ -13,7 +13,7 @@ import { createPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = createPageMetadata({
   title: "About",
   description:
-    "Noeris Analytics is an AI-native enterprise intelligence and automation partner, combining data engineering, business intelligence, and AI-powered automation.",
+    "Noeris Analytics is an AI-native intelligence and automation partner for growing companies, combining data engineering, business intelligence, and AI-powered automation.",
   path: "/about",
 });
 
@@ -45,8 +45,8 @@ export default function AboutPage() {
     <>
       <SplitHero
         eyebrow="About"
-        title="Enterprise intelligence for companies that need to decide faster"
-        description="We combine enterprise data engineering, business intelligence, and AI-powered automation to help organizations improve visibility, optimize operations, and make better decisions. Noeris builds, integrates, and operates the intelligence infrastructure behind them."
+        title="Intelligence for growing companies that need to decide faster"
+        description="We combine data engineering, business intelligence, and AI-powered automation to help organizations improve visibility, optimize operations, and make better decisions. Noeris builds, integrates, and operates the intelligence infrastructure behind them."
         visual={<OutcomesMetricsVisual />}
       />
 
@@ -102,7 +102,7 @@ export default function AboutPage() {
 
       <FinalCTA
         supportingLine="Engagements start with a free 45-minute discovery call. No pitch deck. No sales handoff."
-        bookingLabel="Book a discovery call"
+        bookingLabel="Arrange a discovery call"
       />
     </>
   );

@@ -1,0 +1,145 @@
+{
+  "slug": "pe-portfolio-pack",
+  "industrySlug": "private-equity",
+  "title": "Portfolio KPI pack for operating partners",
+  "company": "Ridgeline Partners Fund II, a fictional fund with five portfolio companies on five accounting systems",
+  "buyer": "Operating partner, portfolio operations, CFO",
+  "question": "Which companies need attention this month, and can we trust the numbers?",
+  "summary": "Five trial balances from NetSuite, QuickBooks, Xero, Sage Intacct and SAP mapped to one chart of accounts, with covenant headroom, an EBITDA bridge and data-quality checks that block sign-off.",
+  "kpis": [
+    {
+      "label": "Portfolio LTM revenue",
+      "value": "$83.49M",
+      "sub": "five companies"
+    },
+    {
+      "label": "Portfolio LTM EBITDA",
+      "value": "$9.14M",
+      "sub": "standard chart of accounts"
+    },
+    {
+      "label": "Submissions ready",
+      "value": "2 of 5",
+      "sub": "three fail a data check"
+    },
+    {
+      "label": "Status",
+      "value": "4 amber",
+      "sub": "1 green, 0 red"
+    }
+  ],
+  "chart": {
+    "title": "Harbour Foods net leverage",
+    "subtitle": "Last 12 months, covenant 4.5x",
+    "type": "line",
+    "format": "multiple",
+    "labels": [
+      "Nov 25",
+      "Dec 25",
+      "Jan 26",
+      "Feb 26",
+      "Mar 26",
+      "Apr 26",
+      "May 26",
+      "Jun 26",
+      "Jul 26",
+      "Aug 26",
+      "Sep 26",
+      "Oct 26"
+    ],
+    "values": [
+      3.87,
+      3.79,
+      3.76,
+      3.75,
+      3.72,
+      3.68,
+      3.71,
+      3.73,
+      3.84,
+      3.91,
+      4.05,
+      4.2
+    ]
+  },
+  "table": {
+    "title": "Portfolio status, October",
+    "columns": [
+      "Company",
+      "Leverage vs covenant",
+      "DSO (days)",
+      "Data status",
+      "Status"
+    ],
+    "rows": [
+      [
+        "Atlas Logistics Services",
+        "1.34x / 4.0x",
+        "48.0",
+        "Not received",
+        "Amber"
+      ],
+      [
+        "Brightline Dental Group",
+        "0.93x / 3.5x",
+        "27.4",
+        "Flash does not tie",
+        "Amber"
+      ],
+      [
+        "Cobalt Industrial Supply",
+        "3.64x / 4.0x",
+        "60.6",
+        "Ready",
+        "Amber"
+      ],
+      [
+        "Harbour Foods",
+        "4.20x / 4.5x",
+        "37.6",
+        "Unmapped account",
+        "Amber"
+      ],
+      [
+        "Meridian Software",
+        "Net cash",
+        "35.1",
+        "Ready",
+        "Green"
+      ]
+    ]
+  },
+  "workflow": [
+    "Each company submits its trial balance from its own accounting system",
+    "Accounts are mapped to one standard chart; unmapped lines are flagged, never dropped",
+    "Checks block sign-off: submission received, mapping complete, flash ties to the ledger",
+    "Claude drafts the investment committee note from the computed facts; reviewed before circulation"
+  ],
+  "note": {
+    "title": "Investment committee note",
+    "markdown": "# Portfolio note: October, Ridgeline Partners Fund II\n\n## Summary\nThe portfolio generated $83.5M of LTM revenue and $9.1M of LTM EBITDA. One company is green, four are amber and none is red. Only two of the five October submissions are ready; the other three have data issues to resolve before this pack is final.\n\n## Covenant watch\n**Harbour Foods (amber).** Net leverage is 4.20x against a 4.5x covenant, leaving 6.7% headroom, up from 3.68x six months ago. LTM EBITDA fell from $3.87M to $3.42M, and the bridge points to gross margin: the margin effect is -$573.5k, against +$277.6k from volume and -$158.1k from operating costs. Gross margin is 24.8%, against 30.4% six months ago. Including the agency labour posted to an unmapped account (below), leverage would be 4.31x.\n\n**Cobalt Industrial Supply (amber).** Earnings are growing (LTM EBITDA $1.74M, revenue up 7.8%), but customers are paying more slowly: DSO has risen from 43.1 to 60.6 days and cash is down $872.4k over six months. Net leverage is 3.64x against 4.0x (9.0% headroom), up from 3.38x.\n\n## Performing\n**Meridian Software (green).** LTM revenue is $10.6M, up 38.1%. LTM EBITDA is $595.1k against -$56.7k a year earlier: volume added $2.28M while operating costs grew by $1.63M. The company holds net cash.\n\n**Brightline Dental Group** is at 0.93x leverage with LTM EBITDA of $1.84M (15.4% margin); it is amber only because of a data issue. **Atlas Logistics Services** is at 1.34x through September with LTM revenue up 11.4%; it is amber only because October is missing.\n\n## Data issues before sign-off\n- **Harbour:** $46.7k was posted to a new account, 6295-00 Temporary Labour Agency, that is not in the mapping. Until it is mapped, it is missing from reported EBITDA.\n- **Brightline:** flash revenue of $1.05M is 5.2% above the trial balance ($998.2k).\n- **Atlas:** no October submission has been received.\n\n## Questions for management\n- Harbour: what is driving input costs, what price increases are agreed, and is the agency labour temporary?\n- Cobalt: which customers explain the rise in DSO, and what is the collection plan?\n- Brightline: what accounts for the gap between flash and booked revenue?\n\nPrepared from the portfolio data warehouse; figures reviewed by <reviewer> before circulation."
+  },
+  "sources": [
+    "NetSuite",
+    "QuickBooks Online",
+    "Xero",
+    "Sage Intacct",
+    "SAP S/4HANA",
+    "Monthly flash reports"
+  ],
+  "models": [
+    "int_pe__tb_mapped",
+    "fct_pe_monthly_financials",
+    "fct_pe_data_quality",
+    "fct_pe_ebitda_bridge",
+    "fct_pe_portfolio_status"
+  ],
+  "disclaimer": "Illustrative example built on synthetic data for a fictional company. Not a client result.",
+  "checks": [
+    "Source data shaped like the real systems, generated with a fixed seed",
+    "dbt models with tests (reconciliations, uniqueness, accepted values)",
+    "Automated check that each planted business story is visible in the data",
+    "AI note checked: every number must exist in the computed facts",
+    "Human review before anything is circulated"
+  ]
+}

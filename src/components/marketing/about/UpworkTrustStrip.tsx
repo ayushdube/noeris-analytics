@@ -1,13 +1,12 @@
 import Link from "next/link";
 
 import { AnimateIn } from "@/components/visuals/AnimateIn";
-import { siteStats } from "@/lib/site-stats";
+import { founders } from "@/modules/content/founders-content";
 
 const stats = [
-  `${siteStats.projectsDelivered} completed projects`,
-  `${siteStats.clientRating}★ average rating`,
-  `${siteStats.reviewCount} verified reviews`,
-  "Top Rated Plus · Expert-Vetted",
+  "Microsoft Certified Data Analyst",
+  "Upwork Expert-Vetted",
+  "Client feedback published unedited",
 ];
 
 export function UpworkTrustStrip() {
@@ -17,7 +16,7 @@ export function UpworkTrustStrip() {
         <AnimateIn>
           <div className="mx-auto max-w-4xl rounded-2xl border border-white/[0.06] bg-white/[0.02] px-6 py-8 md:px-10 md:py-10">
             <div className="flex flex-col items-center gap-2 text-center">
-              <p className="text-label text-label-sm">Verified on Upwork</p>
+              <p className="text-label text-label-sm">Independently verified</p>
               <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.1em] text-muted">
                 Upwork
               </span>
@@ -46,7 +45,7 @@ export function UpworkTrustStrip() {
 
             <p className="mt-6 text-center">
               <Link
-                href="https://www.upwork.com/freelancers/ankitajaiswal"
+                href={founders.ankita.upworkUrl ?? "https://www.upwork.com/freelancers/ankitajaiswal"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-muted transition-colors duration-500 hover:text-accent-foreground"

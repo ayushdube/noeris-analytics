@@ -38,7 +38,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Enterprise Data, Analytics & AI Automation | Noeris Analytics",
+    default: "Data, Analytics & AI Automation for Growing Companies | Noeris Analytics",
     template: "%s | Noeris Analytics",
   },
   description: siteConfig.description,
@@ -64,13 +64,15 @@ export const metadata: Metadata = {
     "Portfolio Intelligence",
     "Data Warehouse Consulting",
     "Enterprise Automation",
+    "Mid-Market Analytics Consulting",
+    "Power BI Consultant",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteConfig.url,
     siteName: "Noeris Analytics",
-    title: "Enterprise Data, Analytics & AI Automation | Noeris Analytics",
+    title: "Data, Analytics & AI Automation for Growing Companies | Noeris Analytics",
     description: siteConfig.description,
     images: [
       {
@@ -84,7 +86,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@noerisanalytics",
-    title: "Enterprise Data, Analytics & AI Automation | Noeris Analytics",
+    title: "Data, Analytics & AI Automation for Growing Companies | Noeris Analytics",
     description: siteConfig.description,
     images: ["/opengraph-image"],
   },

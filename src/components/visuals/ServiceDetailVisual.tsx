@@ -27,7 +27,7 @@ const serviceChartData: Record<string, number[]> = {
   "managed-analytics": [48, 55, 52, 63, 60, 70, 68, 76],
 };
 
-export function ServiceDetailVisual({ slug, deliverables }: ServiceDetailVisualProps) {
+export function ServiceDetailVisual({ slug }: ServiceDetailVisualProps) {
   const nodes = serviceArchitectures[slug] ?? serviceArchitectures["business-intelligence"];
   const chartData = serviceChartData[slug] ?? serviceChartData["business-intelligence"];
 
@@ -35,7 +35,11 @@ export function ServiceDetailVisual({ slug, deliverables }: ServiceDetailVisualP
     return (
       <KpiDashboardPreview
         title="AI analytics layer"
-        kpis={deliverables.slice(0, 3)}
+        metrics={[
+          { label: "Narrative summary", value: "Drafted" },
+          { label: "Anomalies flagged", value: "3" },
+          { label: "Reviewer sign-off", value: "Required" },
+        ]}
         chartData={chartData}
         chartType="line"
       />
@@ -46,7 +50,11 @@ export function ServiceDetailVisual({ slug, deliverables }: ServiceDetailVisualP
     return (
       <KpiDashboardPreview
         title="Executive dashboard"
-        kpis={deliverables.slice(0, 3)}
+        metrics={[
+          { label: "Gross margin", value: "34.8%" },
+          { label: "Revenue vs budget", value: "−2.1%" },
+          { label: "Data refresh", value: "On schedule" },
+        ]}
         chartData={chartData}
       />
     );

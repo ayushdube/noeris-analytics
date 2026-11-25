@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { AnimateIn } from "@/components/visuals/AnimateIn";
+import { contactCtaShortLabel } from "@/modules/booking";
 import type { ServiceEarlyAccessCallout } from "@/modules/content/service-related-case-studies";
 
 interface ServiceEarlyAccessCalloutBoxProps {
@@ -26,7 +27,7 @@ export function ServiceEarlyAccessCalloutBox({ callout }: ServiceEarlyAccessCall
             href="/contact"
             className="inline-flex text-sm text-muted transition-colors duration-500 hover:text-accent-foreground"
           >
-            Book a call →
+            {contactCtaShortLabel} →
           </Link>
         </div>
       </aside>

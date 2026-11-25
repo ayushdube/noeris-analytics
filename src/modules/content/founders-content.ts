@@ -7,12 +7,15 @@ export interface Founder {
   name: string;
   principalTitle: string;
   contactFocus: string[];
+  /** Public profiles. Each renders as a link wherever the founder appears. */
+  linkedinUrl?: string;
+  upworkUrl?: string;
 }
 
 const regionCopy = `${siteStats.regions.slice(0, -1).join(", ")}, and ${siteStats.regions[siteStats.regions.length - 1]}`;
 
 export const heroCredibility =
-  `Built by consultants who have delivered enterprise analytics solutions across ${regionCopy}.`;
+  `Built by founders with 11+ years each in enterprise data and analytics, delivered across ${regionCopy}.`;
 
 export const credibilityStrip = [
   "Microsoft-Certified",
@@ -32,6 +35,8 @@ export const founders: Record<FounderId, Founder> = {
       "Power BI",
       "TIBCO Spotfire",
     ],
+    linkedinUrl: "https://www.linkedin.com/in/ankita-jaiswal-noeris/",
+    upworkUrl: "https://www.upwork.com/freelancers/ankitajaiswal",
   },
   ayush: {
     id: "ayush",

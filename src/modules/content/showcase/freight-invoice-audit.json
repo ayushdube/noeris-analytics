@@ -1,0 +1,114 @@
+{
+  "slug": "freight-invoice-audit",
+  "industrySlug": "logistics",
+  "title": "Freight invoice audit and dispute drafts",
+  "company": "Brookline Distribution, a fictional distributor shipping with four carriers",
+  "buyer": "COO, VP supply chain, CFO",
+  "question": "Are carriers billing what the contract says?",
+  "summary": "Every invoiced shipment re-priced against the contracted rate card, fuel terms and requested accessorials. Discrepancies are classified, totalled by carrier and turned into dispute drafts.",
+  "kpis": [
+    {
+      "label": "Freight billed",
+      "value": "$3.23M",
+      "sub": "14,884 invoiced shipments"
+    },
+    {
+      "label": "Overcharges found",
+      "value": "$48.9k",
+      "sub": "recoverable"
+    },
+    {
+      "label": "Shipments flagged",
+      "value": "2,083",
+      "sub": "across four carriers"
+    },
+    {
+      "label": "Fuel surcharge billed",
+      "value": "24.0%",
+      "sub": "contract 18.5% (Prairie Express)"
+    }
+  ],
+  "chart": {
+    "title": "Overcharge by carrier",
+    "subtitle": "Invoices to 22 Nov",
+    "type": "bar",
+    "format": "currency",
+    "labels": [
+      "Coastal Carriers",
+      "Prairie Express",
+      "Summit Parcel",
+      "Redline Freight"
+    ],
+    "values": [
+      16846.57,
+      15288.35,
+      13800.0,
+      2934.64
+    ]
+  },
+  "table": {
+    "title": "Findings",
+    "columns": [
+      "Carrier",
+      "Finding",
+      "Shipments",
+      "Overcharge"
+    ],
+    "rows": [
+      [
+        "Coastal Carriers",
+        "Shipment billed twice",
+        "81",
+        "$16.8k"
+      ],
+      [
+        "Prairie Express",
+        "Fuel surcharge above contract",
+        "1,678",
+        "$15.3k"
+      ],
+      [
+        "Summit Parcel",
+        "Liftgate not requested",
+        "184",
+        "$13.8k"
+      ],
+      [
+        "Redline Freight",
+        "Further zone billed than shipped",
+        "140",
+        "$2.9k"
+      ]
+    ]
+  },
+  "workflow": [
+    "TMS shipments, rate cards and carrier invoice files land in the warehouse",
+    "dbt prices every shipment from the contract and compares it to the invoice",
+    "Each discrepancy gets one finding; a test proves every invoiced dollar is accounted for",
+    "Claude drafts the summary and one dispute email per carrier, for a person to send"
+  ],
+  "note": {
+    "title": "Audit summary and dispute drafts",
+    "markdown": "# Freight invoice audit: invoices dated 29 Aug to 22 Nov\n\nEvery invoice line was re-priced against the contracted rate cards. Of $3.23M billed across 14,884 invoiced shipments, 2,083 were flagged, with **$48.9k of overcharges to recover**.\n\n| Carrier | Finding | Shipments | Overcharge | First seen |\n|---|---|---|---|---|\n| Coastal Carriers | Shipments billed twice | 81 | $16.8k | 29 Aug |\n| Prairie Express | Fuel surcharge billed at 24.0% against a contracted 18.5% | 1,678 | $15.3k | 3 Oct |\n| Summit Parcel | Liftgate charged on deliveries that did not request one | 184 | $13.8k | 29 Aug |\n| Redline Freight | Billed at a further zone than the one shipped to | 140 | $2.9k | 6 Oct |\n\n**Service.** Redline Freight's on-time delivery to the long-haul zones fell to 54.1% for shipments in the first two weeks of November, from 92.2% in October. That deserves a service review alongside the billing correction.\n\n---\n\n### Draft to Prairie Express\n**Subject:** Fuel surcharge on invoices since 3 Oct\n\nHello,\nOur audit of your invoices dated from 3 Oct shows the fuel surcharge billed at 24.0% of the base charge on 1,678 shipments. Our contract sets it at 18.5%, which makes the difference $15.3k. Line-level detail is attached. Could you please issue a credit note for $15.3k and apply the contracted rate on future invoices?\n\n### Draft to Coastal Carriers\n**Subject:** Duplicate invoice lines since 29 Aug\n\nHello,\nWe found 81 shipments that were invoiced twice, totalling $16.8k. The shipment numbers and both invoice references are attached. Please could you credit the duplicate charges and let us know how future duplicates will be prevented?\n\n### Draft to Summit Parcel\n**Subject:** Liftgate charges on dock deliveries\n\nHello,\nOn 184 shipments, a liftgate fee was charged although none was requested on the booking, totalling $13.8k. Detail is attached. Please could you credit these charges and apply the liftgate fee only when it is requested?\n\n### Draft to Redline Freight\n**Subject:** Zone billed on recent invoices, and November service\n\nHello,\nOn 140 shipments since 6 Oct, the billed zone is further than the destination zone, a difference of $2.9k. Detail is attached; please could you rebill them at the shipped zone? Separately, we would like a short call about long-haul on-time delivery in November.\n\nDrafts generated from TMS, rate-card and invoice data; reviewed by <reviewer> before sending."
+  },
+  "sources": [
+    "TMS shipments",
+    "Contract rate cards",
+    "Accessorial and fuel terms",
+    "Carrier invoice files"
+  ],
+  "models": [
+    "fct_expected_charges",
+    "fct_invoice_audit",
+    "fct_audit_summary",
+    "fct_carrier_performance_weekly"
+  ],
+  "disclaimer": "Illustrative example built on synthetic data for a fictional company. Not a client result.",
+  "checks": [
+    "Source data shaped like the real systems, generated with a fixed seed",
+    "dbt models with tests (reconciliations, uniqueness, accepted values)",
+    "Automated check that each planted business story is visible in the data",
+    "AI note checked: every number must exist in the computed facts",
+    "Human review before anything is circulated"
+  ]
+}

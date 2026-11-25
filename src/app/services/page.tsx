@@ -9,19 +9,19 @@ import { SplitHero } from "@/components/visuals/SplitHero";
 import { serviceLines } from "@/modules/content/positioning-content";
 import { services } from "@/modules/content/site-content";
 import { createPageMetadata } from "@/lib/seo/metadata";
-import { siteStats } from "@/lib/site-stats";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Services",
   description:
-    "Enterprise data engineering, business intelligence, AI analytics and automation, and managed analytics for companies that need numbers they can reconcile and workflows they can automate.",
+    "Data engineering, business intelligence, AI analytics and automation, and managed analytics for growing companies that need numbers they can reconcile and workflows they can automate.",
   path: "/services",
 });
 
 const heroStats = [
-  `${siteStats.projectsDelivered} projects`,
-  `${siteStats.clientRating}★ rating`,
-  `${siteStats.reviewCount} verified reviews`,
+  "Power BI · Spotfire",
+  "Snowflake · Databricks",
+  "Azure · AWS",
+  "Claude · OpenAI",
   "Top rated plus",
 ];
 

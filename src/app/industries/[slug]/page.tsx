@@ -13,6 +13,7 @@ import { KpiChips } from "@/components/visuals/KpiChips";
 import { KpiDashboardPreview } from "@/components/visuals/KpiDashboardPreview";
 import { SplitHero } from "@/components/visuals/SplitHero";
 import { industries, getIndustry } from "@/modules/content/site-content";
+import { getExampleForIndustry } from "@/modules/content/showcase";
 import { createPageMetadata } from "@/lib/seo/metadata";
 
 interface Props {
@@ -44,6 +45,7 @@ export default async function IndustryDetailPage({ params }: Props) {
   const heroKpiChips =
     industry.extensions?.heroKpiChips ?? industry.kpis;
   const dashboardPreview = industry.extensions?.dashboardPreview;
+  const example = getExampleForIndustry(slug);
 
   return (
     <>
@@ -107,6 +109,24 @@ export default async function IndustryDetailPage({ params }: Props) {
       {industry.extensions?.howItWorks && (
         <HowItWorksFlow steps={industry.extensions.howItWorks} />
       )}
+
+      {example ? (
+        <section className="py-8 md:py-10">
+          <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+            <Link
+              href={`/examples/${example.slug}`}
+              className="group flex flex-col gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 transition-colors duration-500 hover:border-white/[0.16] md:flex-row md:items-center md:justify-between md:p-8"
+            >
+              <div>
+                <p className="text-label text-label-sm">Worked example · synthetic data</p>
+                <p className="mt-3 font-display text-xl font-medium text-foreground md:text-2xl">{example.title}</p>
+                <p className="mt-2 max-w-2xl text-sm leading-[1.7] text-muted-foreground">{example.question}</p>
+              </div>
+              <span className="shrink-0 text-sm text-muted transition-colors duration-500 group-hover:text-accent-foreground">See the example →</span>
+            </Link>
+          </div>
+        </section>
+      ) : null}
 
       {industry.extensions?.cta ? (
         <IndustryDualCTA

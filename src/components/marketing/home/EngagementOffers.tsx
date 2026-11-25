@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { BookingButton } from "@/components/booking/BookingEmbed";
+import { siteConfig } from "@/lib/site-config";
 import { AnimateIn } from "@/components/visuals/AnimateIn";
 import { engagementOffers } from "@/modules/content/positioning-content";
 
@@ -46,7 +47,7 @@ export function EngagementOffers() {
                     href={offer.href}
                     className="mt-6 text-sm text-muted-foreground transition-colors duration-500 hover:text-accent-foreground"
                   >
-                    View this service →
+                    {offer.hrefLabel ?? "View this service →"}
                   </Link>
                 )}
               </article>
@@ -56,7 +57,7 @@ export function EngagementOffers() {
 
         <AnimateIn delay={0.1}>
           <div className="mt-10">
-            <BookingButton size="lg" variant="accent" label="Book a consultation" />
+            <BookingButton size="lg" variant="accent" label={siteConfig.bookingCtaLabel} />
           </div>
         </AnimateIn>
       </div>

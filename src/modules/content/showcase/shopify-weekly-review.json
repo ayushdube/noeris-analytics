@@ -1,0 +1,168 @@
+{
+  "slug": "shopify-weekly-review",
+  "industrySlug": "shopify-ecommerce",
+  "title": "Weekly commerce review and Monday trading note",
+  "company": "Northgate Goods, a fictional DTC kitchen and home brand on Shopify",
+  "buyer": "Founder, CFO, head of growth",
+  "question": "Why did contribution margin fall while orders grew?",
+  "summary": "Shopify, ad platforms, email and 3PL billing joined into contribution after advertising, by channel and week. The Monday note explains what moved the margin, in order of impact.",
+  "kpis": [
+    {
+      "label": "Net revenue",
+      "value": "$144.8k",
+      "sub": "-10.0% vs prior week"
+    },
+    {
+      "label": "Contribution after ads",
+      "value": "$34.0k",
+      "sub": "23.5% margin vs 34.8% before November"
+    },
+    {
+      "label": "Discount rate",
+      "value": "10.7%",
+      "sub": "1.6% before the early Black Friday code"
+    },
+    {
+      "label": "Paid CAC",
+      "value": "$71.4",
+      "sub": "+27.7% vs pre-November average"
+    }
+  ],
+  "chart": {
+    "title": "Contribution margin after ads",
+    "subtitle": "Weekly, 26 weeks",
+    "type": "line",
+    "format": "percent",
+    "labels": [
+      "25 May",
+      "01 Jun",
+      "08 Jun",
+      "15 Jun",
+      "22 Jun",
+      "29 Jun",
+      "06 Jul",
+      "13 Jul",
+      "20 Jul",
+      "27 Jul",
+      "03 Aug",
+      "10 Aug",
+      "17 Aug",
+      "24 Aug",
+      "31 Aug",
+      "07 Sep",
+      "14 Sep",
+      "21 Sep",
+      "28 Sep",
+      "05 Oct",
+      "12 Oct",
+      "19 Oct",
+      "26 Oct",
+      "02 Nov",
+      "09 Nov",
+      "16 Nov"
+    ],
+    "values": [
+      0.3652,
+      0.3559,
+      0.3363,
+      0.3448,
+      0.3313,
+      0.3445,
+      0.3328,
+      0.349,
+      0.3428,
+      0.3566,
+      0.3295,
+      0.3336,
+      0.3462,
+      0.3448,
+      0.3352,
+      0.3474,
+      0.3463,
+      0.3415,
+      0.3381,
+      0.3539,
+      0.3478,
+      0.3521,
+      0.352,
+      0.2845,
+      0.2599,
+      0.2349
+    ]
+  },
+  "table": {
+    "title": "Contribution bridge: pre-Black-Friday weekly average to the week of 16 Nov",
+    "columns": [
+      "Driver",
+      "Impact on contribution"
+    ],
+    "rows": [
+      [
+        "Starting weekly contribution",
+        "$53.0k"
+      ],
+      [
+        "Discounts",
+        "-$15.3k"
+      ],
+      [
+        "Ad spend",
+        "-$7.2k"
+      ],
+      [
+        "Refunds",
+        "-$2.8k"
+      ],
+      [
+        "Product cost (net of restock)",
+        "-$2.3k"
+      ],
+      [
+        "Fulfilment, fees and return labels",
+        "-$2.2k"
+      ],
+      [
+        "Shipping charged",
+        "+$1.4k"
+      ],
+      [
+        "Gross sales",
+        "+$9.4k"
+      ],
+      [
+        "Week of 16 Nov",
+        "$34.0k"
+      ]
+    ]
+  },
+  "workflow": [
+    "Shopify, Meta, Google, Klaviyo and 3PL data land in the warehouse daily",
+    "dbt computes contribution per order, channel and week, with reconciliation tests",
+    "Claude reads only the computed facts and drafts the Monday note",
+    "A check rejects any number not in the facts; a person reviews before it is sent"
+  ],
+  "note": {
+    "title": "Monday trading note",
+    "markdown": "# Trading note: week of 16-22 Nov\n\n## Contribution\nContribution after ads was $34.0k, down 18.7% on the prior week and 35.8% below the pre-Black-Friday weekly average of $53.0k. Contribution margin fell to 23.5%, from 34.8%.\n\nFrom the $53.0k average, in order of impact:\n- **Discounts cost $15.3k.** EARLYBF20 (20% off, in use since 2 Nov) was applied to 47.8% of orders, taking the discount rate to 10.7% against 1.6%.\n- **Ad spend added $7.2k** of cost.\n- Refunds took $2.8k, product cost $2.3k, and fulfilment, fees and return labels $2.2k.\n- Higher gross sales (+$9.4k) and shipping charged (+$1.4k) offset part of this.\n\nNet revenue was $144.8k, down 10.0% on last week, on 1,538 orders (13.3% above the baseline).\n\n## Paid acquisition\nMeta CPM was $20.69 against a $13.77 average before November, and Meta CAC rose to $80.60 from $56.07. After $21.7k of spend, Meta contributed -$8.9k this week, against +$4.6k a week before. Meta's own reporting claims 1.35x the orders Shopify attributes to it, so the platform view will look better than this. Blended paid CAC was $71.4.\n\n## Returns\nLinen Duvet Cover - Queen (NG-214) is being returned at 20.4% for orders placed since 26 Oct, against 5.5% before. The leading reason is \"Colour not as pictured\". The timing suggests something changed around that date, such as a new batch, photo or listing; the data does not show which.\n\n## Stock\nCast Iron Skillet 10in (NG-101) has been out of stock for 5 days. At its prior run rate that is about 261 units, or $16.7k of gross sales. A purchase order for 900 units is expected on 30 Nov.\n\n## For discussion\n- Whether 20% is the right discount depth for the remaining weeks, given it is the largest single driver of the decline.\n- Capping Meta prospecting while CPM stays near $20.69, or moving budget toward email and retargeting.\n- Pausing NG-214 in ads until the supplier confirms the cause of the colour complaints.\n- A back-in-stock waitlist for NG-101, and whether the 30 Nov delivery can be brought forward.\n\nPrepared from warehouse data; figures reviewed by <reviewer> before circulation."
+  },
+  "sources": [
+    "Shopify orders, refunds, inventory",
+    "Meta Ads and Google Ads",
+    "Klaviyo",
+    "3PL billing"
+  ],
+  "models": [
+    "fct_daily_channel_performance",
+    "fct_weekly_channel",
+    "fct_sku_return_cohorts",
+    "fct_inventory_cover"
+  ],
+  "disclaimer": "Illustrative example built on synthetic data for a fictional company. Not a client result.",
+  "checks": [
+    "Source data shaped like the real systems, generated with a fixed seed",
+    "dbt models with tests (reconciliations, uniqueness, accepted values)",
+    "Automated check that each planted business story is visible in the data",
+    "AI note checked: every number must exist in the computed facts",
+    "Human review before anything is circulated"
+  ]
+}

@@ -1,3 +1,4 @@
+import { ProfileLinkedIn, ProfilePhoto } from "@/components/marketing/founders/ProfileExtras";
 import { AnimateIn } from "@/components/visuals/AnimateIn";
 import { getTeamProfiles } from "@/modules/content/team-content";
 
@@ -11,6 +12,7 @@ function ProfileGrid({
       {profiles.map((profile, i) => (
         <AnimateIn key={profile.id} delay={i * 0.08}>
           <article className="h-full rounded-2xl border border-white/[0.06] bg-white/[0.03] p-6 md:p-8">
+            <ProfilePhoto profile={profile} />
             <h3 className="font-display text-xl font-medium tracking-[-0.01em] text-foreground md:text-2xl">
               {profile.name}
             </h3>
@@ -20,6 +22,7 @@ function ProfileGrid({
             <p className="mt-5 text-sm leading-[1.75] text-muted-foreground md:text-base md:leading-[1.8]">
               {profile.bio}
             </p>
+            <ProfileLinkedIn profile={profile} />
           </article>
         </AnimateIn>
       ))}
