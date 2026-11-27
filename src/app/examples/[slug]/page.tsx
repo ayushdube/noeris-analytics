@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { AutomationReplay } from "@/components/marketing/examples/AutomationReplay";
 import { ExampleChart } from "@/components/marketing/examples/ExampleChart";
+import { LiveDashboard } from "@/components/marketing/examples/LiveDashboard";
 import { NoteMarkdown } from "@/components/marketing/examples/NoteMarkdown";
 import { FinalCTA } from "@/components/marketing/FinalCTA";
 import { AnimateIn } from "@/components/visuals/AnimateIn";
@@ -11,6 +12,7 @@ import { SplitHero } from "@/components/visuals/SplitHero";
 import { VisualFrame } from "@/components/visuals/VisualFrame";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { getAutomation, getShowcaseExample, showcaseExamples } from "@/modules/content/showcase";
+import { getDashboard } from "@/modules/content/showcase/dashboards";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -26,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!ex) return {};
   return createPageMetadata({
     title: `${ex.title} (Example)`,
-    description: `${ex.summary} Illustrative example on synthetic data.`,
+    description: `${ex.summary} Illustrative example on ${ex.dataLabel}.`,
     path: `/examples/${slug}`,
   });
 }
@@ -49,11 +51,12 @@ export default async function ExamplePage({ params }: Props) {
   const ex = getShowcaseExample(slug);
   if (!ex) notFound();
   const automation = getAutomation(ex.slug);
+  const dashboard = getDashboard(ex.slug);
 
   return (
     <>
       <SplitHero
-        eyebrow="Worked example · synthetic data"
+        eyebrow={`Worked example · ${ex.dataLabel}`}
         title={ex.title}
         description={ex.summary}
         visual={
@@ -68,7 +71,7 @@ export default async function ExamplePage({ params }: Props) {
                 </div>
               ))}
             </div>
-            <p className="mt-4 text-[0.6875rem] text-muted">Illustrative · synthetic data</p>
+            <p className="mt-4 text-[0.6875rem] text-muted">Illustrative · {ex.dataLabel}</p>
           </VisualFrame>
         }
       />
@@ -123,6 +126,14 @@ export default async function ExamplePage({ params }: Props) {
           </AnimateIn>
         </div>
       </Block>
+
+      {dashboard ? (
+        <Block label="The dashboard, live">
+          <AnimateIn>
+            <LiveDashboard dashboard={dashboard} />
+          </AnimateIn>
+        </Block>
+      ) : null}
 
       <Block label="The AI workflow">
         <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

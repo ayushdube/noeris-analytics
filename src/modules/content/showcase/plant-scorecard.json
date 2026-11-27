@@ -147,6 +147,7 @@
     "fct_otif_weekly",
     "fct_operator_note_signals"
   ],
+  "dataLabel": "synthetic data",
   "disclaimer": "Illustrative example built on synthetic data for a fictional company. Not a client result.",
   "checks": [
     "Source data shaped like the real systems, generated with a fixed seed",

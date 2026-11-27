@@ -163,6 +163,7 @@
     "fct_crm_billing_reconciliation",
     "fct_churn_risk"
   ],
+  "dataLabel": "synthetic data",
   "disclaimer": "Illustrative example built on synthetic data for a fictional company. Not a client result.",
   "checks": [
     "Source data shaped like the real systems, generated with a fixed seed",

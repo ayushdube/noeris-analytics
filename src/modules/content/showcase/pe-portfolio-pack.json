@@ -134,6 +134,7 @@
     "fct_pe_ebitda_bridge",
     "fct_pe_portfolio_status"
   ],
+  "dataLabel": "synthetic data",
   "disclaimer": "Illustrative example built on synthetic data for a fictional company. Not a client result.",
   "checks": [
     "Source data shaped like the real systems, generated with a fixed seed",

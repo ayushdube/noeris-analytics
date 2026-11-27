@@ -3,6 +3,7 @@ import type { ShowcaseChart } from "@/modules/content/showcase";
 export function formatChartValue(value: number, format: ShowcaseChart["format"]) {
   if (format === "percent") return `${(value * 100).toFixed(1)}%`;
   if (format === "multiple") return `${value.toFixed(2)}x`;
+  if (Math.abs(value) >= 100_000_000) return `$${(value / 1_000_000).toFixed(1)}M`;
   if (Math.abs(value) >= 1_000_000) return `$${(value / 1_000_000).toFixed(2)}M`;
   if (Math.abs(value) >= 1_000) return `$${(value / 1_000).toFixed(1)}k`;
   return `$${value.toFixed(0)}`;

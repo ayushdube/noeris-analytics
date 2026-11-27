@@ -96,5 +96,19 @@
       "value": "87.5%",
       "sub": "55.4% in 2025"
     }
+  },
+  {
+    "slug": "retail-analytics-at-scale",
+    "industrySlug": "shopify-ecommerce",
+    "title": "Retail analytics at scale: 2.3M order lines, eight report pages",
+    "company": "Contoso (fictional electronics retailer: 73 stores plus online)",
+    "buyer": "CEO, CFO, head of retail and e-commerce",
+    "question": "Why did sales fall in 2025 when order volume barely moved?",
+    "summary": "A full retail model on the public Contoso sample: 2,349,091 order lines, 104,990 customers and 2,517 products over 2016-2025, modelled in dbt and reported in Power BI, with an AI-drafted annual review checked against the numbers.",
+    "headline": {
+      "label": "Sales 2025",
+      "value": "$299.95M",
+      "sub": "-7.7% vs 2024"
+    }
   }
 ]

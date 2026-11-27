@@ -1,0 +1,162 @@
+{
+  "slug": "retail-analytics-at-scale",
+  "industrySlug": "shopify-ecommerce",
+  "title": "Retail analytics at scale: 2.3M order lines, eight report pages",
+  "company": "Contoso (fictional electronics retailer: 73 stores plus online)",
+  "buyer": "CEO, CFO, head of retail and e-commerce",
+  "question": "Why did sales fall in 2025 when order volume barely moved?",
+  "summary": "A full retail model on the public Contoso sample: 2,349,091 order lines, 104,990 customers and 2,517 products over 2016-2025, modelled in dbt and reported in Power BI, with an AI-drafted annual review checked against the numbers.",
+  "kpis": [
+    {
+      "label": "Sales 2025",
+      "value": "$299.95M",
+      "sub": "-7.7% vs 2024"
+    },
+    {
+      "label": "Average order value",
+      "value": "$1,853.79",
+      "sub": "-6.6% vs 2024"
+    },
+    {
+      "label": "Orders 2025",
+      "value": "161,802",
+      "sub": "-1.2% vs 2024"
+    },
+    {
+      "label": "Gross margin",
+      "value": "56.0%",
+      "sub": "55.9% in 2024"
+    }
+  ],
+  "chart": {
+    "title": "Sales by year",
+    "subtitle": "2016-2025, USD",
+    "type": "bar",
+    "format": "currency",
+    "labels": [
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "values": [
+      64509073.94,
+      119267165.76,
+      154057589.37,
+      266044108.55,
+      191180214.93,
+      171508504.91,
+      257883238.44,
+      449525762.95,
+      325037421.57,
+      299946124.95
+    ]
+  },
+  "table": {
+    "title": "Sales by category, 2025 vs 2024",
+    "columns": [
+      "Category",
+      "2025",
+      "2024",
+      "Change",
+      "Margin 2025"
+    ],
+    "rows": [
+      [
+        "Computers",
+        "$106.00M",
+        "$115.18M",
+        "-8.0%",
+        "56.5%"
+      ],
+      [
+        "Cell phones",
+        "$60.53M",
+        "$61.01M",
+        "-0.8%",
+        "53.9%"
+      ],
+      [
+        "Home Appliances",
+        "$46.86M",
+        "$55.99M",
+        "-16.3%",
+        "55.3%"
+      ],
+      [
+        "TV and Video",
+        "$26.83M",
+        "$41.86M",
+        "-35.9%",
+        "56.9%"
+      ],
+      [
+        "Cameras and camcorders",
+        "$24.59M",
+        "$18.88M",
+        "+30.3%",
+        "58.1%"
+      ],
+      [
+        "Music, Movies and Audio Books",
+        "$23.00M",
+        "$22.30M",
+        "+3.1%",
+        "58.6%"
+      ],
+      [
+        "Audio",
+        "$8.94M",
+        "$7.05M",
+        "+26.8%",
+        "55.1%"
+      ],
+      [
+        "Games and Toys",
+        "$3.19M",
+        "$2.77M",
+        "+15.2%",
+        "52.3%"
+      ]
+    ]
+  },
+  "workflow": [
+    "Download the public Contoso sample (pinned by checksum) and load it into DuckDB",
+    "dbt builds a star schema over 2,349,091 order lines, with relationship and uniqueness tests",
+    "Power BI project: eight pages covering trend, products, customers, geography, stores, channel and cohorts",
+    "Claude drafts the annual trading review from computed facts only",
+    "Every number in the review is checked against the facts before it is shown"
+  ],
+  "note": {
+    "title": "Annual trading review",
+    "markdown": "## 2025 trading review\n\n**Sales fell 7.7% to $299.9M in 2025 (from $325.0M), and are now 33.3% below the 2023 peak of $449.5M.** The cause is spend per order, not demand: orders slipped only 1.2% (161,802 vs 163,695), while average order value dropped 6.6% to $1,853.79 from $1,985.63. It was $2,290.73 in 2023.\n\n**Where it came from.** The United States drove the decline: sales there fell 20.5% to $126.3M from $158.8M, more than the whole company's drop. Germany grew 14.0% to $46.7M and Canada grew 5.7% to $40.8M. By category, TV and Video fell 35.9% to $26.8M and Home Appliances fell 16.3% to $46.9M, both big-ticket ranges, which fits the lower order value. Cameras and camcorders grew 30.2% and Audio grew 26.8%, from smaller bases.\n\n**What held up.** Gross margin was steady at 56.0% (55.9% in 2024), so this is a volume-and-mix problem, not a pricing one. Active customers were 60,109 against 61,659.\n\n**Channel mix.** Online was 55.3% of sales, down from 60.8% in 2024. Online orders took 2.93 days to deliver on average.\n\n**Questions for the leadership team**\n- What changed in the United States, where sales went from $158.8M to $126.3M, and is it the same customers buying less or fewer customers?\n- TV and Video lost 35.9%: is that range, price or availability?\n- With online share down to 55.3%, are stores winning back sales or is online losing them?\n\n---\nDrafted from the sales warehouse; reviewed by <reviewer> before circulation."
+  },
+  "sources": [
+    "Contoso sample data (SQLBI, MIT licence): sales, orders, customers, products, stores, calendar"
+  ],
+  "models": [
+    "fct_sales",
+    "dim_product",
+    "dim_customer",
+    "dim_store",
+    "dim_date",
+    "fct_sales_monthly",
+    "fct_customer_cohorts",
+    "fct_store_year"
+  ],
+  "dataLabel": "public Contoso sample data",
+  "disclaimer": "Built on the public Contoso sample dataset (SQLBI, MIT licence) for a fictional retailer. Not a client result.",
+  "checks": [
+    "Public sample data, pinned by SHA-256 so the numbers cannot drift",
+    "dbt tests: unique keys, every sale joins to a product, customer, store and date",
+    "Customer names, addresses and birthdays dropped at staging",
+    "AI review checked: every number must exist in the computed facts",
+    "Human review before anything is circulated"
+  ]
+}

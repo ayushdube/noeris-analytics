@@ -103,6 +103,7 @@
     "fct_audit_summary",
     "fct_carrier_performance_weekly"
   ],
+  "dataLabel": "synthetic data",
   "disclaimer": "Illustrative example built on synthetic data for a fictional company. Not a client result.",
   "checks": [
     "Source data shaped like the real systems, generated with a fixed seed",

@@ -7,11 +7,12 @@ import { SplitHero } from "@/components/visuals/SplitHero";
 import { VisualFrame } from "@/components/visuals/VisualFrame";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { getAutomation, showcaseExamples } from "@/modules/content/showcase";
+import { getDashboard } from "@/modules/content/showcase/dashboards";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Worked Examples",
   description:
-    "Worked examples of the dashboards and AI workflows Noeris builds: Shopify contribution margin, PE portfolio packs, month-end commentary, plant OEE, SaaS retention, freight audit and insurance submission intake. Built on synthetic data.",
+    "Worked examples of the dashboards and AI workflows Noeris builds: Shopify contribution margin, PE portfolio packs, month-end commentary, plant OEE, SaaS retention, freight audit, insurance submission intake and retail analytics at scale. Built on synthetic and public sample data.",
   path: "/examples",
 });
 
@@ -29,7 +30,7 @@ export default function ExamplesPage() {
       <SplitHero
         eyebrow="Worked examples"
         title="See the work before you commission it"
-        description="Seven end-to-end examples of the dashboards and AI workflows we build, each on synthetic data for a fictional company. They show how we model the numbers, where AI helps, and how its output is checked."
+        description="Eight end-to-end examples of the dashboards and AI workflows we build, on synthetic or public sample data for fictional companies. They show how we model the numbers, where AI helps, and how its output is checked."
         visual={
           <VisualFrame aspect="video">
             <p className="mb-4 text-label">Every example includes</p>
@@ -47,7 +48,7 @@ export default function ExamplesPage() {
       <section className="pb-6">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <p className="rounded-sm border border-white/[0.08] border-l-2 border-l-accent/60 bg-white/[0.03] px-5 py-4 text-sm leading-[1.7] text-muted-foreground">
-            Illustrative examples built on synthetic data. Every company, customer and figure on these pages is fictional. They are not client results.
+            Illustrative examples. Seven are built on synthetic data; the retail example uses the public Contoso sample dataset (SQLBI, MIT licence). Every company, customer and figure on these pages is fictional. They are not client results.
           </p>
         </div>
       </section>
@@ -62,11 +63,18 @@ export default function ExamplesPage() {
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <p className="font-mono text-[0.6875rem] uppercase tracking-[0.08em] text-muted">{ex.buyer}</p>
-                  {getAutomation(ex.slug) ? (
-                    <span className="rounded-sm border border-accent/40 px-2 py-0.5 font-mono text-[0.625rem] uppercase tracking-[0.06em] text-accent-foreground">
-                      {getAutomation(ex.slug)?.engine === "n8n" ? "Runnable n8n workflow" : "LangGraph agent"}
-                    </span>
-                  ) : null}
+                  <div className="flex flex-wrap gap-2">
+                    {getDashboard(ex.slug) ? (
+                      <span className="rounded-sm border border-white/15 px-2 py-0.5 font-mono text-[0.625rem] uppercase tracking-[0.06em] text-muted-foreground">
+                        Live Power BI
+                      </span>
+                    ) : null}
+                    {getAutomation(ex.slug) ? (
+                      <span className="rounded-sm border border-accent/40 px-2 py-0.5 font-mono text-[0.625rem] uppercase tracking-[0.06em] text-accent-foreground">
+                        {getAutomation(ex.slug)?.engine === "n8n" ? "Runnable n8n workflow" : "LangGraph agent"}
+                      </span>
+                    ) : null}
+                  </div>
                 </div>
                 <h2 className="mt-4 font-display text-2xl font-medium tracking-[-0.02em] text-foreground transition-colors duration-500 group-hover:text-accent-foreground">
                   {ex.title}
