@@ -128,9 +128,9 @@ export default async function ExamplePage({ params }: Props) {
       </Block>
 
       {dashboard ? (
-        <Block label="The dashboard, live">
+        <Block label="The dashboard, two ways">
           <AnimateIn>
-            <LiveDashboard dashboard={dashboard} />
+            <LiveDashboard dashboard={dashboard} slug={ex.slug} />
           </AnimateIn>
         </Block>
       ) : null}

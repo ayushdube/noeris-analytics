@@ -66,6 +66,11 @@ const dashboards: Record<string, ShowcaseDashboard> = {
   },
 };
 
+/** Screenshot of the Claude dashboard, shown as a link (claude.ai cannot be embedded in other sites). */
+export function claudePreviewImage(exampleSlug: string) {
+  return `/dashboards/claude/${exampleSlug}.webp`;
+}
+
 /** Live Power BI report for an example, if one is published. */
 export function getDashboard(exampleSlug: string) {
   return dashboards[exampleSlug];
