@@ -1,18 +1,11 @@
 import type { Metadata } from "next";
 
-import { AiAnalyticsChapter } from "@/components/marketing/home/AiAnalyticsChapter";
-import { ArchitectureChapter } from "@/components/marketing/home/ArchitectureChapter";
-import { CaseStudySpread } from "@/components/marketing/home/CaseStudySpread";
 import { ClosingStatement } from "@/components/marketing/home/ClosingStatement";
-import { EcosystemChapter } from "@/components/marketing/home/EcosystemChapter";
-import { EngagementOffers } from "@/components/marketing/home/EngagementOffers";
+import { ExamplesChapter } from "@/components/marketing/home/ExamplesChapter";
 import { HeroCinematic } from "@/components/marketing/home/HeroCinematic";
 import { ProblemChapter } from "@/components/marketing/home/ProblemChapter";
 import { ProcessNarrative } from "@/components/marketing/home/ProcessNarrative";
-import { QuoteMoment } from "@/components/marketing/home/QuoteMoment";
 import { ServicesChapter } from "@/components/marketing/home/ServicesChapter";
-import { TeamExpertise } from "@/components/marketing/home/TeamExpertise";
-import { TrustStripChapter } from "@/components/marketing/home/TrustStripChapter";
 import { HomePageWithLoader } from "@/components/layout/HomePageWithLoader";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/site-config";
@@ -61,15 +54,8 @@ export default function HomePage() {
       <HeroCinematic />
       <ProblemChapter />
       <ServicesChapter />
-      <AiAnalyticsChapter />
-      <ArchitectureChapter />
-      <EcosystemChapter />
-      <TrustStripChapter />
-      <CaseStudySpread />
-      <TeamExpertise />
+      <ExamplesChapter />
       <ProcessNarrative />
-      <EngagementOffers />
-      <QuoteMoment />
       <ClosingStatement />
     </HomePageWithLoader>
   );

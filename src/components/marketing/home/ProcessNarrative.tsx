@@ -10,7 +10,7 @@ export function ProcessNarrative() {
         <div className="max-w-2xl">
           <motion.p
             className="text-label"
-            initial={{ opacity: 0 }}
+            initial={false}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
@@ -19,7 +19,7 @@ export function ProcessNarrative() {
 
           <motion.h2
             className="mt-6 font-display text-[clamp(2rem,4.5vw,3.25rem)] font-medium leading-[1.05] tracking-[-0.03em] text-foreground"
-            initial={{ opacity: 0, y: 16 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -33,7 +33,7 @@ export function ProcessNarrative() {
             <motion.div
               key={step.phase}
               className="flex gap-4 md:gap-8"
-              initial={{ opacity: 0, x: -12 }}
+              initial={false}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.9, delay: i * 0.06 }}

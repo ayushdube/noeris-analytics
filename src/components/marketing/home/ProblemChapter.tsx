@@ -1,11 +1,14 @@
 "use client";
 
 import { problems } from "@/modules/content/site-content";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+
+// The three problems buyers raise most; the full list stays in site-content.
+const homeProblems = problems.filter((p) =>
+  ["Metrics that will not reconcile", "Finance time lost to the pack", "AI that works in a demo and stalls in production"].includes(p.title),
+);
 
 export function ProblemChapter() {
-  const reduced = useReducedMotion();
-
   return (
     <section className="relative">
       <div className="chapter-glow-left pointer-events-none absolute inset-0" aria-hidden="true" />
@@ -14,7 +17,7 @@ export function ProblemChapter() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
           <motion.div
             className="lg:col-span-7"
-            initial={{ opacity: 0, x: reduced ? 0 : -24 }}
+            initial={false}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
@@ -29,7 +32,7 @@ export function ProblemChapter() {
 
           <motion.div
             className="lg:col-span-5 lg:flex lg:items-end lg:pb-4"
-            initial={{ opacity: 0 }}
+            initial={false}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.3 }}
@@ -42,11 +45,11 @@ export function ProblemChapter() {
         </div>
 
         <div className="mt-20 md:mt-24">
-          {problems.map((problem, i) => (
+          {homeProblems.map((problem, i) => (
             <motion.article
               key={problem.title}
               className="grid gap-6 py-6 md:grid-cols-[4rem_1fr] md:gap-10 md:py-8"
-              initial={{ opacity: 0, y: reduced ? 0 : 20 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.9, delay: i * 0.08 }}

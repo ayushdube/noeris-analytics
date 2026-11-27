@@ -12,7 +12,7 @@ export function ServicesChapter() {
         <div className="chapter-glow-left px-6 pt-14 pb-8 md:px-10 md:pt-20 md:pb-10 lg:col-span-4">
           <motion.p
             className="text-label"
-            initial={{ opacity: 0 }}
+            initial={false}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
@@ -20,21 +20,21 @@ export function ServicesChapter() {
           </motion.p>
           <motion.h2
             className="mt-6 font-display text-4xl font-medium leading-[1] tracking-[-0.03em] text-foreground md:text-5xl"
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
           >
-            We do not sell dashboards.
+            What we build.
           </motion.h2>
           <motion.p
             className="mt-6 max-w-sm text-sm leading-[1.8] text-muted-foreground"
-            initial={{ opacity: 0 }}
+            initial={false}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.15 }}
           >
-            Three practices, one intelligence infrastructure: numbers leadership can reconcile, insights it can act on, and workflows that stop depending on manual effort.
+            Reporting your leadership team can reconcile, analysis it can act on, and workflows that no longer depend on someone exporting spreadsheets.
           </motion.p>
         </div>
 
@@ -42,7 +42,7 @@ export function ServicesChapter() {
           {serviceLines.map((line, i) => (
             <motion.div
               key={line.id}
-              initial={{ opacity: 0 }}
+              initial={false}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.8, delay: i * 0.05 }}

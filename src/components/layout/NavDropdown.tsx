@@ -87,7 +87,7 @@ export function NavDropdown({ item, active, pathname }: NavDropdownProps) {
       >
         <div
           className={cn(
-            "origin-top overflow-hidden rounded-xl border border-white/[0.08] bg-surface/95 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.65)] backdrop-blur-xl",
+            "origin-top overflow-hidden rounded-xl border border-white/[0.08] bg-surface shadow-[0_20px_50px_-12px_rgba(0,0,0,0.65)]",
             twoColumns ? "w-[28rem]" : "w-[15.5rem]",
           )}
         >

@@ -1,7 +1,4 @@
-import {
-  caseStudies,
-  industries,
-} from "@/modules/content/site-content";
+import { industries } from "@/modules/content/site-content";
 
 // AI-powered Analytics and Agentic AI stay live (and linked from the AI practice
 // on /services); the menu lists one AI entry so buyers are not asked to choose
@@ -32,7 +29,6 @@ export const navItems: NavItem[] = [
     label: "Services",
     children: [...serviceNav],
   },
-  { href: "/services/ai-analytics-agents", label: "AI Analytics" },
   {
     href: "/industries",
     label: "Industries",
@@ -42,22 +38,21 @@ export const navItems: NavItem[] = [
     })),
   },
   {
-    href: "/case-studies",
-    label: "Case Studies",
-    columns: 2,
-    children: caseStudies.map((study) => ({
-      href: `/case-studies/${study.slug}`,
-      label: study.title,
-    })),
+    href: "/examples",
+    label: "Work",
+    children: [
+      { href: "/examples", label: "Worked examples, with live dashboards" },
+      { href: "/case-studies", label: "Client case studies" },
+    ],
   },
-  { href: "/examples", label: "Examples" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
 export function isNavItemActive(pathname: string, href: string) {
+  const under = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
   const matches = navItems.filter(
-    (item) => pathname === item.href || pathname.startsWith(`${item.href}/`),
+    (item) => under(item.href) || (item.children ?? []).some((child) => under(child.href)),
   );
   const best = matches.reduce<NavItem | undefined>((winner, item) => {
     if (!winner || item.href.length > winner.href.length) return item;
