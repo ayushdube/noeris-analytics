@@ -39,9 +39,16 @@ export function LiveDashboard({ dashboard }: { dashboard: ShowcaseDashboard }) {
       </div>
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-muted">
         <p>Use the page arrows at the bottom of the report to move between tabs. Hosted by Microsoft Power BI.</p>
-        <a href={dashboard.url} target="_blank" rel="noopener noreferrer" className="transition-colors duration-500 hover:text-accent-foreground">
-          Open full screen ↗
-        </a>
+        <div className="flex flex-wrap items-center gap-5">
+          {dashboard.claudeUrl && (
+            <a href={dashboard.claudeUrl} target="_blank" rel="noopener noreferrer" className="transition-colors duration-500 hover:text-accent-foreground">
+              Same dashboard, built in Claude ↗
+            </a>
+          )}
+          <a href={dashboard.url} target="_blank" rel="noopener noreferrer" className="transition-colors duration-500 hover:text-accent-foreground">
+            Open full screen ↗
+          </a>
+        </div>
       </div>
     </div>
   );
